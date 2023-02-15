@@ -14,7 +14,7 @@ function App() {
   console.log(isRegistred);
 
   const handleClick = (num) => {
-    // 👇️ takes parameter passed from Child component
+    // 👇️ takes parameter passed from Child component word
     setRegistered((current) => current + num);
     console.log(!isRegistred);
   };
