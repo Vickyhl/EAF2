@@ -10,16 +10,40 @@ body {
     background-color: #fff;
     max-width: 1920px;
     max-height: 100%;
-    padding: 100px 537px;
+    /* padding: 100px 537px; */
+    margin: 100px;
+    padding: 100px 400px;
     width: 100%;
     width: 400px;
 }
+
+.center {
+    text-align: center;
+    /* border: 3px solid green; */
+}
+.link {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+
+}
+.footer {
+    position:fixed;
+    padding: 35px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;    
+    /* background-color: #52e16a; */
+    color: white;
+    text-align: center;
+  }
   
 .container-home{
     text-align: justify;
     max-width: 1920px;
     height: 100px;
-    padding: 257px;
+    padding: 50px;
 }
 
 

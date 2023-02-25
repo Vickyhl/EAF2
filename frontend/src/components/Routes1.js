@@ -8,6 +8,8 @@ import CreateMenu from "./CreateMenu";
 import React from "react";
 import Auth from "./Auth";
 import UserMenus from "./UserMenus.js";
+import HealthDec from "./HealthDec";
+import TermsOfUse from "./TermsOfUse";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -15,13 +17,18 @@ const Routes1 = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/HealthDec" element={<HealthDec />} />
+      <Route path="/TermsOfUse" element={<TermsOfUse />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/:userId/menus" element={<UserMenus />} />
       {/* <Route path="/login" element={<Login />} /> */}
-      <Route path="/login" element={!userData ? <Login /> : <Home />} />
+      <Route
+        path="/login"
+        element={userData === "undefined" || !userData ? <Login /> : <Home />}
+      />
       <Route
         path="/createMenu"
         element={!userData ? <Login /> : <CreateMenu />}

@@ -25,7 +25,7 @@ const Register = () => {
     console.log(user);
     const { firstName, lastName, email, password } = user;
     if (firstName && lastName && email && password) {
-      await axios.post("http://localhost:5000/register", user).then((res) => {
+      await axios.post("http://localhost:5000/Register", user).then((res) => {
         alert(res.data.message);
         navigate("/login");
       });

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 
 const CreateMenu = () => {
-  const dispatch = useDispatch();
-  // let userData = localStorage.getItem("user");
-  const userData = JSON.parse(localStorage.getItem("user"));
-  const userID = userData?._id;
-  console.log("test", localStorage.getItem("user"));
+  let userData = localStorage.getItem("user");
+  console.log("test7", Object.entries(userData));
+  let userID = JSON.parse(userData)._id;
+  console.log("test9", userID);
 
   const {
     register,
@@ -132,9 +130,12 @@ const CreateMenu = () => {
             className={`form-check-label ${errors?.health ? "is-invalid" : ""}`}
             onChange={handleChange}
           />
-          <label htmlFor="health" className="form-check-label">
+          <a href="/HealthDec" className="form-check-label">
             Health declaration
-          </label>
+          </a>
+          {/* <label htmlFor="health" className="form-check-label">
+            Health declaration
+          </label> */}
           <div className="validationError">{errors?.health?.message}</div>
         </div>
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   let userData = localStorage.getItem("user");
@@ -55,14 +54,7 @@ export const Login = () => {
           <button className="btn" onClick={handleSubmit}>
             Login
           </button>
-          <button
-            className="btn"
-            // onClick={() =>
-            // window.location.assign("http://localhost:3000/register")
-            // }
-          >
-            Register
-          </button>
+          <button className="btn">Register</button>
         </div>
       </form>
     </div>

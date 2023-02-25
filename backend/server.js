@@ -40,7 +40,6 @@ app.post("/register", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  console.log("hey");
   const { email, password } = req.body;
   User.findOne({ email: email }, (err, user) => {
     if (user) {

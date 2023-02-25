@@ -28,13 +28,17 @@ const Header = (handleClick) => {
           My account
         </a>
         <div className="dropdown-content">
-          {!userData ? <a href="/register">Register</a> : <a href="home"></a>}
-          {/* <a href="register">Register</a> */}
-          {!userData ? (
-            <a href="login" onClick={(event) => handleClick(isRegistred + 1)}>
-              Login
-            </a>
+          {userData === "undefined" || !userData ? (
+            <a href="/register">Register</a>
           ) : (
+            <a href="home"></a>
+          )}
+          {userData === "undefined" || !userData ? (
+            <a href="/login">Login</a>
+          ) : (
+            // <a href="login" onClick={(event) => handleClick(isRegistred + 1)}>
+            //   Login
+            // </a>
             <a href="home" onClick={logOut}>
               Logout
             </a>
@@ -77,20 +81,6 @@ const Header = (handleClick) => {
       <li>
         <a href="#about">About</a>
       </li>
-      {/* <div>Do you have a user?</div>
-      <div className="btn-container">
-        <button className="btn" onClick={handleClick(isRegistred + 1)}>
-          Login
-        </button>
-        <button
-          className="btn"
-          onClick={() =>
-            window.location.assign("http://localhost:3000/register")
-          }
-        >
-          Register
-        </button>
-      </div> */}
     </ul>
   );
 };

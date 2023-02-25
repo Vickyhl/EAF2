@@ -1,18 +1,21 @@
 import { Router } from "express";
-import { check } from "express-validator";
+import CheckAuth from "../middleware/checkAuth.js";
+
 import {
   getMenuById,
   getMenuesByUserId,
   personalizedMenu,
-  // updatePlace,
-  // deletePlace,
+  // updateMenu,
+  // deleteMenu,
 } from "../controllers/menuController.js";
 
-const router = Router();
+const router = Router(CheckAuth);
 
 router.get("/:mid", getMenuById);
 
 router.get("/user/:uid", getMenuesByUserId);
+
+router.use(CheckAuth);
 
 router.post("/personalMenu", personalizedMenu);
 
