@@ -19,15 +19,17 @@ export const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/login", user).then((res) => {
-      alert(res.data.message);
+    await axios
+      .post("http://localhost:5000/api/users/login", user)
+      .then((res) => {
+        alert(res.data.message);
 
-      window.location.assign("http://localhost:3000/home");
+        window.location.assign("http://localhost:3000/home");
 
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-    });
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+      });
   };
   return (
     <div className="container">
@@ -54,7 +56,6 @@ export const Login = () => {
           <button className="btn" onClick={handleSubmit}>
             Login
           </button>
-          <button className="btn">Register</button>
         </div>
       </form>
     </div>

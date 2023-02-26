@@ -4,7 +4,7 @@ import HttpError from "../models/httpError.js";
 import User from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 
-const getUsers = async (req, res, next) => {
+export const getUsers = async (req, res, next) => {
   let users;
   try {
     users = await User.find({}, "-password");
@@ -18,7 +18,7 @@ const getUsers = async (req, res, next) => {
   res.json({ users: users.map((user) => user.toObject({ getters: true })) });
 };
 
-const signup = async (req, res, next) => {
+export const signup = async (req, res, next) => {
   console.log(req.body);
 
   const errors = validationResult(req);
@@ -42,7 +42,7 @@ const signup = async (req, res, next) => {
 
   if (existingUser) {
     const error = new HttpError(
-      "User exists already, please login instead.",
+      "Signing up failed, please try again later",
       422
     );
     return next(error);
@@ -94,9 +94,9 @@ const signup = async (req, res, next) => {
     .json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
 
-const login = async (req, res, next) => {
+export const login = async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log("hey");
   let existingUser;
 
   try {
@@ -156,10 +156,3 @@ const login = async (req, res, next) => {
     token: token,
   });
 };
-
-const _getUsers = getUsers;
-export { _getUsers as getUsers };
-const _signup = signup;
-export { _signup as signup };
-const _login = login;
-export { _login as login };

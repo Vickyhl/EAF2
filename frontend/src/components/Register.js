@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../src/shared/context/auth-context";
 
 const Register = () => {
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -25,12 +27,15 @@ const Register = () => {
     console.log(user);
     const { firstName, lastName, email, password } = user;
     if (firstName && lastName && email && password) {
-      await axios.post("http://localhost:5000/Register", user).then((res) => {
-        alert(res.data.message);
-        navigate("/login");
-      });
+      await axios
+        .post("http://localhost:5000/api/users/signup", user)
+        .then((res) => {
+          // auth.login(res.user.id);
+          alert(res.data.message);
+          navigate("/login");
+        });
     } else {
-      alert("Enter the Required Fields");
+      // alert("Enter the Required Fields");
     }
   };
   return (

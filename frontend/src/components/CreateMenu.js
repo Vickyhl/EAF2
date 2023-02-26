@@ -93,6 +93,8 @@ const CreateMenu = () => {
           id="weight"
           {...register("weight", {
             required: "This field is required",
+            min: { value: 70, message: "The minimum possible weight is 70" },
+            max: { value: 120, message: "The maximum possible weight is 120" },
           })}
           onChange={handleChange}
         />
@@ -133,9 +135,6 @@ const CreateMenu = () => {
           <a href="/HealthDec" className="form-check-label">
             Health declaration
           </a>
-          {/* <label htmlFor="health" className="form-check-label">
-            Health declaration
-          </label> */}
           <div className="validationError">{errors?.health?.message}</div>
         </div>
 
