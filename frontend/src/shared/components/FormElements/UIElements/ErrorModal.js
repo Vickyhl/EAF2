@@ -1,19 +1,15 @@
 import React from "react";
 
-import Modal from "./Modal";
-import Button from "../Button.js";
-
-const ErrorModal = (props) => {
+function ErrorModal(props) {
   return (
-    <Modal
-      onCancel={props.onClear}
-      header="An Error Occurred!"
-      show={!!props.error}
-      footer={<Button onClick={props.onClear}>Okay</Button>}
-    >
-      <p>{props.error}</p>
-    </Modal>
+    <div className="modal">
+      <div className="modal-content">
+        <h2>Error</h2>
+        <p>{props.errorMessage}</p>
+        <button onClick={props.onClose}>Close</button>
+      </div>
+    </div>
   );
-};
+}
 
 export default ErrorModal;

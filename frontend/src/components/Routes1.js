@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import data from "../ContextApi";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
 import CreateMenu from "./CreateMenu";
 import React from "react";
-import Auth from "./Auth";
 import UserMenus from "./UserMenus.js";
 import HealthDec from "./HealthDec";
 import TermsOfUse from "./TermsOfUse";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -19,19 +18,20 @@ const Routes1 = () => {
       <Route path="/" element={<Home />} />
       <Route path="/HealthDec" element={<HealthDec />} />
       <Route path="/TermsOfUse" element={<TermsOfUse />} />
-      <Route path="/auth" element={<Auth />} />
       <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/ForgotPassword" element={<ForgotPassword />} />
+      <Route path="/resetPassword" element={<ResetPassword />} />
       <Route path="/:userId/menus" element={<UserMenus />} />
-      {/* <Route path="/login" element={<Login />} /> */}
       <Route
         path="/login"
         element={userData === "undefined" || !userData ? <Login /> : <Home />}
       />
       <Route
         path="/createMenu"
-        element={!userData ? <Login /> : <CreateMenu />}
+        element={
+          userData === "undefined" || !userData ? <Login /> : <CreateMenu />
+        }
       />
     </Routes>
   );

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../src/shared/context/auth-context";
+import "../components/Login.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="container">
+    <div className="login">
       <form>
         <label htmlFor="firstname">First Name</label>
         <input

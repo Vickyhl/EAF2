@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import "../components/modalCSS.css";
 
 const CreateMenu = () => {
   let userData = localStorage.getItem("user");
-  console.log("test7", Object.entries(userData));
   let userID = JSON.parse(userData)._id;
-  console.log("test9", userID);
 
   const {
     register,
@@ -26,9 +25,7 @@ const CreateMenu = () => {
 
   const handleSubmitForm = async (formData) => {
     const { age, height, weight, gender, purpuse, health } = formData;
-    console.log(formData.age);
 
-    console.log(userID);
     await axios
       .post("http://localhost:5000/api/menus/personalMenu", {
         age,
@@ -59,7 +56,7 @@ const CreateMenu = () => {
   };
 
   return (
-    <div className="container">
+    <div className="modal">
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         <label htmlFor="age">Enter your age:</label>
         <input

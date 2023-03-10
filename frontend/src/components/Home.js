@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import data from "../ContextApi";
-import homeImg from "./home.jpeg";
+import homeImg from "./images/home.jpeg";
 import "./style.css";
 
 const Home = () => {

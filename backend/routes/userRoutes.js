@@ -1,6 +1,12 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, signup, login } from "../controllers/userController.js";
+import {
+  getUsers,
+  signup,
+  login,
+  forgotPassword,
+  resetPassword,
+} from "../controllers/userController.js";
 
 const router = Router();
 
@@ -18,5 +24,7 @@ router.post(
 );
 
 router.post("/login", login);
+router.post("/forgotPassword", forgotPassword);
+router.put("/resetPassword", resetPassword);
 
 export default router;

@@ -5,7 +5,21 @@
   margin: 0px;
   padding: 20px;
   overflow: hidden;
-  background-color: #333;
+  /* background-color: #333; */
+  /* background: rgb(93,91,116);
+  background: linear-gradient(143deg, rgba(93,91,116,1) 0%, rgba(88,88,116,1) 73%); */
+
+  background: hsla(164, 38%, 18%, 1);
+
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1c3e35", endColorstr="#99f2d1", GradientType=1 );
+
+  box-shadow: 0 -6px 20px 5px rgba(0,0,0,0.5);
   text-align: center;
   height: 60px;
   font-size: 18px;

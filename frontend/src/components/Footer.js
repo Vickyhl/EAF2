@@ -3,7 +3,7 @@ import "./style.css";
 
 const Footer = () => {
   return (
-    <div class="footer">
+    <div className="footer">
       <a href="/termsOfUse" className="link">
         Terms of use{" "}
       </a>
