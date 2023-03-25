@@ -6,10 +6,21 @@ import User from "../models/userModel.js";
 
 import {
   carbsDishes,
+  TwoCarbsForLunchDishes,
+  ThreeCarbsForLunchDishes,
+  sweetCarbs,
   proteinDishes,
   fatsDishes,
+  TwofatsDishes,
+  sweetFats,
   vegetables,
-  meatProtein,
+  OneAndHalfMeatProtein,
+  TwoMeatProtein,
+  TwoAndHalfMeatProtein,
+  sweetBreakfast,
+  sweetSnack,
+  sourBreakfast,
+  sourSnack,
 } from "../data/courses.js";
 
 export const getMenuById = async (req, res, next) => {
@@ -33,14 +44,41 @@ export const getMenuById = async (req, res, next) => {
     );
     return next(error);
   }
-  // console.log(menu);
+  res.status(201).json({ menu: menu });
+};
+
+export const getLastMenu = async (req, res, next) => {
+  let menu = await Menu.findOne({}, {}, { sort: { _id: -1 } });
   res.json({ menu: menu.toObject({ getters: true }) });
+};
+
+export const fetchMenus = async (req, res, next) => {
+  const userID = req.params.uid;
+  let userWithMenues;
+
+  try {
+    userWithMenues = await User.findById(userID).select("menus");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching menues failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  let result = [];
+  let identifers = [];
+  for (let i = 0; i < userWithMenues.menus.length; i++) {
+    let menu = await Menu.findById(userWithMenues.menus[i]._id);
+    identifers[i] = userWithMenues.menus[i]._id;
+    result[i] = menu.createdAt;
+  }
+  console.log(identifers);
+  res.status(201).json({ identifers });
 };
 
 export const getMenuesByUserId = async (req, res, next) => {
   const userId = req.params.uid;
 
-  // let menues;
   let userWithMenues;
   try {
     userWithMenues = await User.findById(userId).select("menus");
@@ -70,7 +108,6 @@ export const personalizedMenu = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const user = req.params.uid;
   const { age, height, weight, gender, purpuse, health, userID } = req.body;
   let BMR = 0;
   let meal1 = [];
@@ -80,238 +117,261 @@ export const personalizedMenu = async (req, res, next) => {
   let meal5 = [];
 
   if (gender === "female") {
-    let BMR = 655 + 9.6 * weight + 1.8 * height - 4.7 * age;
+    BMR = 655 + 9.6 * weight + 1.8 * height - 4.7 * age;
   } else {
-    let BMR = 66 + 13.7 * weight + 5 * height - 6.8 * age;
+    BMR = 66 + 13.7 * weight + 5 * height - 6.8 * age;
   }
   if (purpuse === "weightLoss") {
     BMR = BMR - 300;
   }
+  console.log(BMR);
 
-  if (1200 < BMR < 1375) {
+  let raffledNumber = Math.random() >= 0.5 ? 1 : 0;
+  let randomSweetBreakfast = Math.floor(Math.random() * 108);
+  let randomSourBreakfast = Math.floor(Math.random() * 2700);
+  let randomSweetSnack = Math.floor(Math.random() * 36);
+  let randomSourSnack = Math.floor(Math.random() * 27);
+
+  if (BMR > 1200 && BMR < 1375) {
+    // 60, 170, 70
     // carbsDishes = 8;
     // proteinDishes = 4;
     // meatProtein = 1.5;
     // fatDishes = 5;
-    meal1 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal2 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
+    if (raffledNumber === 1) {
+      meal1 = sweetBreakfast(randomSweetBreakfast);
+      meal2 = sourSnack(randomSourSnack);
+      meal4 = sweetSnack(randomSweetSnack);
+      meal5 = sourBreakfast(randomSourBreakfast);
+    } else {
+      meal1 = sourBreakfast(randomSourBreakfast);
+      meal2 = sweetSnack(randomSweetSnack);
+      meal4 = sourSnack(randomSourSnack);
+      meal5 = sweetBreakfast(randomSweetBreakfast);
+    }
     meal3 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
+      TwoCarbsForLunchDishes[Math.floor(Math.random() * 6)],
+      OneAndHalfMeatProtein[Math.floor(Math.random() * 4)],
+      vegetables[Math.floor(Math.random() * 10)],
+      fatsDishes[Math.floor(Math.random() * 3)],
     ];
-    meal4 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal5 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      vegetables[Math.floor(Math.random() * 3)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-  } else if (1375 < BMR < 1575) {
+  } else if (BMR > 1375 && BMR < 1575) {
+    // 18, 87, 70
+    console.log("in 138");
     // carbsDishes = 9;
     // proteinDishes = 5;
     // meatProtein = 1.5;
     // fatDishes = 6;
-    meal1 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal2 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
+    if (raffledNumber === 1) {
+      meal1 = sweetBreakfast(randomSweetBreakfast) + ", " + ["Yogurt cup 1.5%"];
+      meal2 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal4 = sweetSnack(randomSweetSnack);
+      meal5 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)];
+    } else {
+      meal1 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+      meal2 = sweetSnack(randomSweetSnack);
+      meal4 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal5 =
+        sweetBreakfast(randomSweetBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)];
+    }
     meal3 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
+      TwoCarbsForLunchDishes[Math.floor(Math.random() * 6)],
+      OneAndHalfMeatProtein[Math.floor(Math.random() * 4)],
+      fatsDishes[Math.floor(Math.random() * 3)],
+      vegetables[Math.floor(Math.random() * 10)],
     ];
-    meal4 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal5 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-  } else if (1575 < BMR < 1825) {
+  } else if (BMR > 1575 && BMR < 1825) {
+    // 18, 43, 120
+    console.log("in 171");
+
     // carbsDishes = 10;
     // proteinDishes = 6;
     // meatProtein = 2;
     // fatDishes = 7;
-    meal1 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      vegetables[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal2 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
+    if (raffledNumber === 1) {
+      meal1 = sweetBreakfast(randomSweetBreakfast) + ", " + ["Yogurt cup 1.5%"];
+      meal2 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal4 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)];
+      meal5 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)] +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+    } else {
+      meal1 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+      meal2 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)];
+      meal4 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal5 =
+        sweetBreakfast(randomSweetBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)] +
+        ", " +
+        ["Yogurt cup 1.5%"];
+    }
     meal3 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
+      TwoCarbsForLunchDishes[Math.floor(Math.random() * 6)],
+      TwoMeatProtein[Math.floor(Math.random() * 4)],
+      vegetables[Math.floor(Math.random() * 10)],
+      fatsDishes[Math.floor(Math.random() * 3)],
     ];
-    meal4 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal5 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-  } else if (1825 < BMR < 2025) {
+  } else if (BMR > 1825 && BMR < 2025) {
+    // 60, 200, 120
+    console.log("in 1885");
     // carbsDishes = 11;
     // proteinDishes = 7;
     // meatProtein = 2;
     // fatDishes = 8;
-    meal1 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal2 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
+    if (raffledNumber === 1) {
+      meal1 = sweetBreakfast(randomSweetBreakfast) + ", " + ["Yogurt cup 1.5%"];
+      meal2 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)] +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+      meal4 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)];
+      meal5 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)] +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+    } else {
+      meal1 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+      meal2 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)] +
+        ", " +
+        ["Yogurt cup 1.5%"];
+      meal4 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal5 =
+        sweetBreakfast(randomSweetBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)] +
+        ", " +
+        ["Yogurt cup 1.5%"];
+    }
     meal3 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal4 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal5 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
+      TwoCarbsForLunchDishes[Math.floor(Math.random() * 6)],
+      TwoMeatProtein[Math.floor(Math.random() * 4)],
+      vegetables[Math.floor(Math.random() * 10)],
+      fatsDishes[Math.floor(Math.random() * 3)],
     ];
   } else {
+    // 30, 297, 120
+    console.log("in 277");
     // carbsDishes = 12;
     // proteinDishes = 7;
     // meatProtein = 2.5;
     // fatDishes = 9;
-    meal1 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal2 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
+    if (raffledNumber === 1) {
+      meal1 =
+        sweetBreakfast(randomSweetBreakfast) +
+        ", " +
+        ["Yogurt cup 1.5%"] +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)] +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)];
+      meal2 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)] +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+      meal4 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)] +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)];
+      meal5 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        fatsDishes[Math.floor(Math.random() * 3)] +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)];
+    } else {
+      meal1 =
+        sourBreakfast(randomSourBreakfast) +
+        ", " +
+        proteinDishes[Math.floor(Math.random() * 3)] +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)];
+      meal2 =
+        sweetSnack(randomSweetSnack) +
+        ", " +
+        sweetCarbs[Math.floor(Math.random() * 3)] +
+        ", " +
+        ["Yogurt cup 1.5%"];
+      meal4 =
+        sourSnack(randomSourSnack) +
+        ", " +
+        carbsDishes[Math.floor(Math.random() * 3)] +
+        ", " +
+        fatsDishes[Math.floor(Math.random() * 3)];
+      meal5 =
+        sweetBreakfast(randomSweetBreakfast) +
+        ", " +
+        sweetFats[Math.floor(Math.random() * 3)] +
+        ", " +
+        ["Yogurt cup 1.5%"];
+    }
     meal3 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      meatProtein[Math.floor(Math.random() * 3)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal4 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-    ];
-    meal5 = [
-      carbsDishes[Math.floor(Math.random() * 8)],
-      carbsDishes[Math.floor(Math.random() * 8)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      proteinDishes[Math.floor(Math.random() * 4)],
-      vegetables[Math.floor(Math.random() * 3)],
-      fatsDishes[Math.floor(Math.random() * 7)],
-      fatsDishes[Math.floor(Math.random() * 7)],
+      ThreeCarbsForLunchDishes[Math.floor(Math.random() * 6)],
+      TwoAndHalfMeatProtein[Math.floor(Math.random() * 4)],
+      vegetables[Math.floor(Math.random() * 10)],
+      TwofatsDishes[Math.floor(Math.random() * 3)],
     ];
   }
 
+  meal1 = meal1.split(",");
+  meal2 = meal2.split(",");
+  meal4 = meal4.split(",");
+  meal5 = meal5.split(",");
+  console.log("user id:", userID);
   const createdMenu = new Menu({
-    // userID,
-    user: userID,
+    user: req.body.user,
     category: purpuse,
     meal1,
     meal2,
@@ -320,6 +380,7 @@ export const personalizedMenu = async (req, res, next) => {
     meal5,
   });
 
+  console.log("user 289:", req.body.user);
   let subjectUser;
   try {
     subjectUser = await User.findById(req.body.user);

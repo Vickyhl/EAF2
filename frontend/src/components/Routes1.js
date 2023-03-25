@@ -9,6 +9,8 @@ import HealthDec from "./HealthDec";
 import TermsOfUse from "./TermsOfUse";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
+import WatchMenu from "./WatchMenu";
+import Menu from "./Menu";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -23,6 +25,8 @@ const Routes1 = () => {
       <Route path="/ForgotPassword" element={<ForgotPassword />} />
       <Route path="/resetPassword" element={<ResetPassword />} />
       <Route path="/:userId/menus" element={<UserMenus />} />
+      <Route path="/watchMenu" element={<WatchMenu />} />
+      <Route path="/menu/:mid" element={<Menu />} />
       <Route
         path="/login"
         element={userData === "undefined" || !userData ? <Login /> : <Home />}

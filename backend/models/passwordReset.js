@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment-timezone";
 
 const passwordResetTokenSchema = new mongoose.Schema({
   email: {
@@ -9,8 +10,9 @@ const passwordResetTokenSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  expirationDate: {
+  createdAt: {
     type: Date,
+    default: moment().tz("Asia/Jerusalem").format(),
     required: true,
   },
 });

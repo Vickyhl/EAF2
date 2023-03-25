@@ -25,7 +25,6 @@ const CreateMenu = () => {
 
   const handleSubmitForm = async (formData) => {
     const { age, height, weight, gender, purpuse, health } = formData;
-
     await axios
       .post("http://localhost:5000/api/menus/personalMenu", {
         age,

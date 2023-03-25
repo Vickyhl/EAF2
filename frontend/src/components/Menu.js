@@ -1,12 +1,22 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import "./Menu.css";
 
 const Menu = (props) => {
-  return (
+  const [menu, setMenu] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await axios.get(
+        `http://localhost:5000/api/menus/${props.menus[index]}`
+      );
+    };
+    setMenu(res.data.menu);
+  }, [props]);
+
+  return props.items ? (
     <ul className="menu-list">
       <h1>Your personalized menu</h1>
-      <h2>Category: {props.items.category}</h2>
+      {/* <h2>Category: {props.items.category}</h2> */}
       <li className="menu-item">
         <h3>First meal:</h3>
         <div className="menu-item__info">
@@ -40,7 +50,7 @@ const Menu = (props) => {
         </div>
       </li>
     </ul>
-  );
+  ) : null;
 };
 
 export default Menu;

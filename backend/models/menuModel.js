@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment-timezone";
 
 const ProductSchema = mongoose.Schema({
   name: { type: String, required: true },
@@ -51,6 +52,11 @@ const menuSchema = new mongoose.Schema(
     },
     meal5: {
       type: Array,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: moment().tz("Israel").format(),
       required: true,
     },
   },

@@ -1,13 +1,8 @@
-
-
 .nav-bar-ul {
   list-style-type: none;
   margin: 0px;
   padding: 20px;
-  overflow: hidden;
-  /* background-color: #333; */
-  /* background: rgb(93,91,116);
-  background: linear-gradient(143deg, rgba(93,91,116,1) 0%, rgba(88,88,116,1) 73%); */
+  display: flex;
 
   background: hsla(164, 38%, 18%, 1);
 
@@ -23,7 +18,12 @@
   text-align: center;
   height: 60px;
   font-size: 18px;
+  position: fixed; /* add this to make it sticky */
+  top: 0; /* add this to position it at the top */
+  width: 100%; /* add this to make it full-width */
+  z-index: 999;
 }
+
 .navbar-image, .navbar-brand{
   float: left;
 }
