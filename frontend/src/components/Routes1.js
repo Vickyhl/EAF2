@@ -11,6 +11,10 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import WatchMenu from "./WatchMenu";
 import Menu from "./Menu";
+import RecipesMenu from "./RecipesMenu";
+import RecipesMenuList from "./RecipesMenuList";
+import WatchRecipesMenu from "./WatchRecipesMenu";
+import Recipe from "./Recipe";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -27,6 +31,10 @@ const Routes1 = () => {
       <Route path="/:userId/menus" element={<UserMenus />} />
       <Route path="/watchMenu" element={<WatchMenu />} />
       <Route path="/menu/:mid" element={<Menu />} />
+      <Route path="/recipesMenu/:mid" element={<RecipesMenu />} />
+      <Route path="/recipe/:rid" element={<Recipe />} />
+      <Route path="/watchRecipesMenu" element={<WatchRecipesMenu />} />
+
       <Route
         path="/login"
         element={userData === "undefined" || !userData ? <Login /> : <Home />}

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import "../components/modalCSS.css";
 
 const CreateMenu = () => {
-  let userData = localStorage.getItem("user");
-  let userID = JSON.parse(userData)._id;
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userId = userData?._id;
 
   const {
     register,
@@ -20,26 +20,48 @@ const CreateMenu = () => {
     weight: "",
     gender: "",
     purpuse: "",
+    type: "",
     health: "",
   });
 
   const handleSubmitForm = async (formData) => {
-    const { age, height, weight, gender, purpuse, health } = formData;
-    await axios
-      .post("http://localhost:5000/api/menus/personalMenu", {
-        age,
-        height,
-        weight,
-        gender,
-        purpuse,
-        health,
-        user: userID,
-      })
-      .then((res) => {
-        console.log(res);
-        alert(res.data.message);
-        window.location.assign(`http://localhost:3000/${userID}/menus`);
-      });
+    const { age, height, weight, gender, purpuse, type, health, userID } =
+      formData;
+    console.log(userId);
+    if (type === "regular") {
+      await axios
+        .post("http://localhost:5000/api/menus/personalMenu", {
+          age,
+          height,
+          weight,
+          gender,
+          purpuse,
+          health,
+          user: userId,
+        })
+        .then((res) => {
+          console.log(res);
+          window.location.assign(`http://localhost:3000/${userID}/menus`);
+        });
+    } else {
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/menus/recipesMenu",
+          {
+            age,
+            height,
+            weight,
+            gender,
+            purpuse,
+            user: userId,
+          }
+        );
+        console.log(res.data.recipesID);
+        window.location.assign(`http://localhost:3000/recipesMenu`);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const handleChange = (e) => {
@@ -49,7 +71,8 @@ const CreateMenu = () => {
       [e.target.height]: e.target.value,
       [e.target.weight]: e.target.value,
       [e.target.gender]: e.target.value,
-      [e.target.purpuse]: e.target.true,
+      [e.target.purpuse]: e.target.value,
+      [e.target.type]: e.target.value,
       [e.target.health]: e.target.true,
     });
   };
@@ -119,6 +142,18 @@ const CreateMenu = () => {
         {errors?.purpuse?.message && (
           <div className="validationError">{errors?.purpuse?.message}</div>
         )}
+
+        <label htmlFor="type">Enter your preferable menu type:</label>
+        <select {...register("type", { required: "This field is required" })}>
+          <option></option>
+          <option value="regular">Regular menu</option>
+          <option value="recipes">Recipes based menu</option>
+          onChange={handleChange}
+        </select>
+        {errors?.type?.message && (
+          <div className="validationError">{errors?.type?.message}</div>
+        )}
+
         <div className="form-check">
           <input
             type="checkbox"

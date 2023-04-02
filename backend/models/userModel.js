@@ -75,6 +75,13 @@ const userSchema = mongoose.Schema(
         ref: "Menu",
       },
     ],
+    RecipesMenus: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "RecipesMenu",
+      },
+    ],
   },
   {
     timestamps: true,

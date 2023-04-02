@@ -17,6 +17,14 @@
   margin: auto; 
 
 }
+.img-fluid {
+  z-index: -1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+}
 h3 {
   text-align: left;
   margin: 0% 130% 0% 130%; 
@@ -38,9 +46,10 @@ body {
   margin: auto;
   text-align: center;
   margin: auto; 
-  overflow: scroll; /* Change this to "hidden" */
+  overflow: scroll;
   line-height:0.8cm;
-  
+  background-size:100%;
+  background-image: url("./images/menuImg.jpeg");
   }
 .ul{
   background: white;

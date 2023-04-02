@@ -10,7 +10,7 @@ function App() {
       <AuthProvider>
         <Header />
         <Routes1 />
-        {/* <Footer /> */}
+        <Footer />
       </AuthProvider>
     </div>
   );

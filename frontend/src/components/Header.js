@@ -51,7 +51,8 @@ const Header = (handleClick) => {
         </a>
         <div className="dropdown-content">
           <a href="/createMenu">Purches menu</a>
-          <a href="/watchMenu">Watch existing menus</a>
+          <a href="/watchMenu">Watch existing regular menus</a>
+          <a href="/watchRecipesMenu">Watch existing recipes menus</a>
         </div>
       </li>
       <li className="dropdown">

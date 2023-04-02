@@ -1,8 +1,9 @@
-import { validationResult } from "express-validator";
 import mongoose from "mongoose";
 import HttpError from "../models/httpError.js";
 import Menu from "../models/menuModel.js";
 import User from "../models/userModel.js";
+import RecipesMenu from "../models/recipesMenu.js";
+import Recipe from "../models/recipeModel.js";
 
 import {
   carbsDishes,
@@ -24,8 +25,8 @@ import {
 } from "../data/courses.js";
 
 export const getMenuById = async (req, res, next) => {
-  const menuId = req.params.mid;
-  console.log(menuId);
+  const menuId = JSON.parse(req.params.mid).mid;
+  console.log("menuId is:", menuId);
   let menu;
   try {
     menu = await Menu.findById(menuId);
@@ -72,8 +73,53 @@ export const fetchMenus = async (req, res, next) => {
     identifers[i] = userWithMenues.menus[i]._id;
     result[i] = menu.createdAt;
   }
-  console.log(identifers);
   res.status(201).json({ identifers });
+};
+
+export const fetchRecipesMenus = async (req, res, next) => {
+  const userID = req.params.uid;
+  let userWithMenues;
+
+  try {
+    userWithMenues = await User.findById(userID).select("RecipesMenus");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching menues failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  let result = [];
+  let identifers = [];
+  for (let i = 0; i < userWithMenues.RecipesMenus.length; i++) {
+    let menu = await RecipesMenu.findById(userWithMenues.RecipesMenus[i]._id);
+    // identifers[i] = userWithMenues.RecipesMenus[i]._id;
+    result[i] = menu.createdAt;
+  }
+  // const mergedObject = identifers.reduce((acc, key, index) => {
+  //   acc[key] = result[index];
+  //   return acc;
+  // }, {});
+
+  res.status(201).json({ result });
+};
+
+export const fetchRecipeMenuByIndex = async (req, res, next) => {
+  const userId = req.params.userID;
+  const menuId = req.params.menuNum;
+
+  const userWithMenues = await User.findById(userId).select("RecipesMenus");
+  const result = userWithMenues.RecipesMenus[menuId - 1]._id;
+  const menu = await RecipesMenu.findById(result);
+
+  res.status(201).json({ menu: menu });
+};
+
+export const fetchRecipeById = async (req, res, next) => {
+  const recipeId = req.params.rid;
+
+  const recipe = await Recipe.findById(recipeId);
+  res.status(201).json({ recipe: recipe });
 };
 
 export const getMenuesByUserId = async (req, res, next) => {
@@ -101,21 +147,8 @@ export const getMenuesByUserId = async (req, res, next) => {
   res.json({ menu: menu.toObject({ getters: true }) });
 };
 
-export const personalizedMenu = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return next(
-      new HttpError("Invalid inputs passed, please check your data.", 422)
-    );
-  }
-  const { age, height, weight, gender, purpuse, health, userID } = req.body;
+function calcBMR(age, height, weight, gender, purpuse) {
   let BMR = 0;
-  let meal1 = [];
-  let meal2 = [];
-  let meal3 = [];
-  let meal4 = [];
-  let meal5 = [];
-
   if (gender === "female") {
     BMR = 655 + 9.6 * weight + 1.8 * height - 4.7 * age;
   } else {
@@ -124,7 +157,145 @@ export const personalizedMenu = async (req, res, next) => {
   if (purpuse === "weightLoss") {
     BMR = BMR - 300;
   }
-  console.log(BMR);
+  return BMR;
+}
+export const extractRecipeInfo = async (req, res) => {
+  const id = req.params.createdMenuID;
+  console.log(id);
+
+  let menu = await findById();
+  res.status(201).json({});
+};
+export async function extractRecipeInfoFunc(id) {
+  let ingredients = [];
+  let title;
+  let prepTime;
+  let serving;
+  let imgURL;
+  let instructions;
+  await fetch(
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=9b4de243b92d4e6db8b6f30448e307e0&includeNutrition=false`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      title = data.title;
+      prepTime = data.readyInMinutes;
+      serving = data.servings;
+      imgURL = data.image;
+      instructions = data.instructions;
+      for (let i = 0; i < data.extendedIngredients.length; i++) {
+        ingredients[i] = data.extendedIngredients[i].original;
+      }
+    })
+    .catch((error) => console.error(error));
+
+  const recipe = {
+    title,
+    prepTime,
+    serving,
+    imgURL,
+    ingredients,
+    instructions,
+  };
+  return recipe;
+}
+
+export const recipesMenu = async (req, res) => {
+  const { age, height, weight, gender, purpuse, user } = req.body;
+  console.log("user id:", user);
+  console.log(purpuse);
+
+  let BMR = calcBMR(age, height, weight, gender, purpuse);
+  if (BMR >= 1200 && BMR < 1375) {
+    BMR -= 300;
+  } else if (BMR >= 1375 && BMR < 1575) {
+    BMR -= 400;
+  } else if (BMR >= 1575 && BMR < 1825) {
+    BMR -= 500;
+  } else if (BMR >= 1825 && BMR < 2025) {
+    BMR -= 600;
+  } else {
+    BMR -= 700;
+  }
+  let recipesIDs = [];
+  //generating 3-meals plan based on recipes
+  await fetch(
+    `https://api.spoonacular.com/mealplanner/generate?apiKey=9b4de243b92d4e6db8b6f30448e307e0&timeFrame=day&targetCalories=${BMR}&exclude=red meat, butter, souce, sweeteners, heavy cream, potato flakes`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 0; i < data.meals.length; i++) {
+        recipesIDs[i] = data.meals[i].id;
+      }
+    })
+    .catch((error) => console.error(error));
+  let recipes = [];
+  let arrayOfRecipes = [];
+  let recipesID = [];
+  //extracting data from a recipe
+  for (let i = 0; i < recipesIDs.length; i++) {
+    recipes[i] = await extractRecipeInfoFunc(recipesIDs[i]);
+    const recipe = new Recipe({
+      title: recipes[i].title,
+      prepTime: recipes[i].prepTime,
+      serving: recipes[i].serving,
+      imgURL: recipes[i].imgURL,
+      ingredients: recipes[i].ingredients,
+      instructions: recipes[i].instructions,
+    });
+    console.log("Recipe ingredients:", recipe.ingredients);
+    arrayOfRecipes.push(recipe);
+    recipesID.push(recipe._id);
+    await Recipe.collection.insertOne(recipe);
+    console.log("Recipe inserted:", recipe);
+  }
+  console.error("202", user);
+  console.error("203", purpuse);
+  const createdMenu = new RecipesMenu({
+    user: user,
+    category: purpuse,
+    recipes: arrayOfRecipes,
+  });
+
+  let subjectUser;
+  try {
+    subjectUser = await User.findById(user);
+  } catch (err) {
+    const error = new HttpError("Creating menu failed, please try again", 500);
+    return next(error);
+  }
+
+  if (!subjectUser) {
+    const error = new HttpError("Could not find user for provided id", 404);
+    return next(error);
+  }
+
+  console.log(createdMenu);
+
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await RecipesMenu.collection.insertOne(createdMenu, { session: sess });
+    subjectUser.RecipesMenus.push(createdMenu);
+    await subjectUser.save({ session: sess });
+    await sess.commitTransaction();
+    await sess.endSession();
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError("Creating menu failed, please try again", 500);
+    return next(error);
+  }
+  res.status(201).json({ recipesID });
+};
+
+export const personalizedMenu = async (req, res, next) => {
+  const { age, height, weight, gender, purpuse, userID } = req.body;
+  let BMR = calcBMR(age, height, weight, gender, purpuse);
+  let meal1 = [];
+  let meal2 = [];
+  let meal3 = [];
+  let meal4 = [];
+  let meal5 = [];
 
   let raffledNumber = Math.random() >= 0.5 ? 1 : 0;
   let randomSweetBreakfast = Math.floor(Math.random() * 108);
@@ -132,7 +303,7 @@ export const personalizedMenu = async (req, res, next) => {
   let randomSweetSnack = Math.floor(Math.random() * 36);
   let randomSourSnack = Math.floor(Math.random() * 27);
 
-  if (BMR > 1200 && BMR < 1375) {
+  if (BMR >= 1200 && BMR < 1375) {
     // 60, 170, 70
     // carbsDishes = 8;
     // proteinDishes = 4;
@@ -155,7 +326,7 @@ export const personalizedMenu = async (req, res, next) => {
       vegetables[Math.floor(Math.random() * 10)],
       fatsDishes[Math.floor(Math.random() * 3)],
     ];
-  } else if (BMR > 1375 && BMR < 1575) {
+  } else if (BMR >= 1375 && BMR < 1575) {
     // 18, 87, 70
     console.log("in 138");
     // carbsDishes = 9;
@@ -194,7 +365,7 @@ export const personalizedMenu = async (req, res, next) => {
       fatsDishes[Math.floor(Math.random() * 3)],
       vegetables[Math.floor(Math.random() * 10)],
     ];
-  } else if (BMR > 1575 && BMR < 1825) {
+  } else if (BMR >= 1575 && BMR < 1825) {
     // 18, 43, 120
     console.log("in 171");
 
@@ -244,7 +415,7 @@ export const personalizedMenu = async (req, res, next) => {
       vegetables[Math.floor(Math.random() * 10)],
       fatsDishes[Math.floor(Math.random() * 3)],
     ];
-  } else if (BMR > 1825 && BMR < 2025) {
+  } else if (BMR >= 1825 && BMR < 2025) {
     // 60, 200, 120
     console.log("in 1885");
     // carbsDishes = 11;
