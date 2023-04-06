@@ -19,7 +19,6 @@ const UserMenus = () => {
         console.log(responseData);
 
         setLoadedMenus(responseData.menu);
-        // setLoadedMenus(responseData);
       } catch (err) {}
     };
     fetchMenus();

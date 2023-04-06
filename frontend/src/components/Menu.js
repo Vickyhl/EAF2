@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import menuImg from "./images/menuImg.jpeg";
 import axios from "axios";
-import "./Menu.css";
+import "../components/Menu.css";
 
-const Menu = () => {
+const Menu = (props) => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userID = userData?._id;
+  const menuNum = useParams().mid;
   const [menu, setMenu] = useState();
   const mid = JSON.stringify(useParams());
 
+  console.log(props.items);
   useEffect(() => {
-    console.log(typeof mid);
     const fetchData = async () => {
-      try {
-        const data = await axios.get(`http://localhost:5000/api/menus/${mid}`);
-        setMenu(data.data.menu);
-      } catch (err) {}
+      if (menuNum === undefined) {
+        setMenu(props.items);
+      } else {
+        try {
+          const data = await axios.get(
+            `http://localhost:5000/api/menus/fetchMenuByIndex/${menuNum}/${userID}`
+          );
+          setMenu(data.data.menu);
+        } catch (err) {}
+      }
     };
     fetchData();
   }, [mid]);

@@ -26,6 +26,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.16",
+    "@stripe/react-stripe-js": "^2.1.0",
     "axios": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
@@ -46,8 +47,10 @@
     "react-router": "^6.4.4",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
+    "react-stripe-checkout": "^2.6.3",
     "react-toastify": "^9.1.1",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "stripe": "^11.17.0"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

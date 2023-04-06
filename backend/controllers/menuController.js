@@ -70,10 +70,18 @@ export const fetchMenus = async (req, res, next) => {
   let identifers = [];
   for (let i = 0; i < userWithMenues.menus.length; i++) {
     let menu = await Menu.findById(userWithMenues.menus[i]._id);
-    identifers[i] = userWithMenues.menus[i]._id;
+    // identifers[i] = userWithMenues.menus[i]._id;
     result[i] = menu.createdAt;
   }
-  res.status(201).json({ identifers });
+  res.status(201).json({ result: result });
+};
+
+export const getLastRecipesMenu = async (req, res) => {
+  const userID = req.params.uid;
+  let userWithMenues = await User.findById(userID).select("RecipesMenus");
+  let num = userWithMenues.RecipesMenus.length;
+
+  res.json({ num: num });
 };
 
 export const fetchRecipesMenus = async (req, res, next) => {
@@ -147,6 +155,17 @@ export const getMenuesByUserId = async (req, res, next) => {
   res.json({ menu: menu.toObject({ getters: true }) });
 };
 
+export const fetchMenuByIndex = async (req, res, next) => {
+  const userId = req.params.uid;
+  const menuId = req.params.menuNum;
+
+  const userWithMenues = await User.findById(userId).select("menus");
+  const result = userWithMenues.menus[menuId - 1]._id;
+  const menu = await Menu.findById(result);
+
+  res.status(201).json({ menu: menu });
+};
+
 function calcBMR(age, height, weight, gender, purpuse) {
   let BMR = 0;
   if (gender === "female") {
@@ -161,7 +180,6 @@ function calcBMR(age, height, weight, gender, purpuse) {
 }
 export const extractRecipeInfo = async (req, res) => {
   const id = req.params.createdMenuID;
-  console.log(id);
 
   let menu = await findById();
   res.status(201).json({});
@@ -202,7 +220,6 @@ export async function extractRecipeInfoFunc(id) {
 
 export const recipesMenu = async (req, res) => {
   const { age, height, weight, gender, purpuse, user } = req.body;
-  console.log("user id:", user);
   console.log(purpuse);
 
   let BMR = calcBMR(age, height, weight, gender, purpuse);
@@ -285,7 +302,23 @@ export const recipesMenu = async (req, res) => {
     const error = new HttpError("Creating menu failed, please try again", 500);
     return next(error);
   }
-  res.status(201).json({ recipesID });
+  let num = subjectUser.RecipesMenus.length;
+
+  res.status(201).json({ num });
+};
+
+export const snackGenerator = async (req, res) => {
+  let randomSweetSnack = Math.floor(Math.random() * 36);
+  let randomSourSnack = Math.floor(Math.random() * 27);
+  let sweetSnack = sweetSnack(randomSweetSnack);
+  let sourSnack = sourSnack(randomSourSnack);
+
+  const snacks = {
+    sweetSnack: sweetSnack,
+    sourSnack: sourSnack,
+  };
+
+  res.status(201).json({ snacks });
 };
 
 export const personalizedMenu = async (req, res, next) => {

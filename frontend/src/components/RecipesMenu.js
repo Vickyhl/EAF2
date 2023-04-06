@@ -43,11 +43,11 @@ const RecipesMenu = () => {
   };
 
   return menu ? (
-    <div class="tile-container">
-      <div class="tile1">
+    <div className="tile-container">
+      <div className="tile1">
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[0]._id}`}
-          class="tile"
+          className="tile"
           style={tileStyle}
         >
           <h2>Breakfast</h2>
@@ -55,29 +55,37 @@ const RecipesMenu = () => {
         <p>{menu.recipes[0].title}</p>
       </div>
 
-      <div class="tile2">
-        <a href="#" class="tile">
+      <div className="tile2">
+        <a href="http://localhost:3000/watchSnack" className="tile">
           <h2>Snack 1</h2>
         </a>
         <p></p>
       </div>
 
-      <div class="tile3">
-        <a href="#" class="tile" style={tileStyle2}>
+      <div className="tile3">
+        <a
+          href={`http://localhost:3000/recipe/${menu.recipes[1]._id}`}
+          className="tile"
+          style={tileStyle2}
+        >
           <h2>Lunch</h2>
         </a>
         <p>{menu.recipes[1].title}</p>
       </div>
 
-      <div class="tile4">
-        <a href="#" class="tile">
+      <div className="tile4">
+        <a href="http://localhost:3000/watchSnack" class="tile">
           <h2>Snack 2</h2>
         </a>
         <p></p>
       </div>
 
-      <div class="tile5">
-        <a href="#" class="tile" style={tileStyle3}>
+      <div className="tile5">
+        <a
+          href={`http://localhost:3000/recipe/${menu.recipes[2]._id}`}
+          className="tile"
+          style={tileStyle3}
+        >
           <h2>Dinner</h2>
         </a>
         <p>{menu.recipes[2].title}</p>

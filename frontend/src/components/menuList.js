@@ -3,7 +3,7 @@ import moment from "moment";
 import "../components/tile.css";
 import axios from "axios";
 
-const MenuList = (props) => {
+const MenuList = () => {
   let userData = localStorage.getItem("user");
   let userID = JSON.parse(userData)._id;
   const [menus, setMenus] = useState([]);
@@ -14,22 +14,23 @@ const MenuList = (props) => {
         const result = await axios.get(
           `http://localhost:5000/api/menus/fetchMenus/${userID}`
         );
-        setMenus(result.data.identifers);
+        console.log(result.data.result);
+
+        setMenus(result.data.result);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [userID]);
+  }, [menus]);
 
   const handleMenuSelect = async (index) => {
-    window.location.assign(`http://localhost:3000/menu/${menus[index]}`);
+    window.location.assign(`http://localhost:3000/menu/${index + 1}`);
   };
 
-  return (
+  return menus ? (
     <React.Fragment>
-      {/* {menu && <Menu items={identifers[selectedMenuIndex]} />} */}
-      {props.menus.map((menu, i) => (
+      {menus.map((menu, i) => (
         <div
           className="tile"
           key={i}
@@ -43,7 +44,7 @@ const MenuList = (props) => {
         </div>
       ))}
     </React.Fragment>
-  );
+  ) : null;
 };
 
 export default MenuList;

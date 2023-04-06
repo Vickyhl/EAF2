@@ -30,10 +30,14 @@
     border-radius: 5px;
     font-size: 0.9em;
   }
-  
+  form label {
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
   .modal p {
-    font-size: 0.9rem;
-    color: #777;
+    font-size: 0.9em;
+    color: black;
     margin: 0.4rem 0 0.2rem;
   }
   
@@ -54,7 +58,7 @@
     text-align: center;
     font-size: 1em;
   }
-  
+
   .btn-open {
     position: absolute;
     bottom: 150px;

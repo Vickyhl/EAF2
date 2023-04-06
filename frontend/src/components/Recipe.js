@@ -7,7 +7,7 @@ const Recipe = () => {
   const rid = useParams().rid;
   const [recipe, setRecipe] = useState();
   let title;
-  let ul;
+  let cleanText;
   let ingredientsList;
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const Recipe = () => {
     ingredientsList = recipe.ingredients.map((ingredient, index) => {
       return <li key={index}> {ingredient},&nbsp;</li>;
     });
+    cleanText = recipe.instructions.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
   return recipe ? (
@@ -53,7 +54,7 @@ const Recipe = () => {
             <br />
             instructions:{" "}
           </strong>
-          {recipe.instructions}
+          {cleanText}
         </p>
       </div>
     </ul>

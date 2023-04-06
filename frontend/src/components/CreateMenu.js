@@ -6,6 +6,8 @@ import "../components/modalCSS.css";
 const CreateMenu = () => {
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
+  // const [mid, setMenuNum] = useState();
+  let mid;
 
   const {
     register,
@@ -41,26 +43,24 @@ const CreateMenu = () => {
         })
         .then((res) => {
           console.log(res);
-          window.location.assign(`http://localhost:3000/${userID}/menus`);
+          window.location.assign(`http://localhost:3000/${userId}/menus`);
         });
     } else {
-      try {
-        const res = await axios.post(
-          "http://localhost:5000/api/menus/recipesMenu",
-          {
-            age,
-            height,
-            weight,
-            gender,
-            purpuse,
-            user: userId,
-          }
-        );
-        console.log(res.data.recipesID);
-        window.location.assign(`http://localhost:3000/recipesMenu`);
-      } catch (err) {
-        console.log(err);
-      }
+      const res = await axios.post(
+        "http://localhost:5000/api/menus/recipesMenu",
+        {
+          age,
+          height,
+          weight,
+          gender,
+          purpuse,
+          user: userId,
+        }
+      );
+      mid = res.data.num;
+      // setMenuNum(res.data.num);
+      console.log(mid);
+      window.location.assign(`http://localhost:3000/recipesMenu/${mid}`);
     }
   };
 
@@ -169,9 +169,16 @@ const CreateMenu = () => {
           <div className="validationError">{errors?.health?.message}</div>
         </div>
 
+        <div className="description">
+          <h3>Personalized nutrition menu </h3>
+          <label htmlFor="price">
+            <strong>Price:</strong> $5.00
+          </label>
+        </div>
+
         <div className="btn-container" onClick={handleSubmit}>
           <button type="submit" className="btn">
-            Create the menu
+            checkout{" "}
           </button>
         </div>
       </form>
