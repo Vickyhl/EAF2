@@ -50,6 +50,11 @@ body {
     border: 1px solid lightgrey;
     border-radius: 3px;
   }
+
+  ul {
+  text-align: left;
+  font-family: Arial, sans-serif;
+  }
   
   input[type=text] {
     width: 100%;

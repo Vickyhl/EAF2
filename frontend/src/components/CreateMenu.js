@@ -6,7 +6,6 @@ import "../components/modalCSS.css";
 const CreateMenu = () => {
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
-  // const [mid, setMenuNum] = useState();
   let mid;
 
   const {
@@ -43,7 +42,10 @@ const CreateMenu = () => {
         })
         .then((res) => {
           console.log(res);
-          window.location.assign(`http://localhost:3000/${userId}/menus`);
+          console.log(type);
+          window.location.assign(
+            `http://localhost:3000/card/${encodeURIComponent(type)}`
+          );
         });
     } else {
       const res = await axios.post(
@@ -60,20 +62,14 @@ const CreateMenu = () => {
       mid = res.data.num;
       // setMenuNum(res.data.num);
       console.log(mid);
-      window.location.assign(`http://localhost:3000/recipesMenu/${mid}`);
+      window.location.assign(`http://localhost:3000/card/${mid}`);
     }
   };
 
   const handleChange = (e) => {
     setUser({
       ...user,
-      [e.target.age]: e.target.value,
-      [e.target.height]: e.target.value,
-      [e.target.weight]: e.target.value,
-      [e.target.gender]: e.target.value,
-      [e.target.purpuse]: e.target.value,
-      [e.target.type]: e.target.value,
-      [e.target.health]: e.target.true,
+      [e.target.name]: e.target.value,
     });
   };
 

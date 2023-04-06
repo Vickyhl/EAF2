@@ -38,7 +38,7 @@ const Routes1 = () => {
       <Route path="/watchRecipesMenu" element={<WatchRecipesMenu />} />
       <Route path="/watchSnack" element={<Snack />} />
       <Route path="/checkout" element={<CheckoutForm />} />
-      <Route path="/card" element={<Card />} />
+      <Route path="/card/:t" element={<Card />} />
 
       <Route
         path="/login"
