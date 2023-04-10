@@ -28,7 +28,7 @@ router.get("/fetchRecipeById/:rid", fetchRecipeById);
 router.get("/fetchRecipeMenuByIndex/:menuNum/:userID", fetchRecipeMenuByIndex);
 router.get("/fetchRecipesMenus/:uid", fetchRecipesMenus);
 router.get("/extractRecipeInfo/:createdMenuID", extractRecipeInfo);
-router.get("/snackGenerator", snackGenerator);
+router.post("/snackGenerator/:type", snackGenerator);
 
 // router.use(CheckAuth);
 

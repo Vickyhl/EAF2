@@ -56,7 +56,7 @@ const RecipesMenu = () => {
       </div>
 
       <div className="tile2">
-        <a href="http://localhost:3000/watchSnack" className="tile">
+        <a href={`http://localhost:3000/watchSnack/${0}`} className="tile">
           <h2>Snack 1</h2>
         </a>
         <p></p>
@@ -74,7 +74,7 @@ const RecipesMenu = () => {
       </div>
 
       <div className="tile4">
-        <a href="http://localhost:3000/watchSnack" class="tile">
+        <a href={`http://localhost:3000/watchSnack/${1}`} class="tile">
           <h2>Snack 2</h2>
         </a>
         <p></p>

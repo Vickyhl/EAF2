@@ -17,6 +17,7 @@ import MenuList from "./MenuList";
 import Snack from "./Snack";
 import Card from "./Card";
 import CheckoutForm from "./CheckoutForm";
+import Receipt from "./Receipt";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -36,9 +37,10 @@ const Routes1 = () => {
       <Route path="/recipesMenu/:mid" element={<RecipesMenu />} />
       <Route path="/recipe/:rid" element={<Recipe />} />
       <Route path="/watchRecipesMenu" element={<WatchRecipesMenu />} />
-      <Route path="/watchSnack" element={<Snack />} />
+      <Route path="/watchSnack/:type" element={<Snack />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/card/:t" element={<Card />} />
+      <Route path="/receipt/:type" element={<Receipt />} />
 
       <Route
         path="/login"

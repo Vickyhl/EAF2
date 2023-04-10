@@ -25,7 +25,9 @@ import {
 } from "../data/courses.js";
 
 export const getMenuById = async (req, res, next) => {
-  const menuId = JSON.parse(req.params.mid).mid;
+  // const menuId = JSON.parse(req.params.mid).mid;
+  const menuId = req.params;
+
   console.log("menuId is:", menuId);
   let menu;
   try {
@@ -308,17 +310,23 @@ export const recipesMenu = async (req, res) => {
 };
 
 export const snackGenerator = async (req, res) => {
+  const type = req.params.type;
+
   let randomSweetSnack = Math.floor(Math.random() * 36);
   let randomSourSnack = Math.floor(Math.random() * 27);
-  let sweetSnack = sweetSnack(randomSweetSnack);
-  let sourSnack = sourSnack(randomSourSnack);
+  let sweet = sweetSnack(randomSweetSnack);
+  let sour = sourSnack(randomSourSnack);
 
   const snacks = {
-    sweetSnack: sweetSnack,
-    sourSnack: sourSnack,
+    sweetSnack: sweet,
+    sourSnack: sour,
   };
-
-  res.status(201).json({ snacks });
+  // console.log(snacks);
+  if (type === 0) {
+    res.status(201).json({ snacks: snacks.sweetSnack });
+  } else {
+    res.status(201).json({ snacks: snacks.sourSnack });
+  }
 };
 
 export const personalizedMenu = async (req, res, next) => {

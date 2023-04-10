@@ -1,0 +1,5 @@
+2023/04/09 18:50:54 [error] 31732#24876: *1 CreateFile() "C:\git\EAF2\nginx-1.23.4/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/04/09 18:54:46 [notice] 23784#4600: signal process started
+2023/04/09 19:11:07 [emerg] 20816#15824: cannot load certificate "C:/git/EAF2": BIO_new_file() failed (SSL: error:02001005:system library:fopen:Input/output error:fopen('C:/git/EAF2','r') error:2006D002:BIO routines:BIO_new_file:system lib)
+2023/04/09 19:14:33 [emerg] 14272#6648: cannot load certificate "C:/git/EAF2/EAF": PEM_read_bio_X509_AUX() failed (SSL: error:0909006C:PEM routines:get_name:no start line:Expecting: TRUSTED CERTIFICATE)
+2023/04/09 19:27:01 [emerg] 35844#27400: cannot load certificate "C:/git/EAF2/EAF": PEM_read_bio_X509_AUX() failed (SSL: error:0909006C:PEM routines:get_name:no start line:Expecting: TRUSTED CERTIFICATE)
