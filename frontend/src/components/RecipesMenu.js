@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import "../components/RecipesMenu.css";
 import axios from "axios";
+import "../components/RecipesMenu.css";
 
 const RecipesMenu = () => {
   const userData = JSON.parse(localStorage.getItem("user"));
@@ -43,54 +43,50 @@ const RecipesMenu = () => {
   };
 
   return menu ? (
-    <div className="tile-container">
-      <div className="tile1">
+    <>
+      <h1>Recipes menu num. </h1>
+      <div className="recipes-tile">
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[0]._id}`}
-          className="tile"
+          className="tileRecipes"
           style={tileStyle}
         >
           <h2>Breakfast</h2>
         </a>
-        <p>{menu.recipes[0].title}</p>
-      </div>
+        <p className="recipesText">{menu.recipes[0].title}</p>
 
-      <div className="tile2">
-        <a href={`http://localhost:3000/watchSnack/${0}`} className="tile">
+        <a
+          href={`http://localhost:3000/watchSnack/${0}`}
+          className="tileRecipes"
+        >
           <h2>Snack 1</h2>
         </a>
-        <p></p>
-      </div>
+        <p className="recipesText"></p>
 
-      <div className="tile3">
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[1]._id}`}
-          className="tile"
+          className="tileRecipes"
           style={tileStyle2}
         >
           <h2>Lunch</h2>
         </a>
-        <p>{menu.recipes[1].title}</p>
-      </div>
+        <p className="recipesText">{menu.recipes[1].title}</p>
 
-      <div className="tile4">
-        <a href={`http://localhost:3000/watchSnack/${1}`} class="tile">
+        <a href={`http://localhost:3000/watchSnack/${1}`} class="tileRecipes">
           <h2>Snack 2</h2>
         </a>
-        <p></p>
-      </div>
+        <p className="recipesText"></p>
 
-      <div className="tile5">
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[2]._id}`}
-          className="tile"
+          className="tileRecipes"
           style={tileStyle3}
         >
           <h2>Dinner</h2>
         </a>
-        <p>{menu.recipes[2].title}</p>
+        <p className="recipesText">{menu.recipes[2].title}</p>
       </div>
-    </div>
+    </>
   ) : null;
 };
 

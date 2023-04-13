@@ -30,6 +30,7 @@ const MenuList = () => {
 
   return menus ? (
     <React.Fragment>
+      <h1>List of custom regular menus</h1>
       {menus.map((menu, i) => (
         <div
           className="tile"

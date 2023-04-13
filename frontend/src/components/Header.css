@@ -36,6 +36,30 @@
   float: center;
   line-height: 1px;
   text-align: center;
+  background-image: url("../components/images/logo.png"); /* replace 'path/to/logo.png' with the URL or file path of your logo image */
+  background-repeat: no-repeat;
+  background-size:125px;
+}
+.dropdown-submenu {
+  position: relative;
+  color: white;
+
+}
+
+.dropdown-submenu-content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: none;
+  min-width: 120px;
+}
+
+.dropdown-submenu:hover .dropdown-submenu-content {
+  display: block;
+}
+
+.dropdown-submenu-content a {
+  background-color: white;
 }
 
 li {

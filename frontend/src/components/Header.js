@@ -66,13 +66,26 @@ const Header = (handleClick) => {
       </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          Excersice plan
+          Exercise plan
         </a>
         <div className="dropdown-content">
-          <a href="#">Women exercise</a>
-          <a href="#">Men exercise</a>
+          <div class="dropdown-submenu">
+            <a href="#">Men exercise</a>
+            <div class="dropdown-submenu-content">
+              <a href="/men/beginners">Beginners</a>
+              <a href="/men/advanced">Advanced</a>
+            </div>
+          </div>
+          <div class="dropdown-submenu">
+            <a href="#">Women exercise</a>
+            <div class="dropdown-submenu-content">
+              <a href="/women/beginners">Beginners</a>
+              <a href="/women/advanced">Advanced</a>
+            </div>
+          </div>
         </div>
       </li>
+
       <li>
         <a href="#gyms">Gym maps</a>
       </li>
@@ -80,7 +93,7 @@ const Header = (handleClick) => {
         <a href="#articles">Articles</a>
       </li>
       <li>
-        <a href="#about">About</a>
+        <a href="/about">About</a>
       </li>
     </ul>
   );

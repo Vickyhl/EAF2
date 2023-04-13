@@ -12,7 +12,6 @@ const WatchRecipesMenu = () => {
       const result = await axios.get(
         `http://localhost:5000/api/menus/fetchRecipesMenus/${userID}`
       );
-      console.log(result.data.identifers);
       setMenus(result.data.identifers);
       //   identifers = result.data.identifers;
     };

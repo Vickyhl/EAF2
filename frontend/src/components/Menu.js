@@ -30,42 +30,44 @@ const Menu = (props) => {
   console.log(menu);
 
   return menu ? (
-    <ul className="menu-list">
-      <h1>Your personalized menu</h1>
-      <h2>Category: {menu.category}</h2>
-      <li className="menu-item">
-        <h3>First meal:</h3>
-        <div className="menu-item__info">
-          {menu.meal1.map((item) => {
-            return <div className="menu-div">{item}</div>;
-          })}
-        </div>
-        <h3>Second meal:</h3>
-        <div className="menu-item__info">
-          {menu.meal2.map((item) => {
-            return <div className="menu-div">{item}</div>;
-          })}
-        </div>
-        <h3>Third meal:</h3>
-        <div className="menu-item__info">
-          {menu.meal3.map((item) => {
-            return <div className="menu-div">{item}</div>;
-          })}
-        </div>
-        <h3>Fourth meal:</h3>
-        <div className="menu-item__info">
-          {menu.meal4.map((item) => {
-            return <div className="menu-div">{item}</div>;
-          })}
-        </div>
-        <h3>Fifth meal:</h3>
-        <div className="menu-item__info">
-          {menu.meal5.map((item) => {
-            return <div className="menu-div">{item}</div>;
-          })}
-        </div>
-      </li>
-    </ul>
+    <div className="menu">
+      <h1 className="menu">Your personalized menu</h1>
+      <h2 className="menu">Category: {menu.category}</h2>
+      <ul className="reg-menu-list">
+        <li className="menu-item">
+          <h3 className="menu">First meal:</h3>
+          <div className="menu-item__info">
+            {menu.meal1.map((item) => {
+              return <div className="menu-div">{item}</div>;
+            })}
+          </div>
+          <h3 className="menu">Second meal:</h3>
+          <div className="menu-item__info">
+            {menu.meal2.map((item) => {
+              return <div className="menu-div">{item}</div>;
+            })}
+          </div>
+          <h3 className="menu">Third meal:</h3>
+          <div className="menu-item__info">
+            {menu.meal3.map((item) => {
+              return <div className="menu-div">{item}</div>;
+            })}
+          </div>
+          <h3 className="menu">Fourth meal:</h3>
+          <div className="menu-item__info">
+            {menu.meal4.map((item) => {
+              return <div className="menu-div">{item}</div>;
+            })}
+          </div>
+          <h3 className="menu">Fifth meal:</h3>
+          <div className="menu-item__info">
+            {menu.meal5.map((item) => {
+              return <div className="menu-div">{item}</div>;
+            })}
+          </div>
+        </li>
+      </ul>
+    </div>
   ) : null;
 };
 

@@ -4,94 +4,74 @@ body {
   margin: auto; 
   overflow: scroll;
   line-height:0.8cm;
-  /* background-size:100%; */
   background-image: url("./images/tileBack.jpeg");
   }
 
-.tile {
+.tileRecipes {
+  position: relative;
+
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
 
   width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
-    margin: -35px;
-    margin-top: 150px;
-    /* margin-left: 50px; */
-    /* margin-right: 1px; */
-    display: inline-block;
-    font-family: Arial, sans-serif;
-    text-decoration: none;
-    font-size: 16px;
-    background-image: url("./images/tileImg.jpeg");
-    background-size: cover;
-    color: #333;
-    transition: all 0.3s ease;
-    
+  height: 200px;
+  border: 1px solid #ccc;
+  margin-top: 150px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  background-image: url("./images/tileImg.jpeg");
+  background-size: cover;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
-.tile1 {
-      margin-left: 180px;
+.recipes-tile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
 }
 
-.tile2 {
-      margin-left: 200px;
-}
-.tile3 {
-  margin-left: 200px;
-}
-.tile4 {
-  padding-bottom: 100px;
-  margin-left: 410px;
-}
-.tile5 {
-  padding-bottom: 20px;
-  margin-left: 200px;
+.recipesText {
+  bottom: -30px;
+  left: 20px;
+  position: absolute;
+  margin: 0;
 }
  
 .tile h2 {
   margin: -28px;
-}
- p {
-  margin-top: 15%;
-}
-
-.tile-container {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .tile:hover {
   transform: scale(1.05);
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
 }
-  .tile-content {
-    padding: 10px;
-    text-align: center;
-  }
+.tile-content {
+  padding: 10px;
+  text-align: center;
+}
 
-  .tile-content h3 {
-    width: 700px;
-    margin: 0;
-    display: inline-block;
-  }
-  .tile p {
-    /* text-align:left; */
-    margin: 0;
+.tile-content h3 {
+  width: 700px;
+  margin: 0;
+  display: inline-block;
+}
 
-  }
-  .tile a {
-    text-decoration: none;
-    color: #000;
-    display: block;
-    height: 0px;
-    width: 100%;
-  }
-  .fetch-button {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 20px 0;
-  }  
+.tile a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  height: 0px;
+  width: 100%;
+}
+.fetch-button {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 20px 0;
+}  

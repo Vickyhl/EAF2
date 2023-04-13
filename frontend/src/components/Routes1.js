@@ -18,6 +18,35 @@ import Snack from "./Snack";
 import Card from "./Card";
 import CheckoutForm from "./CheckoutForm";
 import Receipt from "./Receipt";
+import About from "./About";
+import MenBeg from "./MenBeg";
+import LegsExMenBeg from "./LegsExMenBeg";
+import MenAdv from "./MenAdv";
+import ChestExMenBeg from "./ChestExMenBeg";
+import BackHandMenBegEx from "./BackHandMenBegEx";
+import BackMenBegEx from "./BackMenBegEx";
+import ShouldersMenBegEx from "./ShouldersMenBegEx";
+import FrontHandMenBegEx from "./FrontHandMenBegEx";
+import MenAdvChest from "./MenAdvChest";
+import MenAdvBackHand from "./MenAdvBackHand";
+import MenAdvShoulders from "./MenAdvShoulders";
+import MenAdvBack from "./MenAdvBack";
+import MenAdvFrontHand from "./MenAdvFrontHand";
+import MenAdvLegs from "./MenAdvLegs";
+import WomenBeg from "./WomenBeg";
+import WomenAdv from "./WomenAdv";
+import WomenBegBackLeg from "./WomenBegBackLeg";
+import WomenBegFrontLeg from "./WomenBegFrontLeg";
+import WomenBegBack from "./WomenBegBack";
+import WomenBegFrontHand from "./WomenBegFrontHand";
+import WomenBegBackHand from "./WomenBegBackHand";
+
+import WomenAdvBackLeg from "./WomenAdvBackLeg";
+import WomenAdvFrontLeg from "./WomenAdvFrontLeg";
+import WomenAdvBack from "./WomenAdvBack";
+import WomenAdvFrontHand from "./WomenAdvFrontHand";
+import WomenAdvBackHand from "./WomenAdvBackHand";
+import WomenAdvBackLeg2 from "./WomenAdvBackLeg2";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -41,6 +70,38 @@ const Routes1 = () => {
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/card/:t" element={<Card />} />
       <Route path="/receipt/:type" element={<Receipt />} />
+      <Route path="/About" element={<About />} />
+      <Route path="/men/beginners" element={<MenBeg />} />
+      <Route path="/men/advanced" element={<MenAdv />} />
+      <Route path="/women/beginners" element={<WomenBeg />} />
+      <Route path="/women/advanced" element={<WomenAdv />} />
+
+      <Route path="/legsMenBegExercise" element={<LegsExMenBeg />} />
+      <Route path="/chestMenBegExercise" element={<ChestExMenBeg />} />
+      <Route path="/backHandMenBegExercise" element={<BackHandMenBegEx />} />
+      <Route path="/backMenBegExercise" element={<BackMenBegEx />} />
+      <Route path="/shouldersMenBegExercise" element={<ShouldersMenBegEx />} />
+      <Route path="/frontHandMenBegExercise" element={<FrontHandMenBegEx />} />
+
+      <Route path="/menAdvChest" element={<MenAdvChest />} />
+      <Route path="/menAdvBackHand" element={<MenAdvBackHand />} />
+      <Route path="/menAdvShoulders" element={<MenAdvShoulders />} />
+      <Route path="/menAdvBack" element={<MenAdvBack />} />
+      <Route path="/menAdvFrontHand" element={<MenAdvFrontHand />} />
+      <Route path="/menAdvLegs" element={<MenAdvLegs />} />
+
+      <Route path="/womenBegBackLeg" element={<WomenBegBackLeg />} />
+      <Route path="/womenBegFrontLeg" element={<WomenBegFrontLeg />} />
+      <Route path="/womenBegBack" element={<WomenBegBack />} />
+      <Route path="/womenBegFrontHand" element={<WomenBegFrontHand />} />
+      <Route path="/womenBegBackHand" element={<WomenBegBackHand />} />
+
+      <Route path="/womenAdvBackLeg" element={<WomenAdvBackLeg />} />
+      <Route path="/womenAdvFrontLeg" element={<WomenAdvFrontLeg />} />
+      <Route path="/womenAdvBack" element={<WomenAdvBack />} />
+      <Route path="/womenAdvFrontHand" element={<WomenAdvFrontHand />} />
+      <Route path="/womenAdvBackHand" element={<WomenAdvBackHand />} />
+      <Route path="/womenAdvBackLeg2" element={<WomenAdvBackLeg2 />} />
 
       <Route
         path="/login"

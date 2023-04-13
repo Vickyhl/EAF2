@@ -31,10 +31,10 @@ const Recipe = () => {
   }
 
   return recipe ? (
-    <ul className="menu-list">
+    <ul className="rec-menu-list">
       <h2>{title}</h2>
-      <div className="menu-item">
-        <p>
+      <div className="rec-menu-item">
+        <p className="rec-prep">
           <strong>Prep time: </strong>
           {recipe.prepTime}
           <br />
@@ -47,7 +47,7 @@ const Recipe = () => {
           <li>{ingredientsList}</li>
         </div>
         <br />
-        <p>
+        <p className="rec-instructions">
           <br />
           <strong>
             {" "}
