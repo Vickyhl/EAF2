@@ -26,13 +26,12 @@ const RecipesMenuList = (props) => {
   }, [menus]);
 
   const handleMenuSelect = async (index) => {
-    console.log(index);
-    // window.location.assign(`http://localhost:3000/recipesMenu/${index + 1}`);
+    window.location.assign(`http://localhost:3000/recipesMenu/${index + 1}`);
   };
 
   return (
     <React.Fragment>
-      <h1>List of recipe-based menus</h1>
+      <h1 className="recipesHeader">List of recipe-based menus</h1>
       <div className="tile-container">
         {menus &&
           menus.length > 0 &&

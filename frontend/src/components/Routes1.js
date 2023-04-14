@@ -47,6 +47,7 @@ import WomenAdvBack from "./WomenAdvBack";
 import WomenAdvFrontHand from "./WomenAdvFrontHand";
 import WomenAdvBackHand from "./WomenAdvBackHand";
 import WomenAdvBackLeg2 from "./WomenAdvBackLeg2";
+import Donation from "./Donation";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -71,6 +72,8 @@ const Routes1 = () => {
       <Route path="/card/:t" element={<Card />} />
       <Route path="/receipt/:type" element={<Receipt />} />
       <Route path="/About" element={<About />} />
+      <Route path="/donation" element={<Donation />} />
+
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />
       <Route path="/women/beginners" element={<WomenBeg />} />

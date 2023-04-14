@@ -1,5 +1,4 @@
 import React from "react";
-import "../components/menBeg.css";
 
 function MenBeg() {
   return (
@@ -19,11 +18,11 @@ function MenBeg() {
           <p className="tileText">3. Posterior hand exercise</p>
         </a>
 
-        <a href="/backMenBegExercise" className="tileAdv back">
+        <a href="/backMenBegExercise" className="tileAdv Back">
           <p className="tileText">4. Back exercise</p>
         </a>
 
-        <a href="/shouldersMenBegExercise" className="tileAdv shoulders">
+        <a href="/shouldersMenBegExercise" className="tileAdv Shoulders">
           <p className="tileText">5. Shoulders exercise</p>
         </a>
 

@@ -44,7 +44,7 @@ const RecipesMenu = () => {
 
   return menu ? (
     <>
-      <h1>Recipes menu num. </h1>
+      <h1 className="recipesHeader">Recipes menu num. {menuNum}</h1>
       <div className="recipes-tile">
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[0]._id}`}
@@ -52,16 +52,16 @@ const RecipesMenu = () => {
           style={tileStyle}
         >
           <h2>Breakfast</h2>
+          <p className="recipesText">{menu.recipes[0].title}</p>
         </a>
-        <p className="recipesText">{menu.recipes[0].title}</p>
 
         <a
           href={`http://localhost:3000/watchSnack/${0}`}
           className="tileRecipes"
         >
           <h2>Snack 1</h2>
+          <p className="recipesText"></p>
         </a>
-        <p className="recipesText"></p>
 
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[1]._id}`}
@@ -69,13 +69,13 @@ const RecipesMenu = () => {
           style={tileStyle2}
         >
           <h2>Lunch</h2>
+          <p className="recipesText">{menu.recipes[1].title}</p>
         </a>
-        <p className="recipesText">{menu.recipes[1].title}</p>
 
         <a href={`http://localhost:3000/watchSnack/${1}`} class="tileRecipes">
           <h2>Snack 2</h2>
+          <p className="recipesText"></p>
         </a>
-        <p className="recipesText"></p>
 
         <a
           href={`http://localhost:3000/recipe/${menu.recipes[2]._id}`}
@@ -83,8 +83,8 @@ const RecipesMenu = () => {
           style={tileStyle3}
         >
           <h2>Dinner</h2>
+          <p className="recipesText">{menu.recipes[2].title}</p>
         </a>
-        <p className="recipesText">{menu.recipes[2].title}</p>
       </div>
     </>
   ) : null;

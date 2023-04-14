@@ -1,11 +1,13 @@
 import React from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
+import logo from "../components/images/logo.png";
 
 const Header = (handleClick) => {
   let userData = localStorage.getItem("user");
-  // const navigate = useNavigate();
-  let isRegistred = 0;
+  let imgStyle = {
+    backgroundImage: `url(${logo})`,
+  };
 
   const logOut = () => {
     // navigate("/home");
@@ -18,7 +20,7 @@ const Header = (handleClick) => {
   return (
     <ul className="nav-bar-ul">
       <div className="navbar-brand ">
-        <h1>Eat & Fit</h1>
+        <img className="headerImg" src={logo}></img>
       </div>
       <li>
         <a href="home">Home</a>
@@ -93,7 +95,7 @@ const Header = (handleClick) => {
         <a href="#articles">Articles</a>
       </li>
       <li>
-        <a href="/about">About</a>
+        <a href="/donation">Our donation</a>
       </li>
     </ul>
   );
