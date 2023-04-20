@@ -1,6 +1,5 @@
 import React from "react";
 import "../components/menAdv.css";
-import legs from "./images/frontLeg.jpeg";
 
 function MenAdv() {
   return (

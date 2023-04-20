@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
-import homeImg from "./images/home.jpeg";
+import homeImg from "./images/menuImg(1).jpeg";
+import welcome from "./images/welcome.png";
+import logo from "./images/logo.png";
 import "./style.css";
 
 const Home = () => {
   let userData = localStorage.getItem("user");
 
   return (
-    <div className="container-home">
-      {/* <h2 className="username-home">Hi 👋 {userData.lastName}</h2> */}
-
-      <img className="img-fluid" src={homeImg} alt="homeImg" />
-    </div>
+    <>
+      {" "}
+      <div className="container-home">
+        <img className="img-fluid" src={homeImg} alt="homeImg" />
+        <img className="welcome" src={welcome} />
+      </div>
+      {/* <img className="logo" src={logo} /> */}
+    </>
   );
 };
 

@@ -31,20 +31,22 @@ function Receipt() {
   };
 
   return (
-    <div>
-      <h1>Thanks for the purchase!</h1>
-      <h2>Need a receipt?</h2>
-      <div className="btn-container" onClick={handleReceipt}>
-        <button type="submit" className="btn">
-          Yes please{" "}
-        </button>
+    <>
+      <h1 className="receiptHeader1">Thanks for the purchase!</h1>
+      <h2 className="receiptHeader">Need a receipt?</h2>
+      <div className="receipt">
+        <div className="btn-container-receipt" onClick={handleReceipt}>
+          <button type="submit" className="btn">
+            Yes please{" "}
+          </button>
+        </div>
+        <div className="btn-container-receipt" onClick={handleSubmit}>
+          <button type="submit" className="btn">
+            No, take me to the menu{" "}
+          </button>
+        </div>
       </div>
-      <div className="btn-container" onClick={handleSubmit}>
-        <button type="submit" className="btn">
-          No, take me to the menu{" "}
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -1,3 +1,7 @@
+.menu {
+  margin-top: 240px;
+}
+
 .reg-menu-list {
   text-align: center;
   margin: 0% 100% 0% 100%; 
@@ -18,7 +22,7 @@ h1.menu {
     padding: 2px;
 }
 h2.menu{
-  margin-top: -50px;
+  margin-top: 50px;
   text-align: center;
 }
 h3.menu {
@@ -66,6 +70,6 @@ body {
 .div{
   display:flex
 }
-div{
+/* div{
   display:block
-}
+} */

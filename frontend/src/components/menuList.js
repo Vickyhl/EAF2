@@ -29,22 +29,24 @@ const MenuList = () => {
   };
 
   return menus ? (
-    <React.Fragment>
-      <h1>List of custom regular menus</h1>
-      {menus.map((menu, i) => (
-        <div
-          className="tile"
-          key={i}
-          data-index={i}
-          onClick={() => handleMenuSelect(i)}
-        >
-          <div className="tile-content">
-            <h3>Menu number {i + 1}</h3>
-            <p>{moment(menu.substring(0, 10)).format("DD/MM/YYYY")}</p>
+    <div className="menuList">
+      <h1 className="regularList">List of custom regular menus</h1>
+      <div className="tile-container">
+        {menus.map((menu, i) => (
+          <div
+            className="tile"
+            key={i}
+            data-index={i}
+            onClick={() => handleMenuSelect(i)}
+          >
+            <div className="tile-content">
+              <h3>Menu number {i + 1}</h3>
+              <p>{moment(menu.substring(0, 10)).format("DD/MM/YYYY")}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </React.Fragment>
+        ))}
+      </div>
+    </div>
   ) : null;
 };
 

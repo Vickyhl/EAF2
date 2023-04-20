@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../src/shared/context/auth-context";
+import ImageUpload from "./ImageUpload.js";
 import "../components/Login.css";
 
 const Register = () => {
@@ -40,7 +41,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="login">
+    <div className="register">
       <form>
         <label htmlFor="firstname">First Name</label>
         <input
@@ -59,6 +60,8 @@ const Register = () => {
           name="lastName"
           value={user.lastName}
         />
+
+        {/* <ImageUpload center id="image" /> */}
 
         <label htmlFor="email">Email</label>
         <input

@@ -13,7 +13,23 @@
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
+  }
 
+  .register {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 450px;
+    padding: 1.3rem;
+    min-height: 950px;
+    position: absolute;
+    z-index: 2;
+    margin-top: 150px;
+    left: 33%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    height: 600px;
   }
 
   button {

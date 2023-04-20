@@ -1,18 +1,31 @@
 body {
-  font-family:'verdana'
+  font-family:'verdana';
+
+}
+
+.menuList {
+  height: 1500px;
 }
 
 h1.recipesHeader {
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 50px;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+  /* font-family: 'Bell MT', Bell MT; */
+
  /* margin-top: -60px ;
  padding-top: -60px; 
  margin-bottom: 80px;
  text-align: center; */
+}
+
+h1.regularList {
+  margin-top: 150px;
+  margin-bottom: 50px;
 }
 
 .tile {
@@ -56,9 +69,4 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     margin: 20px 0;
-  }  
-
-  div{
-    display:block;
-    /* margin-top: 20px; */
   }

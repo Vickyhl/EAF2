@@ -30,7 +30,7 @@ const RecipesMenuList = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <div className="recipesList">
       <h1 className="recipesHeader">List of recipe-based menus</h1>
       <div className="tile-container">
         {menus &&
@@ -49,7 +49,7 @@ const RecipesMenuList = (props) => {
             </div>
           ))}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

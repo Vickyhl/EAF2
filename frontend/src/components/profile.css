@@ -1,0 +1,26 @@
+.profile {
+    /* display:inline; */
+    margin-left: 350px;
+
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+h3.profileUl {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+}
+
+.profile p {
+    display: inline-block;
+    margin-left: 350px;
+
+    /* margin: 0; */
+}
+
+.profileHeader {
+    margin-top: 150px;
+    margin-bottom: 50px;
+}

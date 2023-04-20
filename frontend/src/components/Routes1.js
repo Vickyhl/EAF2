@@ -48,6 +48,12 @@ import WomenAdvFrontHand from "./WomenAdvFrontHand";
 import WomenAdvBackHand from "./WomenAdvBackHand";
 import WomenAdvBackLeg2 from "./WomenAdvBackLeg2";
 import Donation from "./Donation";
+import Articles from "./Articles";
+import Contact from "./Contact";
+import CityChoice from "./CityChoice.js";
+import GymMaps from "./GymMaps";
+import Profile from "./Profile";
+import EditProfile from "./EditProfile";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -55,6 +61,7 @@ const Routes1 = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/myProfile" element={<Profile />} />
       <Route path="/HealthDec" element={<HealthDec />} />
       <Route path="/TermsOfUse" element={<TermsOfUse />} />
       <Route path="/home" element={<Home />} />
@@ -73,6 +80,11 @@ const Routes1 = () => {
       <Route path="/receipt/:type" element={<Receipt />} />
       <Route path="/About" element={<About />} />
       <Route path="/donation" element={<Donation />} />
+      <Route path="/articles" element={<Articles />} />
+      <Route path="/contactUs" element={<Contact />} />
+      <Route path="/cityChoice" element={<CityChoice />} />
+      <Route path="/gymMaps/:country/:city" element={<GymMaps />} />
+      <Route path="/editProfile" element={<EditProfile />} />
 
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />

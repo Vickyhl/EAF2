@@ -223,3 +223,24 @@ export const resetPassword = async (req, res, next) => {
 
   return res.json({ message: "Password reset successfully" });
 };
+
+export const updateProfile = async (req, res, next) => {
+  const data = req.body;
+  // console.log(data.userId);
+  const user = await User.findById(data.userId);
+
+  if (user) {
+    user.firstName = data.firstName;
+    user.lastName = data.lastName;
+    user.email = data.email;
+    user.gender = data.gender;
+    user.age = data.age;
+    user.weight = data.weight;
+    user.height = data.height;
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+  await user.save();
+  res.send({ message: "User updated successfully!" });
+};

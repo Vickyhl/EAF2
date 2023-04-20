@@ -6,13 +6,13 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
-      <AuthProvider>
-        <Header />
-        <Routes1 />
-        <Footer />
-      </AuthProvider>
-    </div>
+    // <div>
+    <AuthProvider>
+      <Header />
+      <Routes1 />
+      <Footer />
+    </AuthProvider>
+    // </div>
   );
 }
 export default App;

@@ -170,6 +170,10 @@ const CreateMenu = () => {
           <label htmlFor="price">
             <strong>Price:</strong> $5.00
           </label>
+          <p>
+            (10% of it is going for donation to the Israeli Diabetes
+            Association)
+          </p>
         </div>
 
         <div className="btn-container" onClick={handleSubmit}>

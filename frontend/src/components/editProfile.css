@@ -1,0 +1,8 @@
+.editProfile {
+    display: grid;
+    justify-content: center;
+}
+
+.editProIn{
+    width:auto;
+}

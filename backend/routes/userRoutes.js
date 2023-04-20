@@ -6,6 +6,7 @@ import {
   login,
   forgotPassword,
   resetPassword,
+  updateProfile,
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -25,6 +26,7 @@ router.post(
 
 router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);
+router.post("/updateProfile", updateProfile);
 router.put("/resetPassword", resetPassword);
 
 export default router;

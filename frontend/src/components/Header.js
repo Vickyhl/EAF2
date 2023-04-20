@@ -20,11 +20,10 @@ const Header = (handleClick) => {
   return (
     <ul className="nav-bar-ul">
       <div className="navbar-brand ">
-        <img className="headerImg" src={logo}></img>
+        <a href="/">
+          <img className="headerImg" src={logo}></img>
+        </a>
       </div>
-      <li>
-        <a href="home">Home</a>
-      </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
           My account
@@ -45,6 +44,15 @@ const Header = (handleClick) => {
               Logout
             </a>
           )}
+        </div>
+      </li>
+      <li className="dropdown">
+        <a href="" className="dropbtn">
+          My profile
+        </a>
+        <div className="dropdown-content">
+          <a href="/myProfile">View profile</a>
+          <a href="/editProfile">Edit your profile</a>
         </div>
       </li>
       <li className="dropdown">
@@ -89,10 +97,10 @@ const Header = (handleClick) => {
       </li>
 
       <li>
-        <a href="#gyms">Gym maps</a>
+        <a href="/cityChoice">Gym maps</a>
       </li>
       <li>
-        <a href="#articles">Articles</a>
+        <a href="/articles">Articles</a>
       </li>
       <li>
         <a href="/donation">Our donation</a>
