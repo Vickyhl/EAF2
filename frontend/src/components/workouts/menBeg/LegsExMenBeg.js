@@ -1,10 +1,10 @@
 import React from "react";
-import "../components/legEx.css";
+import "./legEx.css";
 
 function LegsEx() {
   return (
     <div>
-      <h1>Legs exercise</h1>
+      <h1 className="menAdv">Legs exercise</h1>
       <table>
         <thead>
           <tr>

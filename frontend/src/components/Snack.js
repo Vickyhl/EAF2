@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../components/snack.css";
+import "./css/snack.css";
 
 function Snack() {
   const [snack, setSnack] = useState();

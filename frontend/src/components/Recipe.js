@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../components/Recipe.css";
+import "./css/Recipe.css";
 import axios from "axios";
 
 const Recipe = () => {
@@ -31,33 +31,35 @@ const Recipe = () => {
   }
 
   return recipe ? (
-    <ul className="rec-menu-list">
-      <h2>{title}</h2>
-      <div className="rec-menu-item">
-        <p className="rec-prep">
-          <strong>Prep time: </strong>
-          {recipe.prepTime}
-          <br />
-          <strong>serving: </strong>
-          {recipe.serving}
-          <br />
-        </p>
-        <div>
-          <strong>ingredients: </strong>
-          <li>{ingredientsList}</li>
-        </div>
-        <br />
-        <p className="rec-instructions">
-          <br />
-          <strong>
-            {" "}
+    <>
+      <h2 className="recipeHeader">{title}</h2>
+      <ul className="rec-menu-list">
+        <div className="rec-menu-item">
+          <p className="rec-prep">
+            <strong>Prep time: </strong>
+            {recipe.prepTime}
             <br />
-            instructions:{" "}
-          </strong>
-          {cleanText}
-        </p>
-      </div>
-    </ul>
+            <strong>serving: </strong>
+            {recipe.serving}
+            <br />
+          </p>
+          <div>
+            <strong>ingredients: </strong>
+            <li>{ingredientsList}</li>
+          </div>
+          <br />
+          <p className="rec-instructions">
+            <br />
+            <strong>
+              {" "}
+              <br />
+              instructions:{" "}
+            </strong>
+            {cleanText}
+          </p>
+        </div>
+      </ul>
+    </>
   ) : null;
 };
 

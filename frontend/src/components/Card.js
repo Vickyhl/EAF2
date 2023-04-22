@@ -1,6 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
-import "../components/card.css";
+import "./css/card.css";
 
 function Card() {
   const url = window.location.pathname; // get the path of the current URL

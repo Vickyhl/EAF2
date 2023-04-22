@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import "./style.css";
+import "./css/style.css";
 
 function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState(null);

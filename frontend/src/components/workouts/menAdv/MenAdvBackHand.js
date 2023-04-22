@@ -13,7 +13,7 @@ function MenAdvBackHand() {
         </thead>
         <tbody>
           <tr>
-            <td>Tight pressing with a negative slope </td>
+            <td>Tight pressing on a bench </td>
             <td> 3X8</td>
           </tr>
           <tr>

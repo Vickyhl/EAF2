@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 import axios from "axios";
-import "../components/receipt.css";
+import "./css/receipt.css";
 
 function Receipt() {
   const userData = JSON.parse(localStorage.getItem("user"));

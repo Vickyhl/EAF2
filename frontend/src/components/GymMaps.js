@@ -5,7 +5,7 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import "./gymMaps.css";
+import "./css/gymMaps.css";
 
 function GymMaps() {
   const [map, setMap] = React.useState(null);

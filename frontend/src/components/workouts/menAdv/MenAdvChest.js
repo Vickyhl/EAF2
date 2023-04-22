@@ -25,7 +25,7 @@ function MenAdvChest() {
             <td> 4X8 </td>
           </tr>
           <tr>
-            <td>Third incline chest press with a bar </td>
+            <td>Negative incline chest press with a bar </td>
             <td>4X8 </td>
           </tr>
           <tr>

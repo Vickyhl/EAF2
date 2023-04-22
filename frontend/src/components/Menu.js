@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../components/Menu.css";
+import "./css/Menu.css";
 
 const Menu = (props) => {
   const userData = JSON.parse(localStorage.getItem("user"));

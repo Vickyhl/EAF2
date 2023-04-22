@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/legEx.css";
+import "./legEx.css";
 
 function ChestExMenBeg() {
   return (

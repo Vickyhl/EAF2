@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import "../components/tile.css";
+import "./css/tile.css";
 
 const RecipesMenuList = (props) => {
   const userData = JSON.parse(localStorage.getItem("user"));

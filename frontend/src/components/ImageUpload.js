@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./ImageUpload.css";
+import "./css/ImageUpload.css";
 
 const ImageUpload = (props) => {
   const filePickerRef = useRef();

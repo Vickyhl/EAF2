@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../src/shared/context/auth-context";
 import ImageUpload from "./ImageUpload.js";
-import "../components/Login.css";
+import "./css/Login.css";
 
 const Register = () => {
   const navigate = useNavigate();

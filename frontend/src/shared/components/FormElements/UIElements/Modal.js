@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
 import Backdrop from "../Backdrop.js";
-import "./Modal.css";
+import "./css/Modal.css";
 
 const ModalOverlay = (props) => {
   const content = (

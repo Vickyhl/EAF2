@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import "../components/modalCSS.css";
+import "./css/modalCSS.css";
 
 const CreateMenu = () => {
   const userData = JSON.parse(localStorage.getItem("user"));

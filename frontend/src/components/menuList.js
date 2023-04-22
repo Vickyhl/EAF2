@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import "../components/tile.css";
+import "./css/tile.css";
 import axios from "axios";
 
 const MenuList = () => {

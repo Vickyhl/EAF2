@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./style.css";
+import "./css/style.css";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");

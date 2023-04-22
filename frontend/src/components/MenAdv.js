@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/menAdv.css";
+import "./css/menAdv.css";
 
 function MenAdv() {
   return (
@@ -15,11 +15,11 @@ function MenAdv() {
           <p className="tileText">2. Posterior hand exercise</p>
         </a>
 
-        <a href="/menAdvShoulders" className="tileAdv shoulders">
+        <a href="/menAdvShoulders" className="tileAdv Shoulders">
           <p className="tileText">3. Shoulders exercise</p>
         </a>
 
-        <a href="/menAdvBack" className="tileAdv back">
+        <a href="/menAdvBack" className="tileAdv Back">
           <p className="tileText">4. Back exercise</p>
         </a>
 
@@ -31,7 +31,7 @@ function MenAdv() {
           <p className="tileText">6. Legs exercise</p>
         </a>
 
-        <a href="/menAdvShoulders" className="tileAdv shoulders">
+        <a href="/menAdvShoulders" className="tileAdv Shoulders">
           <p className="tileText">7. Shoulders exercise</p>
         </a>
       </div>

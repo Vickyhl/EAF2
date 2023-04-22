@@ -36,7 +36,7 @@ h1.regularList {
   margin-top: 10px;
   margin-left: 50px;
   display: inline-block;
-  background-image: url("./images/tileImg.jpeg");
+  background-image: url("../images/tileImg.jpeg");
   background-size: cover;
 }
   

@@ -62,7 +62,7 @@ body {
   overflow: scroll;
   line-height:0.8cm;
   background-size:100%;
-  background-image: url("./images/recipe.jpeg");
+  background-image: url("../images/recipe.jpeg");
   }
 .ul{
   background: white;

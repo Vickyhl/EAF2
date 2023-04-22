@@ -1,4 +1,4 @@
-import "./components/style.css";
+import "./components/css/style.css";
 import Header from "./components/Header";
 import Routes1 from "./components/Routes1";
 import { AuthProvider } from "./AuthProvider";

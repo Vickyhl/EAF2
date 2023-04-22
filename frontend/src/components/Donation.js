@@ -1,6 +1,6 @@
 import React from "react";
 import IDA from "./images/IDA.jpg";
-import "./donation.css";
+import "./css/donation.css";
 
 function Donation() {
   return (

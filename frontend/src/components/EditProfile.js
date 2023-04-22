@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./editProfile.css";
+import "./css/editProfile.css";
 import axios from "axios";
 
 function EditProfile() {
