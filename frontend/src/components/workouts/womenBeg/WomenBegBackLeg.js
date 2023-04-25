@@ -1,9 +1,37 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function WomenBegBackLeg() {
+  const navigate = useNavigate();
+
+  const exercises = [
+    "Roman bench press",
+    "Seated leg curl",
+    "Stiff Leg in Smith machine",
+    "Barbell hip thrust",
+  ];
+  const sets = [4, 4, 4, 4];
+  const reps = [15, 15, 15, 15];
+  const gifs = [
+    "hyperextension",
+    "Seated-Leg-Curl",
+    "Stiff-Leg-Deadlift",
+    "Barbell-Hip-Thrust",
+  ];
+  const exDetails = {
+    muscleName: "Hind leg muscle",
+    exName: exercises,
+    sets: sets,
+    repsNum: reps,
+    gif: gifs,
+  };
+
+  const handleSubmit = async () => {
+    navigate("/ExTemplate", { state: { exDetails } });
+  };
   return (
     <div>
-      <h1>Hind leg exercise</h1>
+      <h1 className="menAdv">Hind leg exercise</h1>
       <table>
         <thead>
           <tr>
@@ -13,23 +41,28 @@ function WomenBegBackLeg() {
         </thead>
         <tbody>
           <tr>
-            <td>Roman bench press with weight </td>
+            <td>Roman bench press </td>
             <td> 4X15</td>
           </tr>
           <tr>
-            <td>Kneeling on the device </td>
+            <td>Seated leg curl </td>
             <td> 4X15</td>
           </tr>
           <tr>
-            <td> Tiff Leg in Smith Meshin </td>
+            <td> Stiff Leg in Smith machine </td>
             <td> 4X15</td>
           </tr>
           <tr>
-            <td>Hip thrust In Smit Mashin </td>
+            <td>Barbell hip thrust </td>
             <td> 4X15</td>
           </tr>
         </tbody>
       </table>
+      <div className="btn-container-receipt">
+        <button type="submit" className="btn" onClick={handleSubmit}>
+          Start a workout
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,43 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MenAdvShoulders() {
+  const navigate = useNavigate();
+
+  const exercises = [
+    "Standing shoulder press with a bar	",
+    "Dumbbell shoulder press",
+    "Dumbbell lateral raise",
+    "Barbell upright row",
+    "Bent over lateral raise",
+    "Face pull in upper poly to back shoulder",
+    "Barbell rear delt raise",
+  ];
+  const sets = [4, 4, 4, 4, 4, 4, 4];
+  const reps = [8, 8, 8, 8, 8, 8, 8];
+  const gifs = [
+    "Standing-Smith-Machine-Shoulder-Press",
+    "Dumbbell-Shoulder-Press",
+    "Dumbbell-Lateral-Raise",
+    "Barbell-Upright-Row",
+    "Bent-Over-Lateral-Raise",
+    "Face-Pull",
+    "Barbell-Rear-Delt-Raise",
+  ];
+  const exDetails = {
+    muscleName: "Shoulders muscle",
+    exName: exercises,
+    sets: sets,
+    repsNum: reps,
+    gif: gifs,
+  };
+
+  const handleSubmit = async () => {
+    navigate("/ExTemplate", { state: { exDetails } });
+  };
   return (
     <div>
-      <h1>Shoulders exercise</h1>
+      <h1 className="menAdv">Shoulders exercise</h1>
       <table>
         <thead>
           <tr>
@@ -17,31 +51,36 @@ function MenAdvShoulders() {
             <td> 4X8</td>
           </tr>
           <tr>
-            <td>Pressing with single dumbbells while sitting </td>
+            <td>Dumbbell shoulder press </td>
             <td> 4X8</td>
           </tr>
           <tr>
-            <td>Shoulder abduction while standing </td>
+            <td>Dumbbell lateral raise </td>
             <td> 4X8</td>
           </tr>
           <tr>
-            <td>Stand up row with wide grip chin bar </td>
+            <td>Barbell upright row </td>
             <td> 4X8</td>
           </tr>
           <tr>
-            <td>Horizontal extension with back tilt against single weights </td>
+            <td>Bent over lateral raise </td>
             <td> 4X8</td>
           </tr>
           <tr>
-            <td>Horizontal removal in upper poly to back shoulder </td>
+            <td>Face pull in upper poly to back shoulder </td>
             <td> 4X8 </td>
           </tr>
           <tr>
-            <td> Lifting shoulder blades against a standing bar</td>
+            <td>Barbell rear delt raise</td>
             <td> 4X8</td>
           </tr>
         </tbody>
       </table>
+      <div className="btn-container-receipt">
+        <button type="submit" className="btn" onClick={handleSubmit}>
+          Start a workout
+        </button>
+      </div>
     </div>
   );
 }

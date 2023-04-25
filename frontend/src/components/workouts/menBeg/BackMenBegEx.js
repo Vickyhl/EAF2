@@ -1,9 +1,38 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BackMenBegEx() {
+  const navigate = useNavigate();
+
+  const exercises = [
+    "Pull-up",
+    "Narrow grip upper poly pull with triangle",
+    "Narrow grip seated rowing on the machine",
+    "Pullover in upper poly	",
+  ];
+  const sets = [1, 4, 4, 4];
+  const reps = [50, 15, 15, 15];
+  const gifs = [
+    "Pull-up",
+    "V-bar-Lat-Pulldown",
+    "Seated-Row-Machine",
+    "Rope-Straight-Arm-Pulldown",
+  ];
+  const exDetails = {
+    muscleName: "Back muscle",
+    exName: exercises,
+    sets: sets,
+    repsNum: reps,
+    gif: gifs,
+  };
+
+  const handleSubmit = async () => {
+    navigate("/ExTemplate", { state: { exDetails } });
+  };
+
   return (
     <div>
-      <h1>Back exercise</h1>{" "}
+      <h1 className="menAdv">Back exercise</h1>{" "}
       <table>
         {" "}
         <thead>
@@ -17,7 +46,7 @@ function BackMenBegEx() {
           {" "}
           <tr>
             {" "}
-            <td> Double first set tension 4 </td> <td> Maximum repetitions </td>{" "}
+            <td> Pull-up </td> <td> Maximum repetitions </td>{" "}
           </tr>{" "}
           <tr>
             {" "}
@@ -33,6 +62,11 @@ function BackMenBegEx() {
           </tr>{" "}
         </tbody>{" "}
       </table>
+      <div className="btn-container-receipt">
+        <button type="submit" className="btn" onClick={handleSubmit}>
+          Start a workout
+        </button>
+      </div>
     </div>
   );
 }

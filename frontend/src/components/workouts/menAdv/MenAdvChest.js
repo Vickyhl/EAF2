@@ -1,9 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MenAdvChest() {
+  const navigate = useNavigate();
+
+  const exercises = [
+    "Chest press at a 30 degree incline with a bar",
+    "Dumbbell chest press on a positive incline",
+    "Chest press with a bar",
+    "Negative incline chest press with a bar",
+    "Butterfly in the crossover",
+  ];
+  const sets = [4, 4, 4, 4, 4];
+  const reps = [8, 8, 8, 8, 12];
+  const gifs = [
+    "LyingChestPressInAnUpperInclineWithABar",
+    "Incline-Dumbbell-Press",
+    "Barbell-Bench-Press",
+    "Smith-Machine-Decline-Bench-Press",
+    "High-Cable-Crossover",
+  ];
+  const exDetails = {
+    muscleName: "Chest muscle",
+    exName: exercises,
+    sets: sets,
+    repsNum: reps,
+    gif: gifs,
+  };
+
+  const handleSubmit = async () => {
+    navigate("/ExTemplate", { state: { exDetails } });
+  };
   return (
     <div>
-      <h1>Chest exercise</h1>
+      <h1 className="menAdv">Chest exercise</h1>
       <table>
         <thead>
           <tr>
@@ -34,6 +64,11 @@ function MenAdvChest() {
           </tr>
         </tbody>
       </table>
+      <div className="btn-container-receipt">
+        <button type="submit" className="btn" onClick={handleSubmit}>
+          Start a workout
+        </button>
+      </div>
     </div>
   );
 }

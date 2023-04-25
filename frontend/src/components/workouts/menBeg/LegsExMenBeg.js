@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./legEx.css";
 
 function LegsEx() {
+  const navigate = useNavigate();
+
+  const exercises = [
+    "Seated knee strikes on the machine",
+    "Free squat",
+    "Machine leg press",
+  ];
+  const sets = [4, 4, 4];
+  const reps = [15, 8, 15];
+  const gifs = ["SeatedKneeStrikesOnTheMachine", "Squat", "MachineLegPress"];
+  const exDetails = {
+    muscleName: "Legs muscle",
+    exName: exercises,
+    sets: sets,
+    repsNum: reps,
+    gif: gifs,
+  };
+
+  const handleSubmit = async () => {
+    navigate("/ExTemplate", { state: { exDetails } });
+  };
+
   return (
     <div>
       <h1 className="menAdv">Legs exercise</h1>
@@ -27,6 +51,11 @@ function LegsEx() {
           </tr>
         </tbody>
       </table>
+      <div className="btn-container-receipt">
+        <button type="submit" className="btn" onClick={handleSubmit}>
+          Start a workout
+        </button>
+      </div>
     </div>
   );
 }
