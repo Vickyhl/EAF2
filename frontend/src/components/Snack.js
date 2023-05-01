@@ -34,7 +34,7 @@ function Snack() {
   // console.log(snacks[0]);
   return snack ? (
     <div className="snack">
-      <h2>Your snack meal is:</h2>
+      <h2 className="snack">Your snack meal is:</h2>
       {snacks.map((item, i) => (
         <li>
           {item}

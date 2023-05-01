@@ -22,6 +22,11 @@ const Recipe = () => {
     fetchData();
   }, [recipe]);
 
+  const handleCookOpt = async () => {
+    // console.log(recipe.rid);
+    window.location.assign(`http://localhost:3000/cooking/${recipe.rid}`);
+  };
+
   if (recipe) {
     title = recipe.title;
     ingredientsList = recipe.ingredients.map((ingredient, index) => {
@@ -59,6 +64,11 @@ const Recipe = () => {
           </p>
         </div>
       </ul>
+      <div className="btn-container-receipt" onClick={handleCookOpt}>
+        <button type="submit" className="btn">
+          Let's cook!{" "}
+        </button>
+      </div>
     </>
   ) : null;
 };

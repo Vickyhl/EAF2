@@ -193,6 +193,7 @@ export async function extractRecipeInfoFunc(id) {
   let serving;
   let imgURL;
   let instructions;
+  let rid;
   await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?apiKey=9b4de243b92d4e6db8b6f30448e307e0&includeNutrition=false`
   )
@@ -202,6 +203,7 @@ export async function extractRecipeInfoFunc(id) {
       prepTime = data.readyInMinutes;
       serving = data.servings;
       imgURL = data.image;
+      rid = data.id;
       instructions = data.instructions;
       for (let i = 0; i < data.extendedIngredients.length; i++) {
         ingredients[i] = data.extendedIngredients[i].original;
@@ -210,6 +212,7 @@ export async function extractRecipeInfoFunc(id) {
     .catch((error) => console.error(error));
 
   const recipe = {
+    rid,
     title,
     prepTime,
     serving,
@@ -255,6 +258,7 @@ export const recipesMenu = async (req, res) => {
   for (let i = 0; i < recipesIDs.length; i++) {
     recipes[i] = await extractRecipeInfoFunc(recipesIDs[i]);
     const recipe = new Recipe({
+      rid: recipes[i].rid,
       title: recipes[i].title,
       prepTime: recipes[i].prepTime,
       serving: recipes[i].serving,

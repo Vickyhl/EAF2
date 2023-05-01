@@ -47,7 +47,7 @@ const RecipesMenu = () => {
       <h1 className="recipesHeader">Recipes menu num. {menuNum}</h1>
       <div className="recipes-tile">
         <a
-          href={`http://localhost:3000/recipe/${menu.recipes[0]._id}`}
+          href={`http://localhost:3000/cooking/${menu.recipes[0].rid}`}
           className="tileRecipes"
           style={tileStyle}
         >
@@ -64,7 +64,7 @@ const RecipesMenu = () => {
         </a>
 
         <a
-          href={`http://localhost:3000/recipe/${menu.recipes[1]._id}`}
+          href={`http://localhost:3000/cooking/${menu.recipes[1].rid}`}
           className="tileRecipes"
           style={tileStyle2}
         >
@@ -78,7 +78,7 @@ const RecipesMenu = () => {
         </a>
 
         <a
-          href={`http://localhost:3000/recipe/${menu.recipes[2]._id}`}
+          href={`http://localhost:3000/cooking/${menu.recipes[2].rid}`}
           className="tileRecipes"
           style={tileStyle3}
         >

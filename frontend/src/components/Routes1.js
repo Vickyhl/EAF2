@@ -59,6 +59,7 @@ import GymMaps from "./GymMaps";
 import Profile from "./Profile";
 import EditProfile from "./EditProfile";
 import ExTemplate from "./ExTemplate";
+import Cook from "./Cook";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -91,6 +92,7 @@ const Routes1 = () => {
       <Route path="/gymMaps/:country/:city" element={<GymMaps />} />
       <Route path="/editProfile" element={<EditProfile />} />
       <Route path="/ExTemplate" element={<ExTemplate />} />
+      <Route path="/cooking/:rid" element={<Cook />} />
 
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />

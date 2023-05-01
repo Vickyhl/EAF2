@@ -5,6 +5,7 @@ import HttpError from "./models/httpError.js";
 import menuRoutes from "./routes/menuRoutes.js";
 import usersRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import recipeRoutes from "./routes/recipeRoutes.js";
 import { loadStripe } from "@stripe/stripe-js";
 import cors from "cors";
 import User from "./models/userModel.js";
@@ -119,6 +120,7 @@ app.post("/stripe-webhook", async (req, res) => {
 app.use("/api/menus", menuRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/order", orderRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);

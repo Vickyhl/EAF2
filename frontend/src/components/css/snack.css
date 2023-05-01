@@ -9,7 +9,11 @@ li {
 }
 
 h2 {
-  margin-top: -100px;
+  margin-top: -60px;
+}
+
+h2.snack {
+  margin-top: 150px;
 }
 
 body{

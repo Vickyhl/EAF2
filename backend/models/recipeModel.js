@@ -27,6 +27,10 @@ const recipeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    rid: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
