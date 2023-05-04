@@ -39,7 +39,7 @@ function CityChoice() {
         onChange={handleCityChange}
       />
       <div className="btn-container">
-        <button className="btn" onClick={handleSubmit}>
+        <button aria-label="Submit" className="btn" onClick={handleSubmit}>
           Submit
         </button>
       </div>

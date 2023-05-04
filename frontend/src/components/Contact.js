@@ -12,7 +12,7 @@ function Contact() {
       </p>
       <p>You are welcome to try...</p>
       <p>Email: eatandfitservice@gmail.com</p>
-      <img className="donationImg" src={logo}></img>
+      <img className="donationImg" src={logo} alt="Eat&Fit logo"></img>
     </div>
   );
 }

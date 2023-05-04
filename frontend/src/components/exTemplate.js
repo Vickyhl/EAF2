@@ -110,6 +110,7 @@ function ExTemplate() {
       <h2 className="menu">{details.exName[exercise]}</h2>
       <img
         className="exGif"
+        alt="exercise gif"
         src={require(`./workouts/workoutGifs//${details.gif[exercise]}.gif`)}
       />
       <h3 className="exercise">Num of set: </h3>

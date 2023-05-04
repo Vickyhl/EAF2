@@ -21,7 +21,7 @@ const Header = (handleClick) => {
     <ul className="nav-bar-ul">
       <div className="navbar-brand ">
         <a href="/">
-          <img className="headerImg" src={logo}></img>
+          <img className="headerImg" src={logo} alt="Eat&Fit logo"></img>
         </a>
       </div>
       <li className="dropdown">

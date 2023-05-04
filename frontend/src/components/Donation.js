@@ -38,7 +38,11 @@ function Donation() {
           appropriate medication can prevent complications and enable quality of
           life.
         </p>
-        <img className="donationImg" src={IDA}></img>
+        <img
+          className="donationImg"
+          src={IDA}
+          alt="israel diabetes association logo"
+        ></img>
       </div>
     </>
   );

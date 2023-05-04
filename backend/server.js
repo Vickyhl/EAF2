@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import mongoose from "mongoose";
 import express from "express";
 import bodyParser from "body-parser";
@@ -147,10 +149,13 @@ app.listen(5000, () => {
 // ===================================*/
 
 mongoose
-  .connect("mongodb+srv://Vicky:123456EAF@eaf.rhcan5b.mongodb.net/Eat&Fit", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@eaf.rhcan5b.mongodb.net/${process.env.DB_NAME}`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Connection Successfull");
   })

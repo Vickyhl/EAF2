@@ -37,6 +37,12 @@ h1.recipesHeader {
   margin-top: 100px;
 }
 
+.tileRecipes:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
 .tile:hover {
   cursor: pointer;
   transform: scale(1.05);

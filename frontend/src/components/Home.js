@@ -10,10 +10,9 @@ const Home = () => {
     <>
       {" "}
       <div className="container-home">
-        <img className="img-fluid" src={homeImg} alt="homeImg" />
-        <img className="welcome" src={welcome} />
+        <img className="img-fluid" src={homeImg} alt="home image" />
+        <img className="welcome" src={welcome} alt="welcome message" />
       </div>
-      {/* <img className="logo" src={logo} /> */}
     </>
   );
 };
