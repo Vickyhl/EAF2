@@ -140,7 +140,7 @@ app.use((error, req, res, next) => {
 /*============================
         listen
 =============================*/
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Server is runing at port 5000");
 });
 
