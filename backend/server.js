@@ -19,6 +19,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join("public")));
 app.use(bodyParser.urlencoded({ extended: true }));
+// Add a route to handle requests for the favicon.ico file
+app.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "favicon.ico"));
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -153,15 +157,11 @@ app.listen(process.env.PORT || 5000, () => {
 // /*=================================
 //         Database
 // ===================================*/
-
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@eaf.rhcan5b.mongodb.net/${process.env.DB_NAME}`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(`mongodb+srv://Vicky:123456EAF@eaf.rhcan5b.mongodb.net/Eat&Fit`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connection Successfull");
   })
