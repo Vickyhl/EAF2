@@ -11,10 +11,13 @@ import recipeRoutes from "./routes/recipeRoutes.js";
 import { loadStripe } from "@stripe/stripe-js";
 import cors from "cors";
 import User from "./models/userModel.js";
+import path from "path";
 
 const app = express();
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join("public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
@@ -125,9 +128,12 @@ app.use("/api/order", orderRoutes);
 app.use("/api/recipes", recipeRoutes);
 
 app.use((req, res, next) => {
-  const error = new HttpError("Could not find this route.", 404);
-  throw error;
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
+// app.use((req, res, next) => {
+//   const error = new HttpError("Could not find this route.", 404);
+//   throw error;
+// });
 
 app.use((error, req, res, next) => {
   if (res.headerSent) {
