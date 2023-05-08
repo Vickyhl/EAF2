@@ -35,6 +35,18 @@ export const Login = () => {
       });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(user);
+  //   const result = await axios.post(
+  //     "http://localhost:5000/api/users/login",
+  //     user
+  //   );
+  //   if (result.data.existingUser) {
+  //     console.log(result.data.existingUser);
+  //   }
+  // };
+
   const closeModal = () => {
     setErrorMessage(false);
   };

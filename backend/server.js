@@ -3,14 +3,14 @@ config();
 import mongoose from "mongoose";
 import express from "express";
 import bodyParser from "body-parser";
-import HttpError from "./backend/models/httpError.js";
-import menuRoutes from "./backend/routes/menuRoutes.js";
-import usersRoutes from "./backend/routes/userRoutes.js";
-import orderRoutes from "./backend/routes/orderRoutes.js";
-import recipeRoutes from "./backend/routes/recipeRoutes.js";
+import HttpError from "./models/httpError.js";
+import menuRoutes from "./routes/menuRoutes.js";
+import usersRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import recipeRoutes from "./routes/recipeRoutes.js";
 import { loadStripe } from "@stripe/stripe-js";
 import cors from "cors";
-import User from "./backend/models/userModel.js";
+import User from "./models/userModel.js";
 import path from "path";
 
 const app = express();
@@ -150,7 +150,7 @@ app.use((error, req, res, next) => {
 /*============================
         listen
 =============================*/
-app.listen(process.env.PORT || 5000, () => {
+app.listen(5000, () => {
   console.log("Server is runing at port 5000");
 });
 

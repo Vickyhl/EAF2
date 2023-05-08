@@ -81,7 +81,7 @@ export const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.id, email: createdUser.email },
-      process.env.JWT_KEY,
+      "supersecret_dont_share",
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -111,7 +111,7 @@ export const login = async (req, res, next) => {
     );
     return next(error);
   }
-  console.log(existingUser);
+
   if (!existingUser) {
     const error = new HttpError("Your email or password is incorrect", 401);
     // res.send({ message: "Your email or password is incorrect" });
@@ -138,7 +138,7 @@ export const login = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: existingUser.id, email: existingUser.email },
-      process.env.JWT_KEY,
+      "supersecret_dont_share",
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -148,6 +148,8 @@ export const login = async (req, res, next) => {
     );
     return next(error);
   }
+
+  console.log(existingUser);
 
   res.json({
     existingUser,
