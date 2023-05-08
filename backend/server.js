@@ -13,6 +13,7 @@ import cors from "cors";
 import User from "./models/userModel.js";
 import path from "path";
 
+console.log("poop");
 const app = express();
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 app.use(cors());
