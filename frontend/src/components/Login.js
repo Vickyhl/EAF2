@@ -27,7 +27,7 @@ export const Login = () => {
       .then((res) => {
         console.log(res.data.existingUser);
         if (res.data.existingUser) {
-          window.location.assign("http://localhost:3000/home");
+          window.location.assign("/home");
           localStorage.setItem("user", JSON.stringify(res.data.existingUser));
         } else {
           setErrorMessage(true);
