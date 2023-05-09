@@ -99,8 +99,8 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log("hey");
   let existingUser;
+  console.log(req.body.email);
 
   try {
     existingUser = await User.findOne({ email: email });

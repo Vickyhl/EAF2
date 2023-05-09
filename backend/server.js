@@ -18,10 +18,10 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const app = express();
 console.log(__dirname);
-// app.use(cors());
-// app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, "../frontend/build")));
-//app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -40,57 +40,57 @@ const stripe = await loadStripe(
   "pk_test_51MsU99ESZ6jwBd5mZ07t7amESyMsjXDDVhGcdVnFbdkbpb0zYVmmw4RmFI5LshKqlIkPbzGhmLSMgfE4aY8AYVx400sfpkpWyQ"
 );
 
-app.post("/register", (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-  User.findOne({ email: email }, (err, user) => {
-    if (user) {
-      res.send({ message: "This email id already Register" });
-    } else {
-      const user = new User({
-        firstName,
-        lastName,
-        email,
-        password,
-      });
-      user.save();
-      res.send({ message: "Successfull Register" });
-    }
-  });
-});
+// app.post("/register", (req, res) => {
+//   const { firstName, lastName, email, password } = req.body;
+//   User.findOne({ email: email }, (err, user) => {
+//     if (user) {
+//       res.send({ message: "This email id already Register" });
+//     } else {
+//       const user = new User({
+//         firstName,
+//         lastName,
+//         email,
+//         password,
+//       });
+//       user.save();
+//       res.send({ message: "Successfull Register" });
+//     }
+//   });
+// });
 
-app.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  User.findOne({ email: email }, (err, user) => {
-    if (user) {
-      console.log(user);
-      if (password == user.password) {
-        res.send({ message: "Login SuccessFull", user });
-      } else {
-        res.send({ message: "Your email or password is incorrect" });
-      }
-    } else {
-      res.send({ message: "Your email or password is incorrectt" });
-    }
-  });
-});
+// app.post("/login", (req, res) => {
+//   const { email, password } = req.body;
+//   User.findOne({ email: email }, (err, user) => {
+//     if (user) {
+//       console.log(user);
+//       if (password == user.password) {
+//         res.send({ message: "Login SuccessFull", user });
+//       } else {
+//         res.send({ message: "Your email or password is incorrect" });
+//       }
+//     } else {
+//       res.send({ message: "Your email or password is incorrectt" });
+//     }
+//   });
+// });
 
-app.put("/createMenu/:id", async (req, res) => {
-  const user = await User.findById(req.params.id);
-  console.log(user);
-  if (user) {
-    user.age = req.body.age;
-    user.height = req.body.height;
-    user.weight = req.body.weight;
-    user.gender = req.body.gender;
-    user.purpuse = req.body.purpuse;
-    user.health = req.body.health;
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-  await user.save();
-  res.send({ message: "Menu created successfully" });
-});
+// app.put("/createMenu/:id", async (req, res) => {
+//   const user = await User.findById(req.params.id);
+//   console.log(user);
+//   if (user) {
+//     user.age = req.body.age;
+//     user.height = req.body.height;
+//     user.weight = req.body.weight;
+//     user.gender = req.body.gender;
+//     user.purpuse = req.body.purpuse;
+//     user.health = req.body.health;
+//   } else {
+//     res.status(404);
+//     throw new Error("User not found");
+//   }
+//   await user.save();
+//   res.send({ message: "Menu created successfully" });
+// });
 
 app.post("/create-checkout-session", async (req, res) => {
   const session = await stripe.checkout.sessions.create({

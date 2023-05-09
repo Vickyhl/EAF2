@@ -22,6 +22,7 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(user);
     await axios
       .post("http://localhost:5000/api/users/login", user)
       .then((res) => {
