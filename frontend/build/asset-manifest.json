@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b9992dea.css",
-    "main.js": "/static/js/main.f9ef2dcd.js",
+    "main.js": "/static/js/main.f2e55944.js",
     "static/media/art1.png": "/static/media/art1.0befff14dbd0171cc5bc.png",
     "static/media/art4.png": "/static/media/art4.8572a759c177afde79cd.png",
     "static/media/HiP-ABDUCTION-MACHINE.gif": "/static/media/HiP-ABDUCTION-MACHINE.f3ae3a716a38f4981908.gif",
@@ -76,10 +76,10 @@
     "static/media/IDA.jpg": "/static/media/IDA.0d878a6fadb35b650e7b.jpg",
     "index.html": "/index.html",
     "main.b9992dea.css.map": "/static/css/main.b9992dea.css.map",
-    "main.f9ef2dcd.js.map": "/static/js/main.f9ef2dcd.js.map"
+    "main.f2e55944.js.map": "/static/js/main.f2e55944.js.map"
   },
   "entrypoints": [
     "static/css/main.b9992dea.css",
-    "static/js/main.f9ef2dcd.js"
+    "static/js/main.f2e55944.js"
   ]
 }
