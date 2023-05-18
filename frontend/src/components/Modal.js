@@ -26,9 +26,27 @@ const Modal = ({ isOpen, onClose, children }) => {
     },
   };
 
+  const handleOverlayClick = () => {
+    onClose(); // Perform onClose action
+  };
+
+  const handleContentClick = (e) => {
+    const tagName = e.target.tagName.toLowerCase();
+    e.stopPropagation();
+
+    if (
+      !(
+        tagName === "select" ||
+        (tagName === "input" && e.target.type === "checkbox")
+      )
+    ) {
+      onClose(); // Perform onClose action
+    }
+  };
+
   return (
-    <div style={styles.modalOverlay} onClick={onClose}>
-      <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+    <div style={styles.modalOverlay} onClick={handleOverlayClick}>
+      <div style={styles.modalContent} onClick={handleContentClick}>
         {children}
       </div>
     </div>

@@ -1,14 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AccessibilityContext } from "./AccessibilityContext";
+import AccessibilityIcon from "./AccessibilityIcon";
 import "./css/profile.css";
-// firstName,
-// lastName,
-// email,
-// gender,
-// age,
-// weight,
-// height:
 
 function Profile() {
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const userData = JSON.parse(localStorage.getItem("user"));
   const firstName = userData?.firstName;
   const lastName = userData?.lastName;
@@ -20,8 +16,13 @@ function Profile() {
 
   return (
     <>
-      <h1 className="profileHeader">Your profile:</h1>
-      <div className="profile">
+      <AccessibilityIcon />
+      <div
+        className={`profile ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${contrast}`}
+      >
+        <h1 className="profileHeader">Your profile:</h1>
         <h3 className="profile">First name:</h3>
         <p className="profile">{firstName}</p>
         <h3 className="profile">Last name:</h3>

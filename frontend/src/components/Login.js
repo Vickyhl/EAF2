@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AccessibilityContext } from "./AccessibilityContext";
+import AccessibilityIcon from "./AccessibilityIcon";
 import axios from "axios";
 import "./css/Login.css";
 
 export const Login = () => {
-  let userData = localStorage.getItem("user");
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const [errorMessage, setErrorMessage] = useState(null);
   const [user, setUser] = useState({
     email: "",
@@ -36,25 +38,18 @@ export const Login = () => {
       });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(user);
-  //   const result = await axios.post(
-  //     "http://localhost:5000/api/users/login",
-  //     user
-  //   );
-  //   if (result.data.existingUser) {
-  //     console.log(result.data.existingUser);
-  //   }
-  // };
-
   const closeModal = () => {
     setErrorMessage(false);
   };
 
   return (
-    <div>
-      <div className="login">
+    <>
+      <AccessibilityIcon />
+      <div
+        className={`login ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${contrast}`}
+      >
         <form>
           <label htmlFor="email">Email</label>
           <input
@@ -99,7 +94,7 @@ export const Login = () => {
         </div>
       )}
       <div className="overlay hidden"></div>
-    </div>
+    </>
   );
 };
 

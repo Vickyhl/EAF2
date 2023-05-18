@@ -127,7 +127,7 @@ const Routes1 = () => {
       <Route path="/womenAdvBackLeg2" element={<WomenAdvBackLeg2 />} />
 
       <Route
-        path="https://eatandfit.herokuapp.com/login"
+        path="/login"
         element={userData === "undefined" || !userData ? <Login /> : <Home />}
       />
       <Route

@@ -2,6 +2,6 @@
     margin-top: 10px; /* adjust this value to decrease or increase the spacing between paragraphs */
 }
 h3 {
-    margin: 0% 50% 0% 0%;
+    /* margin: 0% 50% 0% 0%; */
     width:-webkit-fill-available;
 }

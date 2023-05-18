@@ -35,6 +35,8 @@
  
 h1.recipesHeader {
   margin-top: 100px;
+  width: 1519px;
+  margin-bottom: -40px;
 }
 
 .tileRecipes:hover {

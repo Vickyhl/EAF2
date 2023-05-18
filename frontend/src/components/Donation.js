@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AccessibilityContext } from "./AccessibilityContext";
+import AccessibilityIcon from "./AccessibilityIcon";
 import IDA from "./images/IDA.jpg";
 import "./css/donation.css";
 
 function Donation() {
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
+
   return (
     <>
-      <h1>Our donation</h1>
-      <div className="donation">
+      <AccessibilityIcon />
+      <div className={`background ${contrast}`}></div>
+      <div
+        className={`donation ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${
+          contrast === "high"
+            ? "white"
+            : contrast === "low"
+            ? "darkgray"
+            : "black"
+        }`}
+      >
+        <h1 className="donationHeader">Our donation</h1>
         <p>
           As the administrators of the site, we have decided to donate 10% of
           the income to the Israeli Diabetes Association (IAD). A little about

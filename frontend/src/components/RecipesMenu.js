@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AccessibilityContext } from "./AccessibilityContext";
+import AccessibilityIcon from "./AccessibilityIcon";
 import axios from "axios";
 import "./css/RecipesMenu.css";
 
 const RecipesMenu = () => {
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const userData = JSON.parse(localStorage.getItem("user"));
   const userID = userData?._id;
   const [menu, setMenu] = useState();
@@ -44,23 +47,37 @@ const RecipesMenu = () => {
 
   return menu ? (
     <>
-      <h1 className="recipesHeader">Recipes menu num. {menuNum}</h1>
-      <div className="recipes-tile">
+      <AccessibilityIcon />
+      <div className={`background ${contrast}`}></div>
+      <div
+        className={`tile-container ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${
+          contrast === "high"
+            ? "white"
+            : contrast === "low"
+            ? "darkgray"
+            : "black"
+        }`}
+      >
+        <h1 className="recipesHeader">Recipes menu num. {menuNum}</h1>
         <a
           href={`http://localhost:3000/cooking/${menu.recipes[0].rid}`}
           className="tileRecipes"
           style={tileStyle}
         >
-          <h2>Breakfast</h2>
-          <p className="recipesText">{menu.recipes[0].title}</p>
+          <h2 className={`${contrast} ${fontSize}`}>Breakfast</h2>
+          <p className={`recipesText ${contrast} ${fontSize}`}>
+            {menu.recipes[0].title}
+          </p>
         </a>
 
         <a
           href={`http://localhost:3000/watchSnack/${0}`}
           className="tileRecipes"
         >
-          <h2>Snack 1</h2>
-          <p className="recipesText"></p>
+          <h2 className={`${contrast} ${fontSize}`}>Snack 1</h2>
+          <p className={`recipesText ${contrast} ${fontSize}`}></p>
         </a>
 
         <a
@@ -68,13 +85,15 @@ const RecipesMenu = () => {
           className="tileRecipes"
           style={tileStyle2}
         >
-          <h2>Lunch</h2>
-          <p className="recipesText">{menu.recipes[1].title}</p>
+          <h2 className={`${contrast} ${fontSize}`}>Lunch</h2>
+          <p className={`recipesText ${contrast} ${fontSize}`}>
+            {menu.recipes[1].title}
+          </p>
         </a>
 
         <a href={`http://localhost:3000/watchSnack/${1}`} class="tileRecipes">
-          <h2>Snack 2</h2>
-          <p className="recipesText"></p>
+          <h2 className={`${contrast} ${fontSize}`}>Snack 2</h2>
+          <p className={`recipesText ${contrast} ${fontSize}`}></p>
         </a>
 
         <a
@@ -82,8 +101,10 @@ const RecipesMenu = () => {
           className="tileRecipes"
           style={tileStyle3}
         >
-          <h2>Dinner</h2>
-          <p className="recipesText">{menu.recipes[2].title}</p>
+          <h2 className={`${contrast} ${fontSize}`}>Dinner</h2>
+          <p className={`recipesText ${contrast} ${fontSize}`}>
+            {menu.recipes[2].title}
+          </p>
         </a>
       </div>
     </>

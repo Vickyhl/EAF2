@@ -4,7 +4,7 @@ const AccessibilityContext = createContext();
 
 const AccessibilityProvider = ({ children }) => {
   const [fontSize, setFontSize] = useState(1);
-  const [greyscale, setGreyscale] = useState(false);
+  const [readableText, setReadableText] = useState(false);
   const [contrast, setContrast] = useState(1);
 
   return (
@@ -12,8 +12,8 @@ const AccessibilityProvider = ({ children }) => {
       value={{
         fontSize,
         setFontSize,
-        greyscale,
-        setGreyscale,
+        readableText,
+        setReadableText,
         contrast,
         setContrast,
       }}

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AccessibilityContext } from "./AccessibilityContext";
+import AccessibilityIcon from "./AccessibilityIcon";
 import "./css/editProfile.css";
 import axios from "axios";
 
 function EditProfile() {
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
   const firstName = userData?.firstName;
@@ -23,14 +26,6 @@ function EditProfile() {
     weight: weight,
     height: height,
   });
-
-  // firstName,
-  // lastName,
-  // email,
-  // gender,
-  // age,
-  // weight,
-  // height,
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,59 +77,70 @@ function EditProfile() {
 
   return (
     <>
-      <h1 className="profileHeader">Update your information:</h1>
-      <div className="editProfile">
-        <label htmlFor="firstName">First name:</label>
-        <input
-          type="text"
-          className="editProIn"
-          value={profileData.firstName}
-          onChange={handleFirstNameChange}
-        />
+      <AccessibilityIcon />
+      <div
+        className={`editProfile ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${contrast}`}
+      >
+        <h1 className="profileHeader">Update your information:</h1>
+        <div className="editProfile">
+          <label htmlFor="firstName">First name:</label>
+          <input
+            type="text"
+            className="editProIn"
+            value={profileData.firstName}
+            onChange={handleFirstNameChange}
+          />
 
-        <label htmlFor="lastName">Last name:</label>
-        <input
-          type="text"
-          className="editProIn"
-          value={profileData.lastName}
-          onChange={handleLastNameChange}
-        />
+          <label htmlFor="lastName">Last name:</label>
+          <input
+            type="text"
+            className="editProIn"
+            value={profileData.lastName}
+            onChange={handleLastNameChange}
+          />
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="text"
-          value={profileData.email}
-          onChange={handleEmailChange}
-        />
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            value={profileData.email}
+            onChange={handleEmailChange}
+          />
 
-        <label htmlFor="gender">Gender:</label>
-        <input
-          type="text"
-          value={profileData.gender}
-          onChange={handleGenderChange}
-        />
+          <label htmlFor="gender">Gender:</label>
+          <input
+            type="text"
+            value={profileData.gender}
+            onChange={handleGenderChange}
+          />
 
-        <label htmlFor="age">Age:</label>
-        <input type="text" value={profileData.age} onChange={handleAgeChange} />
+          <label htmlFor="age">Age:</label>
+          <input
+            type="text"
+            value={profileData.age}
+            onChange={handleAgeChange}
+          />
 
-        <label htmlFor="weight">Weight:</label>
-        <input
-          type="text"
-          value={profileData.weight}
-          onChange={handleWeightChange}
-        />
+          <label htmlFor="weight">Weight:</label>
+          <input
+            type="text"
+            value={profileData.weight}
+            onChange={handleWeightChange}
+          />
 
-        <label htmlFor="height">Height:</label>
-        <input
-          type="text"
-          value={profileData.height}
-          onChange={handleHeightChange}
-        />
+          <label htmlFor="height">Height:</label>
+          <input
+            type="text"
+            value={profileData.height}
+            onChange={handleHeightChange}
+          />
 
-        <div className="btn-container" onClick={handleSubmit}>
-          <button type="submit" className="btn">
-            Save
-          </button>
+          <div className="btn-container" onClick={handleSubmit}>
+            <button type="submit" className="btn">
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </>

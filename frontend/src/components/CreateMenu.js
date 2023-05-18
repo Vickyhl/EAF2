@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import AccessibilityIcon from "./AccessibilityIcon";
-import withAccessibilityStyles from "./withAccessibilityStyles";
-import "./css/modalCSS.css";
+import { AccessibilityContext } from "./AccessibilityContext";
+import "./css/createMenu.css";
 
 const CreateMenu = () => {
+  const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
   let mid;
@@ -78,7 +79,11 @@ const CreateMenu = () => {
   return (
     <>
       <AccessibilityIcon />
-      <div className="modal">
+      <div
+        className={`create-menu ${fontSize} ${
+          readableText ? "readableText" : ""
+        } ${contrast}`}
+      >
         <form onSubmit={handleSubmit(handleSubmitForm)}>
           <label htmlFor="age">Enter your age:</label>
           <input
