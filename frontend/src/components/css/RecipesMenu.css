@@ -34,7 +34,12 @@
 }
  
 h1.recipesHeader {
-  margin-top: 100px;
+  margin-top: 150px;
+  width: 1519px;
+  margin-bottom: 40px;
+}
+
+h1.mealsHeader {
   width: 1519px;
   margin-bottom: -40px;
 }

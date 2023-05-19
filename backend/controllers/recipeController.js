@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import axios from "axios";
 import Recipe from "../models/recipeModel.js";
 
 export const fetchRecipe = async (req, res) => {
@@ -58,3 +57,24 @@ async function prepAndServing(targetTitle) {
   };
   return PAS;
 }
+
+export const fetchNutrients = async (req, res) => {
+  const rid = req.params;
+  let bad = [];
+  let good = [];
+
+  const response = await fetch(
+    `https://api.spoonacular.com/recipes/${rid}/nutritionWidget.json?apiKey=${process.env.RECIPES_API_KEY}`
+  );
+  const data = await response.json();
+  bad = data.bad;
+  good = data.good.slice(0, 7);
+
+  const extractedBad = bad.map(({ amount, title }) => ({ amount, title }));
+  const extractedGood = good.map(({ amount, title }) => ({ amount, title }));
+
+  const items = extractedBad.concat(extractedGood);
+
+  // console.log(items);
+  res.status(201).json({ items: items });
+};

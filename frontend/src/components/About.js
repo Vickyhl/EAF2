@@ -4,8 +4,10 @@ import "./css/about.css";
 function About() {
   return (
     <div className="about" style={{ marginLeft: "100px" }}>
-      <h2 style={{ textAlign: "center" }}>About the site</h2>
-      <h3>Who we are?</h3>
+      <h2 className="aboutHeader" style={{ textAlign: "center" }}>
+        About the site
+      </h2>
+      <h3 className="aboutHeader">Who we are?</h3>
       <p className="about">
         The website Eat&amp;Fit was founded in 2023 by Yuval Avitan and Victoria
         Hlustov accompanied by the academic supervisor - Michael Kieperberg and

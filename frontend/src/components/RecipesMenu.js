@@ -60,7 +60,7 @@ const RecipesMenu = () => {
             : "black"
         }`}
       >
-        <h1 className="recipesHeader">Recipes menu num. {menuNum}</h1>
+        <h1 className="mealsHeader">Recipes menu num. {menuNum}</h1>
         <a
           href={`http://localhost:3000/cooking/${menu.recipes[0].rid}`}
           className="tileRecipes"
