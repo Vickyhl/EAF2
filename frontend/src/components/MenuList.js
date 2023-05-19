@@ -4,7 +4,7 @@ import AccessibilityIcon from "./AccessibilityIcon";
 import moment from "moment";
 import "./css/tile.css";
 import axios from "axios";
-// Hi
+
 const MenuList = () => {
   const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   let userData = localStorage.getItem("user");
