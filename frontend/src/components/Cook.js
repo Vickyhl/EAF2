@@ -33,6 +33,12 @@ function Cook() {
     }
   }, [recipe]);
 
+  const handleNutrients = () => {
+    window.location.assign(
+      `http://localhost:3000/nutrients/${recipe.recipe.title}/${rid}`
+    );
+  };
+
   const startTimer = (index, minutes) => {
     const endTime = Date.now() + minutes * 60 * 1000;
     const timerId = setInterval(() => tick(index), 1000);
@@ -97,7 +103,11 @@ function Cook() {
         <strong>serving: </strong>
         {recipe.recipe && recipe.recipe.serving}
       </div>
-
+      <div className="btn-container-receipt" onClick={handleNutrients}>
+        <button type="submit" className="btn">
+          show nutrients{" "}
+        </button>
+      </div>
       <div className="recipe-container">
         {recipe.recipe && (
           <>

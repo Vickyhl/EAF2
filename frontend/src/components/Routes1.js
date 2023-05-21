@@ -94,7 +94,7 @@ const Routes1 = () => {
       <Route path="/editProfile" element={<EditProfile />} />
       <Route path="/ExTemplate" element={<ExTemplate />} />
       <Route path="/cooking/:rid" element={<Cook />} />
-      <Route path="/nutrients" element={<Nutrients />} />
+      <Route path="/nutrients/:rName/:rid" element={<Nutrients />} />
 
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />

@@ -59,7 +59,7 @@ async function prepAndServing(targetTitle) {
 }
 
 export const fetchNutrients = async (req, res) => {
-  const rid = req.params;
+  const rid = req.params.rid;
   let bad = [];
   let good = [];
 
@@ -74,7 +74,7 @@ export const fetchNutrients = async (req, res) => {
   const extractedGood = good.map(({ amount, title }) => ({ amount, title }));
 
   const items = extractedBad.concat(extractedGood);
-
   // console.log(items);
+
   res.status(201).json({ items: items });
 };

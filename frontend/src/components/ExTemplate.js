@@ -2,14 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./css/ex.css";
 
-//muscle name
-//name of excercise
-//gif
-//num of reps done/num of total reps
-//start
-//complete one rep -> 30 sec rest
-//move to next excercise -> 1 min rest
-
 function ExTemplate() {
   const location = useLocation();
   const details = location.state.exDetails;
