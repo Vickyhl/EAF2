@@ -19,6 +19,17 @@ import Card from "./Card";
 import CheckoutForm from "./CheckoutForm";
 import Receipt from "./Receipt";
 import About from "./About";
+import Donation from "./Donation";
+import Articles from "./Articles";
+import Contact from "./Contact";
+import CityChoice from "./CityChoice.js";
+import GymMaps from "./GymMaps";
+import Profile from "./Profile";
+import EditProfile from "./EditProfile";
+import ExTemplate from "./ExTemplate";
+import Cook from "./Cook";
+import Nutrients from "./Nutrients";
+
 import MenBeg from "./MenBeg";
 import LegsExMenBeg from "./workouts/menBeg/LegsExMenBeg";
 import MenAdv from "./MenAdv";
@@ -50,17 +61,7 @@ import WomenAdvBack from "./workouts/womenAdv/WomenAdvBack";
 import WomenAdvFrontHand from "./workouts/womenAdv/WomenAdvFrontHand";
 import WomenAdvBackHand from "./workouts/womenAdv/WomenAdvBackHand";
 import WomenAdvBackLeg2 from "./workouts/womenAdv/WomenAdvBackLeg2";
-
-import Donation from "./Donation";
-import Articles from "./Articles";
-import Contact from "./Contact";
-import CityChoice from "./CityChoice.js";
-import GymMaps from "./GymMaps";
-import Profile from "./Profile";
-import EditProfile from "./EditProfile";
-import ExTemplate from "./ExTemplate";
-import Cook from "./Cook";
-import Nutrients from "./Nutrients";
+import WeightTrack from "./WeightTrack";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -95,6 +96,7 @@ const Routes1 = () => {
       <Route path="/ExTemplate" element={<ExTemplate />} />
       <Route path="/cooking/:rid" element={<Cook />} />
       <Route path="/nutrients/:rName/:rid" element={<Nutrients />} />
+      <Route path="/weightTrack" element={<WeightTrack />} />
 
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />

@@ -68,6 +68,18 @@ const userSchema = mongoose.Schema(
       required: false,
       default: "",
     },
+    userWeight: [
+      {
+        weight: {
+          type: Number,
+          required: true,
+        },
+        date: {
+          type: Date,
+          required: true,
+        },
+      },
+    ],
     menus: [
       {
         type: mongoose.Schema.Types.ObjectId,

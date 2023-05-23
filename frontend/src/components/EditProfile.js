@@ -67,10 +67,6 @@ function EditProfile() {
     setProfileData({ ...profileData, age: e.target.value });
   };
 
-  const handleWeightChange = (e) => {
-    setProfileData({ ...profileData, weight: e.target.value });
-  };
-
   const handleHeightChange = (e) => {
     setProfileData({ ...profileData, height: e.target.value });
   };
@@ -120,13 +116,6 @@ function EditProfile() {
             type="text"
             value={profileData.age}
             onChange={handleAgeChange}
-          />
-
-          <label htmlFor="weight">Weight:</label>
-          <input
-            type="text"
-            value={profileData.weight}
-            onChange={handleWeightChange}
           />
 
           <label htmlFor="height">Height:</label>

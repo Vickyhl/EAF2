@@ -10,7 +10,6 @@ const Header = (handleClick) => {
   };
 
   const logOut = () => {
-    // navigate("/home");
     localStorage.clear();
   };
   handleClick = (text) => {
@@ -37,9 +36,6 @@ const Header = (handleClick) => {
           {userData === "undefined" || !userData ? (
             <a href="/login">Login</a>
           ) : (
-            // <a href="login" onClick={(event) => handleClick(isRegistred + 1)}>
-            //   Login
-            // </a>
             <a href="home" onClick={logOut}>
               Logout
             </a>
@@ -53,6 +49,7 @@ const Header = (handleClick) => {
         <div className="dropdown-content">
           <a href="/myProfile">View profile</a>
           <a href="/editProfile">Edit your profile</a>
+          <a href="/weightTrack">Weight tracking</a>
         </div>
       </li>
       <li className="dropdown">

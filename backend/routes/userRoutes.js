@@ -7,6 +7,8 @@ import {
   forgotPassword,
   resetPassword,
   updateProfile,
+  updateWeight,
+  fetchWeight,
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -28,5 +30,7 @@ router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);
 router.post("/updateProfile", updateProfile);
 router.put("/resetPassword", resetPassword);
+router.post("/updateWeight/:uid", updateWeight);
+router.get("/fetchWeight/:uid", fetchWeight);
 
 export default router;

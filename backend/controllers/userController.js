@@ -246,3 +246,41 @@ export const updateProfile = async (req, res, next) => {
   await user.save();
   res.send({ message: "User updated successfully!" });
 };
+
+export const updateWeight = async (req, res, next) => {
+  const data = req.body;
+  const uid = req.params.uid;
+  const weight = Object.keys(data)[0];
+
+  const user = await User.findOne({ _id: uid });
+
+  if (user) {
+    if (!user.userWeight) {
+      user.userWeight = []; // Initialize the userWeight as an array if it doesn't exist
+    }
+
+    user.userWeight.push({
+      weight: weight,
+      date: new Date(),
+    });
+  }
+
+  // console.log(user.userWeight);
+  await user.save();
+  res.send({ message: "Weight updated successfully!" });
+};
+
+export const fetchWeight = async (req, res, next) => {
+  const uid = req.params.uid;
+
+  const user = await User.findOne({ _id: uid });
+  const data = user.userWeight;
+
+  const existingData = data.map((entry) => ({
+    x: new Date(entry.date).toDateString(), // Format the date as desired
+    y: entry.weight,
+  }));
+  // console.log(existingData);
+
+  res.send({ existingData: existingData });
+};
