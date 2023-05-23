@@ -26,7 +26,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(user);
     await axios
-      .post("http://eaf-2.vercel.app/api/users/login", user)
+      .put("http://eaf-2.vercel.app/api/users/login", user)
       .then((res) => {
         console.log(res.data.existingUser);
         if (res.data.existingUser) {
