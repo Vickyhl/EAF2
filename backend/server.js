@@ -8,6 +8,7 @@ import menuRoutes from "./routes/menuRoutes.js";
 import usersRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
+import groceryRoutes from "./routes/groceryRoutes.js";
 import { loadStripe } from "@stripe/stripe-js";
 import cors from "cors";
 import User from "./models/userModel.js";
@@ -83,6 +84,7 @@ app.use("/api/menus", menuRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/recipes", recipeRoutes);
+app.use("/api/grocery", groceryRoutes);
 
 app.use((req, res, next) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));

@@ -11,13 +11,6 @@ function WeightTrack() {
   const [userInput, setUserInput] = useState("");
   const [BMI, setBMI] = useState(null);
 
-  //   const data = [
-  //     { x: "2023-05-22", y: 120 },
-  //     { x: "2023-05-23", y: 100 },
-  //     { x: "2023-05-24", y: 70 },
-  //     { x: "2023-05-26", y: 40 },
-  //   ];
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const weight = parseFloat(userInput);

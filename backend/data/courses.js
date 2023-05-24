@@ -129,7 +129,7 @@ export const vegetables = [
   "Carrot",
   "Radish- 3 units",
   "Bell peper",
-  "Fennel",
+  "Fennel - 1 unit",
   "Cooked green beans- 150 gr",
 ];
 
