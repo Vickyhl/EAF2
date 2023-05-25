@@ -63,6 +63,7 @@ import WomenAdvBackHand from "./workouts/womenAdv/WomenAdvBackHand";
 import WomenAdvBackLeg2 from "./workouts/womenAdv/WomenAdvBackLeg2";
 import WeightTrack from "./WeightTrack";
 import WachGrocery from "./WachGrocery";
+import EditGrocery from "./EditGrocery";
 
 const Routes1 = () => {
   let userData = localStorage.getItem("user");
@@ -99,6 +100,7 @@ const Routes1 = () => {
       <Route path="/nutrients/:rName/:rid" element={<Nutrients />} />
       <Route path="/weightTrack" element={<WeightTrack />} />
       <Route path="/watchGrocery" element={<WachGrocery />} />
+      <Route path="/editGrocery" element={<EditGrocery />} />
 
       <Route path="/men/beginners" element={<MenBeg />} />
       <Route path="/men/advanced" element={<MenAdv />} />
