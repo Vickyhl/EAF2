@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/watchGrocery.css";
+import { exportToPDF } from "./exportDataToCSV";
 
 function WachGrocery() {
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
+  const filename = "output.pdf";
   const [regularList, setRegularList] = useState([]);
   const [recipeList, setRecipeList] = useState([]);
   const [showRegularList, setShowRegularList] = useState(true);
@@ -33,6 +35,22 @@ function WachGrocery() {
     }
   };
 
+  const exportRegular = async (event) => {
+    event.preventDefault();
+    const result = await axios.get(
+      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
+    );
+    exportToPDF(result.data.groceryList, filename);
+  };
+
+  const exportRecipe = async (event) => {
+    event.preventDefault();
+    const result = await axios.get(
+      `http://localhost:5000/api/grocery/fetchRecipeGrocery/${userId}`
+    );
+    exportToPDF(result.data.groceryList, filename);
+  };
+
   return (
     <>
       <div className="groceryClass">
@@ -45,6 +63,20 @@ function WachGrocery() {
         <div className="btn-container">
           <button aria-label="Submit" className="BMIbtn" onClick={fetchRecipe}>
             Show grocery list for my recipe based menu
+          </button>
+        </div>
+        <div className="btn-container">
+          <button
+            aria-label="Submit"
+            className="BMIbtn"
+            onClick={exportRegular}
+          >
+            Export grocery list for my regular menu
+          </button>
+        </div>
+        <div className="btn-container">
+          <button aria-label="Submit" className="BMIbtn" onClick={exportRecipe}>
+            Export grocery list for my recipe based menu
           </button>
         </div>
         {showRegularList ? (
