@@ -46,7 +46,7 @@ function WachGrocery() {
   const exportRecipe = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/grocery/fetchRecipeGrocery/${userId}`
+      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
     );
     exportToPDF(result.data.groceryList, filename);
   };

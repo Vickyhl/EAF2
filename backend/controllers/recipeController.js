@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import Recipe from "../models/recipeModel.js";
 
 export const fetchRecipe = async (req, res) => {

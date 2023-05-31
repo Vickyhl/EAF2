@@ -14,9 +14,7 @@ body {
     background-color: #fff;
     max-width: 1920px;
     max-height: 100%;
-    /* padding: 100px 537px; */
     margin: 100px;
-    /* padding: 100px 400px; */
     width: 100%;
     width: 400px;
     z-index: 1;
@@ -57,6 +55,8 @@ body {
 
 
 .container-home{
+    overflow: hidden;
+    margin-top: 250px;
     text-align: justify;
     max-width: 1920px;
     height: 100px;

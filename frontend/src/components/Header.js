@@ -3,8 +3,11 @@ import "./css/Header.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../components/images/logo.png";
 
-const Header = (handleClick) => {
-  let userData = localStorage.getItem("user");
+const Header = ({ handleClick }) => {
+  const userData = localStorage.getItem("user");
+  const parsedUserData = JSON.parse(userData || "{}");
+  const isDietitian = parsedUserData.isDietitian;
+
   let imgStyle = {
     backgroundImage: `url(${logo})`,
   };
@@ -92,7 +95,6 @@ const Header = (handleClick) => {
           </div>
         </div>
       </li>
-
       <li>
         <a href="/cityChoice">Gym maps</a>
       </li>
@@ -102,6 +104,22 @@ const Header = (handleClick) => {
       <li>
         <a href="/donation">Our donation</a>
       </li>
+
+      {isDietitian ? (
+        <li className="dropdown">
+          <a href="" className="dropbtn">
+            Nutrition menus{" "}
+          </a>
+          <div className="dropdown-content">
+            <div class="dropdown-submenu">
+              <a href="/showRegMenus">Watch or edit regular menus</a>
+            </div>
+            <div class="dropdown-submenu">
+              <a href="#">Watch or edit recipe based menus</a>
+            </div>
+          </div>
+        </li>
+      ) : null}
     </ul>
   );
 };

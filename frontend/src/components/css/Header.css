@@ -47,10 +47,15 @@
 }
 
 .welcome {
-  margin-top: 350px;
-  margin-left: 250px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 878px;
   height: 152px;
+  margin: 460px auto 0 auto;
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .logo {
@@ -127,3 +132,14 @@ li a:hover, .dropdown:hover .dropbtn {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  .chat-icon {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 20px;
+    cursor: pointer;
+    margin-bottom: 70px;
+    margin-left: -35px;
+  }
+  

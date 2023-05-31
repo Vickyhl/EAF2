@@ -9,6 +9,7 @@ import usersRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
 import groceryRoutes from "./routes/groceryRoutes.js";
+import dieticianRoutes from "./routes/dieticianRoutes.js";
 import { loadStripe } from "@stripe/stripe-js";
 import cors from "cors";
 import User from "./models/userModel.js";
@@ -19,7 +20,7 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const app = express();
 console.log(__dirname);
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
@@ -71,28 +72,30 @@ app.post("/stripe-webhook", async (req, res) => {
     const paymentAmount = session.amount_total;
     const paymentMethod = session.payment_method_types[0];
 
-    // Send email receipt to customer using SendGrid or Mailchimp
-    // ...
-
     res.status(200).send();
   } else {
     res.status(400).send();
   }
 });
 
+// app.get("/usersMenus/:rid", async (req, res) => {
+//   console.log("hey");
+// });
+
 app.use("/api/menus", menuRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/recipes", recipeRoutes);
 app.use("/api/grocery", groceryRoutes);
+app.use("/api/dietician", dieticianRoutes);
 
 app.use((req, res, next) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
-// app.use((req, res, next) => {
-//   const error = new HttpError("Could not find this route.", 404);
-//   throw error;
-// });
+app.use((req, res, next) => {
+  const error = new HttpError("Could not find this route.", 404);
+  throw error;
+});
 
 app.use((error, req, res, next) => {
   if (res.headerSent) {
