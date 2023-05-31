@@ -18,11 +18,10 @@ const ChatBot = () => {
 
       setChatHistory([...chatHistory, newMessage]);
       setUserInput("");
-      generateBotResponse();
     }
   };
 
-  const generateBotResponse = () => {
+  const generateBotResponse = (userInput) => {
     const userMessage = userInput.trim().toLowerCase();
 
     let botResponse;
@@ -87,31 +86,27 @@ const ChatBot = () => {
     const newMessage = {
       sender: "bot",
       message: botResponse,
-      question: userInput.trim(),
     };
 
     setChatHistory([...chatHistory, newMessage]);
   };
 
   useEffect(() => {
-    generateBotResponse();
-  }, []);
+    if (
+      chatHistory.length > 0 &&
+      chatHistory[chatHistory.length - 1].sender === "user"
+    ) {
+      generateBotResponse(chatHistory[chatHistory.length - 1].message);
+    }
+  }, [chatHistory]);
 
   return (
     <div>
       <div className="chat-window">
         {chatHistory.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            <div className="message-bubble">
-              {message.sender === "user" ? (
-                <span className="message-text">{message.message}</span>
-              ) : (
-                <>
-                  <span className="message-text">{message.question}</span>
-                  <br />
-                  <span className="message-text">{message.message}</span>
-                </>
-              )}
+          <div className={`message-wrapper ${message.sender}`} key={index}>
+            <div className={`message-bubble ${message.sender}`}>
+              <span className="message-text">{message.message}</span>
             </div>
           </div>
         ))}
