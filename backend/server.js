@@ -117,17 +117,17 @@ app.listen(port, () => {
 // /*=================================
 //         Database
 // ===================================*/
-// mongoose
-//   .connect(`mongodb+srv://Vicky:123456EAF@eaf.rhcan5b.mongodb.net/Eat&Fit`, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("Connection Successfull");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+mongoose
+  .connect(`mongodb+srv://Vicky:123456EAF@eaf.rhcan5b.mongodb.net/Eat&Fit`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connection Successfull");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Export the Express API
 export default app;
