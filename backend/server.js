@@ -17,13 +17,13 @@ import path from "path";
 import * as url from "url";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
-
+const port = process.env.PORT || 5000;
 const app = express();
 console.log(__dirname);
 // app.use(cors());
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+//app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -81,6 +81,7 @@ app.post("/stripe-webhook", async (req, res) => {
 // app.get("/usersMenus/:rid", async (req, res) => {
 //   console.log("hey");
 // });
+//must use JWT Token
 
 app.use("/api/menus", menuRoutes);
 app.use("/api/users", usersRoutes);
@@ -109,8 +110,8 @@ app.use((error, req, res, next) => {
         listen
 =============================*/
 
-app.listen(5000, () => {
-  console.log("Server is runing at port 5000");
+app.listen(port, () => {
+  console.log(`Server is runing at port ${port}`);
 });
 
 // /*=================================
