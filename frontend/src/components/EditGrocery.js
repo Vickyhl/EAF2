@@ -29,7 +29,7 @@ function EditGrocery() {
   const fetchRegular = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
+      `http://35.230.129.110:5000/api/grocery/fetchRegularGrocery/${userId}`
     );
     setList(result.data.groceryList);
     setShowRegularList(true);
@@ -38,7 +38,7 @@ function EditGrocery() {
   const fetchRecipe = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/grocery/fetchRecipeGrocery/${userId}`
+      `http://35.230.129.110:5000/api/grocery/fetchRecipeGrocery/${userId}`
     );
     setList(result.data.groceryList);
     setShowRegularList(true);

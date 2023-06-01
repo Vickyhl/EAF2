@@ -12,7 +12,7 @@ function ForgotPassword() {
   } = useForm();
 
   const handleSubmitForm = (event) => {
-    fetch("http://localhost:5000/api/users/forgotPassword", {
+    fetch("http://35.230.129.110:5000/api/users/forgotPassword", {
       method: "POST",
       body: JSON.stringify({ email }),
       headers: {

@@ -34,7 +34,7 @@ const CreateMenu = () => {
     console.log(userId);
     if (type === "regular") {
       await axios
-        .post("http://localhost:5000/api/menus/personalMenu", {
+        .post("http://35.230.129.110:5000/api/menus/personalMenu", {
           age,
           height,
           weight,
@@ -52,7 +52,7 @@ const CreateMenu = () => {
         });
     } else {
       const res = await axios.post(
-        "http://localhost:5000/api/menus/recipesMenu",
+        "http://35.230.129.110:5000/api/menus/recipesMenu",
         {
           age,
           height,

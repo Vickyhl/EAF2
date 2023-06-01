@@ -41,7 +41,7 @@ function EditProfile() {
     localStorage.setItem("user", updatedUserData);
 
     const result = await axios.post(
-      "http://localhost:5000/api/users/updateProfile",
+      "http://35.230.129.110:5000/api/users/updateProfile",
       profileData
     );
     console.log(result.data.message);

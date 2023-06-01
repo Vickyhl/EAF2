@@ -26,7 +26,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(user);
     await axios
-      .post("http://localhost:5000/api/users/login", user)
+      .post("http://35.230.129.110:5000/api/users/login", user)
       .then((res) => {
         console.log(res.data.existingUser);
         if (res.data.existingUser) {

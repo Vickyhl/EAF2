@@ -30,7 +30,7 @@ function ResetPassword() {
     formData = { password, resetToken };
 
     await axios
-      .put("http://localhost:5000/api/users/resetPassword", formData)
+      .put("http://35.230.129.110:5000/api/users/resetPassword", formData)
       .then((res) => {
         console.log(res.data.message);
         if (res.data.message === "Invalid or expired token") {

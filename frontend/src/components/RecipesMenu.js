@@ -22,7 +22,7 @@ const RecipesMenu = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get(
-          `http://localhost:5000/api/menus/fetchRecipeMenuByIndex/${menuNum}/${userID}`
+          `http://35.230.129.110:5000/api/menus/fetchRecipeMenuByIndex/${menuNum}/${userID}`
         );
         setMenu(data.data.menu);
         setImgUrl1(menu.recipes[0].imgURL);

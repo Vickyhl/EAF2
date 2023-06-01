@@ -14,7 +14,7 @@ const UserMenus = () => {
     const fetchMenus = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/menus/user/${userId}`
+          `http://35.230.129.110:5000/api/menus/user/${userId}`
         );
         console.log(responseData);
 

@@ -14,7 +14,7 @@ const Recipe = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get(
-          `http://localhost:5000/api/menus/fetchRecipeById/${rid}`
+          `http://35.230.129.110:5000/api/menus/fetchRecipeById/${rid}`
         );
         setRecipe(data.data.recipe);
       } catch (err) {}
