@@ -16,7 +16,7 @@ function EditRegularMenu() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://35.230.129.110:5000/api/menus/${mid}`
+          `http://localhost:5000/api/menus/${mid}`
         );
         setMenu(response.data.menu);
         setEditedMenu(response.data.menu);
@@ -64,7 +64,7 @@ function EditRegularMenu() {
       Object.keys(updatedMenu).forEach((mealNumber) => {
         updatedMenu[mealNumber] = editedItems[mealNumber] || [];
       });
-      await axios.post(`http://35.230.129.110:5000/api/menus/updateMenu/${mid}`, {
+      await axios.post(`http://localhost:5000/api/menus/updateMenu/${mid}`, {
         menu: updatedMenu,
       });
       setMenu(updatedMenu);

@@ -12,7 +12,7 @@ function Receipt() {
   const handleReceipt = async (e) => {
     e.preventDefault();
     const data = await axios.post(
-      `http://35.230.129.110:5000/api/order/receipt/${email}`
+      `http://localhost:5000/api/order/receipt/${email}`
     );
     if (type === "regular") {
       window.location.assign(`http://localhost:3000/${userId}/menus`);

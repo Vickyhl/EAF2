@@ -9,7 +9,7 @@ const DietitianWatchRegularMenus = () => {
   const fetchRegularMenus = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/dietician/usersMenus`
+      `http://localhost:5000/api/dietician/usersMenus`
     );
     setMenuDetails(result.data.menuDetails);
   };
@@ -17,7 +17,7 @@ const DietitianWatchRegularMenus = () => {
   const fetchRecipesMenus = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/dietician/usersRecipeMenus`
+      `http://localhost:5000/api/dietician/usersRecipeMenus`
     );
     setMenuDetails(result.data.menuDetails);
   };

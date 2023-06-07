@@ -14,7 +14,7 @@ function Cook() {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          `http://35.230.129.110:5000/api/recipes/fetchRecipe/${rid}`
+          `http://localhost:5000/api/recipes/fetchRecipe/${rid}`
         );
         console.log(result.data);
         setRecipe(result.data);

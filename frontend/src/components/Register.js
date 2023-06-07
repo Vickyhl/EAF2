@@ -32,9 +32,9 @@ const Register = () => {
     const { firstName, lastName, email, password } = user;
     if (firstName && lastName && email && password) {
       await axios
-        .post("http://35.230.129.110:5000/api/users/signup", user)
+        .post("http://localhost:5000/api/users/signup", user)
         .then((res) => {
-          alert(res.data.message);
+          // alert(res.data.message);
           navigate("/login");
         });
     } else {

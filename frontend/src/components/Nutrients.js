@@ -10,7 +10,7 @@ function Nutrients() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios.get(
-        `http://35.230.129.110:5000/api/recipes/fetchNutrients/${rid}`
+        `http://localhost:5000/api/recipes/fetchNutrients/${rid}`
       );
       setItems(data.data.items);
     };

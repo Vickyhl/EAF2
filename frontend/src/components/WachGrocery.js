@@ -14,7 +14,7 @@ function WachGrocery() {
   const fetchRegular = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/grocery/fetchRegularGrocery/${userId}`
+      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
     );
     setRegularList(result.data.groceryList);
     setShowRegularList(true);
@@ -26,7 +26,7 @@ function WachGrocery() {
   const fetchRecipe = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/grocery/fetchRecipeGrocery/${userId}`
+      `http://localhost:5000/api/grocery/fetchRecipeGrocery/${userId}`
     );
     setRecipeList(result.data.groceryList);
     setShowRegularList(false);
@@ -38,7 +38,7 @@ function WachGrocery() {
   const exportRegular = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/grocery/fetchRegularGrocery/${userId}`
+      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
     );
     exportToPDF(result.data.groceryList, filename);
   };
@@ -46,7 +46,7 @@ function WachGrocery() {
   const exportRecipe = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://35.230.129.110:5000/api/grocery/fetchRegularGrocery/${userId}`
+      `http://localhost:5000/api/grocery/fetchRegularGrocery/${userId}`
     );
     exportToPDF(result.data.groceryList, filename);
   };
