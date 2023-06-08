@@ -59,7 +59,7 @@ h3.menu {
 body {
   text-align: center;
   margin: auto; 
-  overflow: scroll;
+  overflow: auto;
   line-height:0.8cm;
   background-size:100%;
   background-image: url("../images/recipe.jpeg");

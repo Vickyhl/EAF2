@@ -1,8 +1,8 @@
 import React from "react";
 import "./css/Header.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../components/images/logo.png";
-
+import logo from "../components/images/appleNewIcon.png";
+import '../components/css/fonts.css';
 const Header = ({ handleClick }) => {
   const userData = localStorage.getItem("user");
   const parsedUserData = JSON.parse(userData || "{}");
@@ -28,7 +28,7 @@ const Header = ({ handleClick }) => {
       </div>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          My account
+          My Account
         </a>
         <div className="dropdown-content">
           {userData === "undefined" || !userData ? (
@@ -47,7 +47,7 @@ const Header = ({ handleClick }) => {
       </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          My profile
+          My Profile
         </a>
         <div className="dropdown-content">
           <a href="/myProfile">View profile</a>
@@ -57,7 +57,7 @@ const Header = ({ handleClick }) => {
       </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          Nutrition menu
+          Nutrition Menu
         </a>
         <div className="dropdown-content">
           <a href="/createMenu">Purches menu</a>
@@ -67,7 +67,7 @@ const Header = ({ handleClick }) => {
       </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          Grocery list
+          Grocery List
         </a>
         <div className="dropdown-content">
           <a href="/watchGrocery">Watch grocery list</a>
@@ -76,7 +76,7 @@ const Header = ({ handleClick }) => {
       </li>
       <li className="dropdown">
         <a href="" className="dropbtn">
-          Exercise plan
+          Exercise Plan
         </a>
         <div className="dropdown-content">
           <div class="dropdown-submenu">
@@ -96,13 +96,13 @@ const Header = ({ handleClick }) => {
         </div>
       </li>
       <li>
-        <a href="/cityChoice">Gym maps</a>
+        <a href="/cityChoice">GYM Maps</a>
       </li>
       <li>
         <a href="/articles">Articles</a>
       </li>
       <li>
-        <a href="/donation">Our donation</a>
+        <a href="/donation">Our Donation</a>
       </li>
 
       {isDietitian ? (
