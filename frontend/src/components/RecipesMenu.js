@@ -22,7 +22,7 @@ const RecipesMenu = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get(
-          `http://localhost:5000/api/menus/fetchRecipeMenuByIndex/${menuNum}/${userID}`
+          `https://eatandfit-api.onrender.com/api/menus/fetchRecipeMenuByIndex/${menuNum}/${userID}`
         );
         setMenu(data.data.menu);
         setImgUrl1(menu.recipes[0].imgURL);
@@ -62,7 +62,7 @@ const RecipesMenu = () => {
       >
         <h1 className="mealsHeader">Recipes menu num. {menuNum}</h1>
         <a
-          href={`http://localhost:3000/cooking/${menu.recipes[0].rid}`}
+          href={`https://eaf-2.vercel.app/cooking/${menu.recipes[0].rid}`}
           className="tileRecipes"
           style={tileStyle}
         >
@@ -73,7 +73,7 @@ const RecipesMenu = () => {
         </a>
 
         <a
-          href={`http://localhost:3000/watchSnack/${0}`}
+          href={`https://eaf-2.vercel.app/watchSnack/${0}`}
           className="tileRecipes"
         >
           <h2 className={`${contrast} ${fontSize}`}>Snack 1</h2>
@@ -81,7 +81,7 @@ const RecipesMenu = () => {
         </a>
 
         <a
-          href={`http://localhost:3000/cooking/${menu.recipes[1].rid}`}
+          href={`https://eaf-2.vercel.app/cooking/${menu.recipes[1].rid}`}
           className="tileRecipes"
           style={tileStyle2}
         >
@@ -91,13 +91,16 @@ const RecipesMenu = () => {
           </p>
         </a>
 
-        <a href={`http://localhost:3000/watchSnack/${1}`} class="tileRecipes">
+        <a
+          href={`https://eaf-2.vercel.app/watchSnack/${1}`}
+          class="tileRecipes"
+        >
           <h2 className={`${contrast} ${fontSize}`}>Snack 2</h2>
           <p className={`recipesText ${contrast} ${fontSize}`}></p>
         </a>
 
         <a
-          href={`http://localhost:3000/cooking/${menu.recipes[2].rid}`}
+          href={`https://eaf-2.vercel.app/cooking/${menu.recipes[2].rid}`}
           className="tileRecipes"
           style={tileStyle3}
         >

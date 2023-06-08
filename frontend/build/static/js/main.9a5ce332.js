@@ -20451,7 +20451,7 @@
                             console.log(c),
                             (e.next = 4),
                             Aa.post(
-                              "http://localhost:5000/api/users/login",
+                              "https://eatandfit-api.onrender.com/api/users/login",
                               c
                             ).then(function (e) {
                               console.log(e.data.existingUser),
@@ -20609,7 +20609,7 @@
                           return (
                             (e.next = 6),
                             Aa.post(
-                              "http://localhost:5000/api/users/signup",
+                              "https://eatandfit-api.onrender.com/api/users/signup",
                               l
                             ).then(function (e) {
                               alert(e.data.message), i("/login");
@@ -22888,7 +22888,7 @@
                           return (
                             (e.next = 5),
                             Aa.post(
-                              "http://localhost:5000/api/menus/personalMenu",
+                              "https://eatandfit-api.onrender.com/api/menus/personalMenu",
                               {
                                 age: n,
                                 height: r,
@@ -22902,7 +22902,7 @@
                               console.log(e),
                                 console.log(s),
                                 window.location.assign(
-                                  "http://localhost:3000/card/".concat(
+                                  "https://eaf-2.vercel.app/card/".concat(
                                     encodeURIComponent(s)
                                   )
                                 );
@@ -22915,7 +22915,7 @@
                           return (
                             (e.next = 9),
                             Aa.post(
-                              "http://localhost:5000/api/menus/recipesMenu",
+                              "https://eatandfit-api.onrender.com/api/menus/recipesMenu",
                               {
                                 age: n,
                                 height: r,
@@ -22931,7 +22931,7 @@
                             (m = u.data.num),
                             console.log(m),
                             window.location.assign(
-                              "http://localhost:3000/card/".concat(m)
+                              "https://eaf-2.vercel.app/card/".concat(m)
                             );
                         case 13:
                         case "end":
@@ -23321,7 +23321,7 @@
                                   (t.prev = 4),
                                   (t.next = 7),
                                   Aa.get(
-                                    "http://localhost:5000/api/menus/fetchMenuByIndex/"
+                                    "https://eatandfit-api.onrender.com/api/menus/fetchMenuByIndex/"
                                       .concat(u, "/")
                                       .concat(l)
                                   )
@@ -23578,7 +23578,7 @@
                                   (e.prev = 0),
                                   (e.next = 3),
                                   i(
-                                    "http://localhost:5000/api/menus/user/".concat(
+                                    "https://eatandfit-api.onrender.com/api/menus/user/".concat(
                                       l
                                     )
                                   )
@@ -23886,11 +23886,14 @@
             " ",
             (0, Re.jsxs)("form", {
               onSubmit: h(function (e) {
-                fetch("http://localhost:5000/api/users/forgotPassword", {
-                  method: "POST",
-                  body: JSON.stringify({ email: a }),
-                  headers: { "Content-Type": "application/json" },
-                }).then(function (e) {
+                fetch(
+                  "https://eatandfit-api.onrender.com/api/users/forgotPassword",
+                  {
+                    method: "POST",
+                    body: JSON.stringify({ email: a }),
+                    headers: { "Content-Type": "application/json" },
+                  }
+                ).then(function (e) {
                   "An email has been sent with instructions to reset your password" ==
                   e.message
                     ? u(
@@ -24010,7 +24013,7 @@
                             (t = { password: n, resetToken: s }),
                             (e.next = 11),
                             Aa.put(
-                              "http://localhost:5000/api/users/resetPassword",
+                              "https://eatandfit-api.onrender.com/api/users/resetPassword",
                               t
                             ).then(function (e) {
                               console.log(e.data.message),
@@ -24042,9 +24045,9 @@
             },
             f = function () {
               "Password reset successfully" == n
-                ? window.location.assign("http://localhost:3000/login")
+                ? window.location.assign("https://eaf-2.vercel.app/login")
                 : window.location.assign(
-                    "http://localhost:3000/forgotPassword"
+                    "https://eaf-2.vercel.app/forgotPassword"
                   );
             };
           return (0, Re.jsxs)("div", {
@@ -24150,7 +24153,7 @@
                                   (e.prev = 0),
                                   (e.next = 3),
                                   Aa.get(
-                                    "http://localhost:5000/api/menus/fetchRecipeMenuByIndex/"
+                                    "https://eatandfit-api.onrender.com/api/menus/fetchRecipeMenuByIndex/"
                                       .concat(p, "/")
                                       .concat(c)
                                   )
@@ -24209,7 +24212,7 @@
                           children: ["Recipes menu num. ", p],
                         }),
                         (0, Re.jsxs)("a", {
-                          href: "http://localhost:3000/cooking/".concat(
+                          href: "https://eaf-2.vercel.app/cooking/".concat(
                             f.recipes[0].rid
                           ),
                           className: "tileRecipes",
@@ -24228,7 +24231,9 @@
                           ],
                         }),
                         (0, Re.jsxs)("a", {
-                          href: "http://localhost:3000/watchSnack/".concat(0),
+                          href: "https://eaf-2.vercel.app/watchSnack/".concat(
+                            0
+                          ),
                           className: "tileRecipes",
                           children: [
                             (0, Re.jsx)("h2", {
@@ -24243,7 +24248,7 @@
                           ],
                         }),
                         (0, Re.jsxs)("a", {
-                          href: "http://localhost:3000/cooking/".concat(
+                          href: "https://eaf-2.vercel.app/cooking/".concat(
                             f.recipes[1].rid
                           ),
                           className: "tileRecipes",
@@ -24262,7 +24267,9 @@
                           ],
                         }),
                         (0, Re.jsxs)("a", {
-                          href: "http://localhost:3000/watchSnack/".concat(1),
+                          href: "https://eaf-2.vercel.app/watchSnack/".concat(
+                            1
+                          ),
                           class: "tileRecipes",
                           children: [
                             (0, Re.jsx)("h2", {
@@ -24277,7 +24284,7 @@
                           ],
                         }),
                         (0, Re.jsxs)("a", {
-                          href: "http://localhost:3000/cooking/".concat(
+                          href: "https://eaf-2.vercel.app/cooking/".concat(
                             f.recipes[2].rid
                           ),
                           className: "tileRecipes",
@@ -24329,7 +24336,7 @@
                                 (e.prev = 0),
                                 (e.next = 3),
                                 Aa.get(
-                                  "http://localhost:5000/api/menus/fetchRecipesMenus/".concat(
+                                  "https://eatandfit-api.onrender.com/api/menus/fetchRecipesMenus/".concat(
                                     l
                                   )
                                 )
@@ -24368,7 +24375,7 @@
                     switch ((e.prev = e.next)) {
                       case 0:
                         window.location.assign(
-                          "http://localhost:3000/recipesMenu/".concat(t + 1)
+                          "https://eaf-2.vercel.app/recipesMenu/".concat(t + 1)
                         );
                       case 1:
                       case "end":
@@ -24454,7 +24461,7 @@
                               return (
                                 (e.next = 2),
                                 Aa.get(
-                                  "http://localhost:5000/api/menus/fetchRecipesMenus/".concat(
+                                  "https://eatandfit-api.onrender.com/api/menus/fetchRecipesMenus/".concat(
                                     i
                                   )
                                 )
@@ -24502,7 +24509,7 @@
                                 (e.prev = 0),
                                 (e.next = 3),
                                 Aa.get(
-                                  "http://localhost:5000/api/menus/fetchRecipeById/".concat(
+                                  "https://eatandfit-api.onrender.com/api/menus/fetchRecipeById/".concat(
                                     a
                                   )
                                 )
@@ -24539,7 +24546,7 @@
                     switch ((e.prev = e.next)) {
                       case 0:
                         window.location.assign(
-                          "http://localhost:3000/cooking/".concat(o.rid)
+                          "https://eaf-2.vercel.app/cooking/".concat(o.rid)
                         );
                       case 1:
                       case "end":
@@ -24650,7 +24657,7 @@
                                 (e.prev = 0),
                                 (e.next = 3),
                                 Aa.get(
-                                  "http://localhost:5000/api/menus/fetchMenus/".concat(
+                                  "https://eatandfit-api.onrender.com/api/menus/fetchMenus/".concat(
                                     o
                                   )
                                 )
@@ -24692,7 +24699,7 @@
                     switch ((e.prev = e.next)) {
                       case 0:
                         window.location.assign(
-                          "http://localhost:3000/menu/".concat(t + 1)
+                          "https://eaf-2.vercel.app/menu/".concat(t + 1)
                         );
                       case 1:
                       case "end":
@@ -24785,7 +24792,7 @@
                             return (
                               (e.next = 3),
                               Aa.post(
-                                "http://localhost:5000/api/menus/snackGenerator/".concat(
+                                "https://eatandfit-api.onrender.com/api/menus/snackGenerator/".concat(
                                   0
                                 )
                               )
@@ -24797,7 +24804,7 @@
                             return (
                               (e.next = 8),
                               Aa.post(
-                                "http://localhost:5000/api/menus/snackGenerator/".concat(
+                                "https://eatandfit-api.onrender.com/api/menus/snackGenerator/".concat(
                                   1
                                 )
                               )
@@ -24957,9 +24964,8 @@
                             },
                           ],
                           mode: "payment",
-                          successUrl: "http://localhost:3000/receipt/".concat(
-                            e
-                          ),
+                          successUrl:
+                            "https://eaf-2.vercel.app/receipt/".concat(e),
                           cancelUrl: "https://www.example.com/cancel",
                         });
                       case 4:
@@ -25079,17 +25085,21 @@
                           a.preventDefault(),
                           (e.next = 3),
                           Aa.post(
-                            "http://localhost:5000/api/order/receipt/".concat(n)
+                            "https://eatandfit-api.onrender.com/api/order/receipt/".concat(
+                              n
+                            )
                           )
                         );
                       case 3:
                         e.sent,
                           "regular" === r
                             ? window.location.assign(
-                                "http://localhost:3000/".concat(t, "/menus")
+                                "https://eaf-2.vercel.app/".concat(t, "/menus")
                               )
                             : window.location.assign(
-                                "http://localhost:3000/recipesMenu/".concat(r)
+                                "https://eaf-2.vercel.app/recipesMenu/".concat(
+                                  r
+                                )
                               );
                       case 5:
                       case "end":
@@ -25112,10 +25122,12 @@
                         n.preventDefault(),
                           "regular" === r
                             ? window.location.assign(
-                                "http://localhost:3000/".concat(t, "/menus")
+                                "https://eaf-2.vercel.app/".concat(t, "/menus")
                               )
                             : window.location.assign(
-                                "http://localhost:3000/recipesMenu/".concat(r)
+                                "https://eaf-2.vercel.app/recipesMenu/".concat(
+                                  r
+                                )
                               );
                       case 2:
                       case "end":
@@ -28007,7 +28019,7 @@
                         case 0:
                           t.preventDefault(),
                             window.location.assign(
-                              "http://localhost:3000/gymMaps/"
+                              "https://eaf-2.vercel.app/gymMaps/"
                                 .concat(c, "/")
                                 .concat(o)
                             );
@@ -28523,7 +28535,7 @@
                           localStorage.setItem("user", n),
                           (e.next = 12),
                           Aa.post(
-                            "http://localhost:5000/api/users/updateProfile",
+                            "https://eatandfit-api.onrender.com/api/users/updateProfile",
                             v
                           )
                         );
@@ -28787,7 +28799,7 @@
                             (t.prev = 0),
                             (t.next = 3),
                             Aa.get(
-                              "http://localhost:5000/api/recipes/fetchRecipe/".concat(
+                              "https://eatandfit-api.onrender.com/api/recipes/fetchRecipe/".concat(
                                 e
                               )
                             )
@@ -29015,7 +29027,7 @@
                             return (
                               (t.next = 2),
                               Aa.get(
-                                "http://localhost:5000/api/recipes/fetchNutrients/".concat(
+                                "https://eatandfit-api.onrender.com/api/recipes/fetchNutrients/".concat(
                                   e
                                 )
                               )

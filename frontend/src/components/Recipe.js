@@ -14,7 +14,7 @@ const Recipe = () => {
     const fetchData = async () => {
       try {
         const data = await axios.get(
-          `http://localhost:5000/api/menus/fetchRecipeById/${rid}`
+          `https://eatandfit-api.onrender.com/api/menus/fetchRecipeById/${rid}`
         );
         setRecipe(data.data.recipe);
       } catch (err) {}
@@ -24,7 +24,7 @@ const Recipe = () => {
 
   const handleCookOpt = async () => {
     // console.log(recipe.rid);
-    window.location.assign(`http://localhost:3000/cooking/${recipe.rid}`);
+    window.location.assign(`https://eaf-2.vercel.app/cooking/${recipe.rid}`);
   };
 
   if (recipe) {

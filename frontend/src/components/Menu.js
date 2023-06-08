@@ -21,7 +21,7 @@ const Menu = (props) => {
       } else {
         try {
           const data = await axios.get(
-            `http://localhost:5000/api/menus/fetchMenuByIndex/${menuNum}/${userID}`
+            `https://eatandfit-api.onrender.com/api/menus/fetchMenuByIndex/${menuNum}/${userID}`
           );
           setMenu(data.data.menu);
         } catch (err) {}

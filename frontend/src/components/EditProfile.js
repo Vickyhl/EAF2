@@ -41,7 +41,7 @@ function EditProfile() {
     localStorage.setItem("user", updatedUserData);
 
     const result = await axios.post(
-      "http://localhost:5000/api/users/updateProfile",
+      "https://eatandfit-api.onrender.com/api/users/updateProfile",
       profileData
     );
     console.log(result.data.message);

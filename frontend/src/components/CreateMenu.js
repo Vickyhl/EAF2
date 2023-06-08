@@ -34,7 +34,7 @@ const CreateMenu = () => {
     console.log(userId);
     if (type === "regular") {
       await axios
-        .post("http://localhost:5000/api/menus/personalMenu", {
+        .post("https://eatandfit-api.onrender.com/api/menus/personalMenu", {
           age,
           height,
           weight,
@@ -47,12 +47,12 @@ const CreateMenu = () => {
           console.log(res);
           console.log(type);
           window.location.assign(
-            `http://localhost:3000/card/${encodeURIComponent(type)}`
+            `https://eaf-2.vercel.app/card/${encodeURIComponent(type)}`
           );
         });
     } else {
       const res = await axios.post(
-        "http://localhost:5000/api/menus/recipesMenu",
+        "https://eatandfit-api.onrender.com/api/menus/recipesMenu",
         {
           age,
           height,
@@ -65,7 +65,7 @@ const CreateMenu = () => {
       mid = res.data.num;
       // setMenuNum(res.data.num);
       console.log(mid);
-      window.location.assign(`http://localhost:3000/card/${mid}`);
+      window.location.assign(`https://eaf-2.vercel.app/card/${mid}`);
     }
   };
 

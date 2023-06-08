@@ -14,7 +14,7 @@ const UserMenus = () => {
     const fetchMenus = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/menus/user/${userId}`
+          `https://eatandfit-api.onrender.com/api/menus/user/${userId}`
         );
         console.log(responseData);
 

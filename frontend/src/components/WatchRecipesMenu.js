@@ -10,7 +10,7 @@ const WatchRecipesMenu = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        `http://localhost:5000/api/menus/fetchRecipesMenus/${userID}`
+        `https://eatandfit-api.onrender.com/api/menus/fetchRecipesMenus/${userID}`
       );
       setMenus(result.data.identifers);
       //   identifers = result.data.identifers;

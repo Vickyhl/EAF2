@@ -9,7 +9,7 @@ const DietitianWatchRegularMenus = () => {
   const fetchRegularMenus = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/dietician/usersMenus`
+      `https://eatandfit-api.onrender.com/api/dietician/usersMenus`
     );
     setMenuDetails(result.data.menuDetails);
   };
@@ -17,7 +17,7 @@ const DietitianWatchRegularMenus = () => {
   const fetchRecipesMenus = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/dietician/usersRecipeMenus`
+      `https://eatandfit-api.onrender.com/api/dietician/usersRecipeMenus`
     );
     setMenuDetails(result.data.menuDetails);
   };
@@ -25,11 +25,11 @@ const DietitianWatchRegularMenus = () => {
   const handleMenuSelect = async (index) => {
     if (menuDetails.menuType == "regMenu") {
       window.location.assign(
-        `http://localhost:3000/editMenu/${menuDetails.menuIds[index]}`
+        `https://eaf-2.vercel.app/editMenu/${menuDetails.menuIds[index]}`
       );
     } else {
       window.location.assign(
-        `http://localhost:3000/dietician/${menuDetails.menuIds[index]}`
+        `https://eaf-2.vercel.app/dietician/${menuDetails.menuIds[index]}`
       );
     }
   };

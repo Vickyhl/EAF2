@@ -12,7 +12,7 @@ function ForgotPassword() {
   } = useForm();
 
   const handleSubmitForm = (event) => {
-    fetch("http://localhost:5000/api/users/forgotPassword", {
+    fetch("https://eatandfit-api.onrender.com/api/users/forgotPassword", {
       method: "POST",
       body: JSON.stringify({ email }),
       headers: {

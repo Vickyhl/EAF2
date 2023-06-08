@@ -21,7 +21,7 @@ const Main = (handleClick) => {
         <button
           className="btn"
           onClick={() =>
-            window.location.assign("http://localhost:3000/register")
+            window.location.assign("https://eaf-2.vercel.app/register")
           }
         >
           Register

@@ -15,7 +15,7 @@ const MenuList = () => {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:5000/api/menus/fetchMenus/${userID}`
+          `https://eatandfit-api.onrender.com/api/menus/fetchMenus/${userID}`
         );
         console.log(result.data.result);
 
@@ -28,7 +28,7 @@ const MenuList = () => {
   }, [menus]);
 
   const handleMenuSelect = async (index) => {
-    window.location.assign(`http://localhost:3000/menu/${index + 1}`);
+    window.location.assign(`https://eaf-2.vercel.app/menu/${index + 1}`);
   };
 
   return menus ? (

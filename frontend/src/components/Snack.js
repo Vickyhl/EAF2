@@ -14,11 +14,11 @@ function Snack() {
       let res;
       if (type === 0) {
         res = await axios.post(
-          `http://localhost:5000/api/menus/snackGenerator/${0}`
+          `https://eatandfit-api.onrender.com/api/menus/snackGenerator/${0}`
         );
       } else {
         res = await axios.post(
-          `http://localhost:5000/api/menus/snackGenerator/${1}`
+          `https://eatandfit-api.onrender.com/api/menus/snackGenerator/${1}`
         );
       }
       // console.log(res.data.snacks);

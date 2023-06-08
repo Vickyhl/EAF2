@@ -16,7 +16,7 @@ function EditRegularMenu() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/menus/${mid}`
+          `https://eatandfit-api.onrender.com/api/menus/${mid}`
         );
         setMenu(response.data.menu);
         setEditedMenu(response.data.menu);
@@ -64,9 +64,12 @@ function EditRegularMenu() {
       Object.keys(updatedMenu).forEach((mealNumber) => {
         updatedMenu[mealNumber] = editedItems[mealNumber] || [];
       });
-      await axios.post(`http://localhost:5000/api/menus/updateMenu/${mid}`, {
-        menu: updatedMenu,
-      });
+      await axios.post(
+        `https://eatandfit-api.onrender.com/api/menus/updateMenu/${mid}`,
+        {
+          menu: updatedMenu,
+        }
+      );
       setMenu(updatedMenu);
     } catch (err) {
       console.error(err);

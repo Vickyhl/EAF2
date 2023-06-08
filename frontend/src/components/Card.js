@@ -23,7 +23,7 @@ function Card() {
       ],
       mode: "payment",
       //redirect to the last created menu
-      successUrl: `http://localhost:3000/receipt/${lastWord}`,
+      successUrl: `https://eaf-2.vercel.app/receipt/${lastWord}`,
       cancelUrl: "https://www.example.com/cancel",
     });
   }

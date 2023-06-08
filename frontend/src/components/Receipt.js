@@ -12,21 +12,21 @@ function Receipt() {
   const handleReceipt = async (e) => {
     e.preventDefault();
     const data = await axios.post(
-      `http://localhost:5000/api/order/receipt/${email}`
+      `https://eatandfit-api.onrender.com/api/order/receipt/${email}`
     );
     if (type === "regular") {
-      window.location.assign(`http://localhost:3000/${userId}/menus`);
+      window.location.assign(`https://eaf-2.vercel.app/${userId}/menus`);
     } else {
-      window.location.assign(`http://localhost:3000/recipesMenu/${type}`);
+      window.location.assign(`https://eaf-2.vercel.app/recipesMenu/${type}`);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (type === "regular") {
-      window.location.assign(`http://localhost:3000/${userId}/menus`);
+      window.location.assign(`https://eaf-2.vercel.app/${userId}/menus`);
     } else {
-      window.location.assign(`http://localhost:3000/recipesMenu/${type}`);
+      window.location.assign(`https://eaf-2.vercel.app/recipesMenu/${type}`);
     }
   };
 

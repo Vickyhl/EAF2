@@ -19,7 +19,9 @@ function CityChoice() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    window.location.assign(`http://localhost:3000/gymMaps/${country}/${city}`);
+    window.location.assign(
+      `https://eaf-2.vercel.app/gymMaps/${country}/${city}`
+    );
   };
 
   return (

@@ -27,7 +27,7 @@ function WeightTrack() {
   const handleUpdate = async (event) => {
     event.preventDefault();
     const result = await axios.post(
-      `http://localhost:5000/api/users/updateWeight/${userId}`,
+      `https://eatandfit-api.onrender.com/api/users/updateWeight/${userId}`,
       userInput
     );
   };
@@ -35,7 +35,7 @@ function WeightTrack() {
   const fetchData = async (event) => {
     event.preventDefault();
     const result = await axios.get(
-      `http://localhost:5000/api/users/fetchWeight/${userId}`
+      `https://eatandfit-api.onrender.com/api/users/fetchWeight/${userId}`
     );
     setExistingData(result.data.existingData);
     console.log(existingData);

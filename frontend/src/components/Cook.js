@@ -14,7 +14,7 @@ function Cook() {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:5000/api/recipes/fetchRecipe/${rid}`
+          `https://eatandfit-api.onrender.com/api/recipes/fetchRecipe/${rid}`
         );
         console.log(result.data);
         setRecipe(result.data);
@@ -35,7 +35,7 @@ function Cook() {
 
   const handleNutrients = () => {
     window.location.assign(
-      `http://localhost:3000/nutrients/${recipe.recipe.title}/${rid}`
+      `https://eaf-2.vercel.app/nutrients/${recipe.recipe.title}/${rid}`
     );
   };
 

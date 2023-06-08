@@ -30,7 +30,10 @@ function ResetPassword() {
     formData = { password, resetToken };
 
     await axios
-      .put("http://localhost:5000/api/users/resetPassword", formData)
+      .put(
+        "https://eatandfit-api.onrender.com/api/users/resetPassword",
+        formData
+      )
       .then((res) => {
         console.log(res.data.message);
         if (res.data.message === "Invalid or expired token") {
@@ -53,9 +56,9 @@ function ResetPassword() {
 
   const closeModal = () => {
     if (errorMessage == "Password reset successfully") {
-      window.location.assign("http://localhost:3000/login");
+      window.location.assign("https://eaf-2.vercel.app/login");
     } else {
-      window.location.assign("http://localhost:3000/forgotPassword");
+      window.location.assign("https://eaf-2.vercel.app/forgotPassword");
     }
   };
 
