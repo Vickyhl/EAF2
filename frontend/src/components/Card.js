@@ -30,7 +30,7 @@ function Card() {
 
   return (
     <div className="container">
-      <h1>Payment</h1>
+      <h1 className="payment-header">Payment</h1>
       <ul>
         <li>
           The menu is customized and created in collaboration with a qualified

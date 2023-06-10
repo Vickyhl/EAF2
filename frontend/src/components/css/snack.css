@@ -1,5 +1,5 @@
 li {
-    display:contents;
+  display: contents;
 }
 
 .snack {
@@ -11,12 +11,13 @@ li {
 h2 {
   margin-top: -60px;
   height: 30px;
+  font-family: "RobotoCondensed-Regular";
 }
 
 h2.snack {
   margin-top: 150px;
 }
 
-body{
-  text-align:start;
+body {
+  text-align: start;
 }

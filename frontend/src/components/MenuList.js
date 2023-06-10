@@ -25,7 +25,7 @@ const MenuList = () => {
       }
     };
     fetchData();
-  }, [menus]);
+  }, []);
 
   const handleMenuSelect = async (index) => {
     window.location.assign(`https://eaf-2.vercel.app/menu/${index + 1}`);

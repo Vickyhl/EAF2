@@ -96,7 +96,7 @@ export const signup = async (req, res, next) => {
     .status(201)
     .json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
-
+///////////////////////////////////////////////////
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
   let existingUser;
@@ -113,9 +113,9 @@ export const login = async (req, res, next) => {
   }
 
   if (!existingUser) {
-    const error = new HttpError("Your email or password is incorrect", 401);
-    // res.send({ message: "Your email or password is incorrect" });
-    return next(error);
+    // const error = new HttpError("Your email or password is incorrect", 401);
+    res.send({ message: "Your email or password is incorrect" });
+    // return next(error);
   }
   let isValidPassword = false;
   try {
@@ -129,9 +129,9 @@ export const login = async (req, res, next) => {
   }
 
   if (!isValidPassword) {
-    const error = new HttpError("Your email or password is incorrect", 401);
-    // res.send({ message: "Your email or password is incorrect" });
-    return next(error);
+    // const error = new HttpError("Your email or password is incorrect", 401);
+    res.send({ message: "Your email or password is incorrect" });
+    // return next(error);
   }
 
   let token;
@@ -156,7 +156,7 @@ export const login = async (req, res, next) => {
     token: token,
   });
 };
-
+//////////////////////////////////////////////////////
 export const forgotPassword = async (req, res, next) => {
   let user;
   user = await User.findOne({ email: req.body.email });

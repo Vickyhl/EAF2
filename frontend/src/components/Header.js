@@ -1,22 +1,15 @@
 import React from "react";
 import "./css/Header.css";
-import { useNavigate } from "react-router-dom";
 import logo from "../components/images/appleNewIcon.png";
-import '../components/css/fonts.css';
+import "../components/css/fonts.css";
+
 const Header = ({ handleClick }) => {
   const userData = localStorage.getItem("user");
   const parsedUserData = JSON.parse(userData || "{}");
   const isDietitian = parsedUserData.isDietitian;
 
-  let imgStyle = {
-    backgroundImage: `url(${logo})`,
-  };
-
   const logOut = () => {
     localStorage.clear();
-  };
-  handleClick = (text) => {
-    console.log(text);
   };
 
   return (
