@@ -72,3 +72,15 @@ button:hover {
   background-color: lightgreen;
   margin-bottom: 20px;
 }
+
+.closeButton {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

@@ -12,14 +12,17 @@ const Home = () => {
     setShowChatBot(true);
   };
 
+  const closeChatBot = () => {
+    setShowChatBot(false);
+  };
+
   return (
     <>
-      {" "}
-      <img className="welcome" src={welcome} alt="welcome message" />{" "}
+      <img className="welcome" src={welcome} alt="welcome message" />
       <div className="container-home">
         <img className="img-fluid" src={homeImg} alt="home image" />
         {showChatBot ? (
-          <ChatBot />
+          <ChatBot closeChatBot={closeChatBot} />
         ) : (
           <img
             src={chatIcon}

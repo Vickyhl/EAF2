@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./css/chat.css";
 
-const ChatBot = () => {
-  const [chatHistory, setChatHistory] = useState([]);
+const ChatBot = ({ closeChatBot }) => {
+  const [chatHistory, setChatHistory] = useState([
+    {
+      sender: "bot",
+      message: "Hey, how can we help you?",
+    },
+  ]);
   const [userInput, setUserInput] = useState("");
 
   const handleUserInput = (event) => {
@@ -103,6 +108,9 @@ const ChatBot = () => {
   return (
     <div>
       <div className="chat-window">
+        <button className="closeButton" onClick={closeChatBot}>
+          X
+        </button>
         {chatHistory.map((message, index) => (
           <div className={`message-wrapper ${message.sender}`} key={index}>
             <div className={`message-bubble ${message.sender}`}>
