@@ -9,7 +9,7 @@ function WachGrocery() {
   const filename = "output.pdf";
   const [regularList, setRegularList] = useState([]);
   const [recipeList, setRecipeList] = useState([]);
-  const [showRegularList, setShowRegularList] = useState(true);
+  const [showRegularList, setShowRegularList] = useState(false);
 
   const fetchRegular = async (event) => {
     event.preventDefault();

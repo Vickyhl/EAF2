@@ -3,11 +3,13 @@ import { AccessibilityContext } from "./AccessibilityContext";
 import AccessibilityIcon from "./AccessibilityIcon";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 import { AuthContext } from "../../src/shared/context/auth-context";
 import "./css/Login.css";
 
 const Register = () => {
   const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const [user, setUser] = useState({
@@ -28,7 +30,8 @@ const Register = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    setIsLoading(true); // Set loading state to true
+
     const { firstName, lastName, email, password } = user;
     if (firstName && lastName && email && password) {
       await axios
@@ -40,6 +43,7 @@ const Register = () => {
     } else {
       // alert("Enter the Required Fields");
     }
+    setIsLoading(false);
   };
   return (
     <>
@@ -49,6 +53,7 @@ const Register = () => {
           readableText ? "readableText" : ""
         } ${contrast}`}
       >
+        {isLoading && <Loader />}
         <form>
           <label htmlFor="firstname">First Name</label>
           <input

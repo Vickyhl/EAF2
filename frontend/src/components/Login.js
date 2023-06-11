@@ -2,10 +2,12 @@ import React, { useState, useContext } from "react";
 import { AccessibilityContext } from "./AccessibilityContext";
 import AccessibilityIcon from "./AccessibilityIcon";
 import axios from "axios";
+import Loader from "./Loader";
 import "./css/Login.css";
 
 export const Login = () => {
   const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
   const [errorMessage, setErrorMessage] = useState(null);
   const [user, setUser] = useState({
     email: "",
@@ -24,6 +26,8 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Set loading state to true
+
     const result = await axios.post(
       "https://eatandfit-api.onrender.com/api/users/login",
       user
@@ -31,9 +35,10 @@ export const Login = () => {
     if (result.data.message === "Your email or password is incorrect") {
       setErrorMessage("Your email or password is incorrect");
     } else if (result.data.existingUser) {
-      window.location.assign("/home");
       localStorage.setItem("user", JSON.stringify(result.data.existingUser));
+      window.location.assign("/home");
     }
+    setIsLoading(false);
   };
 
   return (
@@ -48,6 +53,7 @@ export const Login = () => {
           <div className="login-background">
             <h1 style={{ fontSize: 24, marginTop: 0, padding: 24 }}>Welcome</h1>
             <br />
+            {isLoading && <Loader />}
             <form>
               <input
                 style={{ border: "1px solid gray", borderRadius: 4 }}

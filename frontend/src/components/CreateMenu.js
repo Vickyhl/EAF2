@@ -7,6 +7,7 @@ import "./css/createMenu.css";
 
 const CreateMenu = () => {
   const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
   const userData = JSON.parse(localStorage.getItem("user"));
   const userId = userData?._id;
   let mid;
@@ -31,7 +32,8 @@ const CreateMenu = () => {
   const handleSubmitForm = async (formData) => {
     const { age, height, weight, gender, purpuse, type, health, userID } =
       formData;
-    console.log(userId);
+    setIsLoading(true); // Set loading state to true
+
     if (type === "regular") {
       await axios
         .post("https://eatandfit-api.onrender.com/api/menus/personalMenu", {
@@ -64,9 +66,10 @@ const CreateMenu = () => {
       );
       mid = res.data.num;
       // setMenuNum(res.data.num);
-      console.log(mid);
+      // console.log(mid);
       window.location.assign(`https://eaf-2.vercel.app/card/${mid}`);
     }
+    setIsLoading(false);
   };
 
   const handleChange = (e) => {
