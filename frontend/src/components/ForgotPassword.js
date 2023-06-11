@@ -43,10 +43,14 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="modal">
+    <div className="forgotPasswordModal">
       {" "}
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
+      <form
+        className="forgotPasswordForm"
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
         <input
+          className="forgotPasswordInput"
           type="email"
           id="Email"
           value={email}
@@ -59,13 +63,14 @@ function ForgotPassword() {
         {errors?.Email?.message && (
           <div className="validationError">{errors?.Email?.message}</div>
         )}
+        {errorMessage && <div className="validationError">{errorMessage}</div>}
         <div className="btn-container" onClick={handleSubmit}>
           <button type="submit" className="btn">
             Reset Password
           </button>
         </div>
       </form>
-      {errorMessage && (
+      {/* {errorMessage && (
         <div className="modal hidden">
           <div className="flex">
             <button className="btn-close" onClick={closeModal}>
@@ -77,7 +82,7 @@ function ForgotPassword() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
       <div className="overlay hidden"></div>
     </div>
   );

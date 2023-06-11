@@ -16,6 +16,24 @@ body {
   flex: 1;
 }
 
+.forgotPasswordModal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+form.forgotPasswordForm {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 125px 0 auto;
+}
+
+input.forgotPasswordInput {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .container {
   background-color: #fff;
   max-width: 1920px;
@@ -125,6 +143,9 @@ form input:hover {
 
 .validationError {
   color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .form-check {
