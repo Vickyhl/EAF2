@@ -5,6 +5,8 @@ import "./css/style.css";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [correctMessage, setCorrectMessage] = useState(null);
+
   const {
     register,
     formState: { errors },
@@ -19,14 +21,9 @@ function ForgotPassword() {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-      if (
-        response.message ==
-        "An email has been sent with instructions to reset your password"
-      ) {
-        setErrorMessage(
-          "An email has been sent with instructions to reset your password"
-        );
-      } else {
+      if (response.status === 200) {
+        setCorrectMessage("An email has been sent");
+      } else if (response.message === "Failed to send reset password email") {
         setErrorMessage("Failed to send reset password email");
       }
     });
@@ -64,6 +61,9 @@ function ForgotPassword() {
           <div className="validationError">{errors?.Email?.message}</div>
         )}
         {errorMessage && <div className="validationError">{errorMessage}</div>}
+        {correctMessage && (
+          <div className="correctMessage">{correctMessage}</div>
+        )}
         <div className="btn-container" onClick={handleSubmit}>
           <button type="submit" className="btn">
             Reset Password

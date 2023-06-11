@@ -148,6 +148,13 @@ form input:hover {
   justify-content: center;
 }
 
+.correctMessage {
+  color: green;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .form-check {
   margin: 20px 0px;
 }
