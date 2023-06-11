@@ -30,7 +30,7 @@ function WachGrocery() {
     );
     setRecipeList(result.data.groceryList);
     if (recipeList) {
-      setShowRegularList(true);
+      setShowRegularList(false);
       console.log(recipeList);
     }
   };
