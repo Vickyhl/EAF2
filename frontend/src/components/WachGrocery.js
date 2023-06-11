@@ -17,8 +17,8 @@ function WachGrocery() {
       `https://eatandfit-api.onrender.com/api/grocery/fetchRegularGrocery/${userId}`
     );
     setRegularList(result.data.groceryList);
-    setShowRegularList(true);
     if (regularList) {
+      setShowRegularList(true);
       console.log(regularList);
     }
   };
@@ -29,8 +29,8 @@ function WachGrocery() {
       `https://eatandfit-api.onrender.com/api/grocery/fetchRecipeGrocery/${userId}`
     );
     setRecipeList(result.data.groceryList);
-    setShowRegularList(true);
     if (recipeList) {
+      setShowRegularList(true);
       console.log(recipeList);
     }
   };
