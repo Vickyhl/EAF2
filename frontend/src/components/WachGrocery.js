@@ -29,7 +29,7 @@ function WachGrocery() {
       `https://eatandfit-api.onrender.com/api/grocery/fetchRecipeGrocery/${userId}`
     );
     setRecipeList(result.data.groceryList);
-    setShowRegularList(false);
+    setShowRegularList(true);
     if (recipeList) {
       console.log(recipeList);
     }

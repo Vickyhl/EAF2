@@ -12,15 +12,11 @@ function Cook() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const result = await axios.get(
-          `https://eatandfit-api.onrender.com/api/recipes/fetchRecipe/${rid}`
-        );
-        console.log(result.data);
-        setRecipe(result.data);
-      } catch (err) {
-        console.log(err);
-      }
+      const result = await axios.get(
+        `https://eatandfit-api.onrender.com/api/recipes/fetchRecipe/${rid}`
+      );
+      // console.log(result.data);
+      setRecipe(result.data);
     };
     fetchData();
   }, []);
@@ -29,7 +25,7 @@ function Cook() {
     if (recipe.recipe) {
       setIngredients(recipe.recipe.ingredients);
       setInstructions(recipe.recipe.instructions);
-      console.log(ingredients);
+      // console.log(ingredients);
     }
   }, [recipe]);
 
