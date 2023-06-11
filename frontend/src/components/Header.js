@@ -38,49 +38,55 @@ const Header = ({ handleClick }) => {
           )}
         </div>
       </li>
-      <li className="dropdown">
-        <a href="" className="dropbtn">
-          My Profile
-        </a>
-        <div className="dropdown-content">
-          <a href="/myProfile">View profile</a>
-          <a href="/editProfile">Edit your profile</a>
-          <a href="/weightTrack">Weight tracking</a>
-        </div>
-      </li>
-      <li className="dropdown">
-        <a href="" className="dropbtn">
-          Nutrition Menu
-        </a>
-        <div className="dropdown-content">
-          <a href="/createMenu">Purches menu</a>
-          <a href="/watchMenu">Watch existing regular menus</a>
-          <a href="/watchRecipesMenu">Watch existing recipes menus</a>
-        </div>
-      </li>
-      <li className="dropdown">
-        <a href="" className="dropbtn">
-          Grocery List
-        </a>
-        <div className="dropdown-content">
-          <a href="/watchGrocery">Watch grocery list</a>
-          <a href="/editGrocery">Edit grocery list</a>
-        </div>
-      </li>
+      {userData && (
+        <li className="dropdown">
+          <a href="" className="dropbtn">
+            My Profile
+          </a>
+          <div className="dropdown-content">
+            <a href="/myProfile">View profile</a>
+            <a href="/editProfile">Edit your profile</a>
+            <a href="/weightTrack">Weight tracking</a>
+          </div>
+        </li>
+      )}
+      {userData && (
+        <li className="dropdown">
+          <a href="" className="dropbtn">
+            Nutrition Menu
+          </a>
+          <div className="dropdown-content">
+            <a href="/createMenu">Purches menu</a>
+            <a href="/watchMenu">Watch existing regular menus</a>
+            <a href="/watchRecipesMenu">Watch existing recipes menus</a>
+          </div>
+        </li>
+      )}
+      {userData && (
+        <li className="dropdown">
+          <a href="" className="dropbtn">
+            Grocery List
+          </a>
+          <div className="dropdown-content">
+            <a href="/watchGrocery">Watch grocery list</a>
+            <a href="/editGrocery">Edit grocery list</a>
+          </div>
+        </li>
+      )}
       <li className="dropdown">
         <a href="" className="dropbtn">
           Exercise Plan
         </a>
         <div className="dropdown-content">
           <div class="dropdown-submenu">
-            <a href="#">Men exercise</a>
+            <a href="#">Men exercise &#9658;</a>
             <div class="dropdown-submenu-content">
               <a href="/men/beginners">Beginners</a>
               <a href="/men/advanced">Advanced</a>
             </div>
           </div>
           <div class="dropdown-submenu">
-            <a href="#">Women exercise</a>
+            <a href="#">Women exercise &#9658;</a>
             <div class="dropdown-submenu-content">
               <a href="/women/beginners">Beginners</a>
               <a href="/women/advanced">Advanced</a>
