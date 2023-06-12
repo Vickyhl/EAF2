@@ -31,7 +31,7 @@ const MenuList = () => {
     window.location.assign(`https://eaf-2.vercel.app/menu/${index + 1}`);
   };
 
-  return menus ? (
+  return menus && menus.length > 0 ? (
     <>
       <AccessibilityIcon />
       <div className={`background ${contrast}`}></div>
@@ -64,7 +64,9 @@ const MenuList = () => {
         </div>
       </div>
     </>
-  ) : null;
+  ) : (
+    <h1>No menus available at the moment.</h1>
+  );
 };
 
 export default MenuList;
