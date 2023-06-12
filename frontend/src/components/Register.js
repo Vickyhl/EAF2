@@ -4,7 +4,6 @@ import AccessibilityIcon from "./AccessibilityIcon";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-import { AuthContext } from "../../src/shared/context/auth-context";
 import "./css/Login.css";
 
 const Register = () => {

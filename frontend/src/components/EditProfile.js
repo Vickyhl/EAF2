@@ -87,6 +87,7 @@ function EditProfile() {
       >
         <h1 className="profileHeader">Update your information:</h1>
         <div className="editProfile">
+          {loading && <Loader />}
           <label htmlFor="firstName">First name:</label>
           <input
             type="text"
@@ -111,11 +112,16 @@ function EditProfile() {
           />
 
           <label htmlFor="gender">Gender:</label>
-          <input
-            type="text"
+          <select
             value={profileData.gender}
             onChange={handleGenderChange}
-          />
+            className="roundedSelect"
+          >
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
 
           <label htmlFor="age">Age:</label>
           <input

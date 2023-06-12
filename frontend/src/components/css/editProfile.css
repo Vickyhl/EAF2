@@ -3,6 +3,10 @@
   justify-content: center;
 }
 
+.roundedSelect {
+  border-radius: 5px;
+}
+
 .editProIn {
   width: auto;
   font-family: "RobotoCondensed-Regular", sans-serif;

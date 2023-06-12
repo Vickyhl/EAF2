@@ -52,6 +52,12 @@
   color: #555; /* Adjust the color as needed */
 }
 
+p.weightClassParagraph {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .BMIbtn {
   display: inline-block;
   padding: 0.8rem 1.4rem;

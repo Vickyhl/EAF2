@@ -46,6 +46,7 @@ function WeightTrack() {
       <div className="weightClass">
         <h1>Tracking my weight</h1>
         <form onSubmit={handleSubmit}>
+          <p className="weightClassParagraph">Enter your weight (in KG):</p>
           <input
             type="text"
             className="weightInput"
