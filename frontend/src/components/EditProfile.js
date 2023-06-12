@@ -1,12 +1,15 @@
 import React, { useState, useContext } from "react";
 import { AccessibilityContext } from "./AccessibilityContext";
 import AccessibilityIcon from "./AccessibilityIcon";
+import Loader from "./Loader";
 import "./css/editProfile.css";
 import axios from "axios";
 
 function EditProfile() {
   const { fontSize, readableText, contrast } = useContext(AccessibilityContext);
   const userData = JSON.parse(localStorage.getItem("user"));
+  const [loading, setLoading] = useState(false);
+  const [correctMessage, setCorrectMessage] = useState(null);
   const userId = userData?._id;
   const firstName = userData?.firstName;
   const lastName = userData?.lastName;
@@ -29,6 +32,7 @@ function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when request starts
 
     userData.firstName = profileData.firstName;
     userData.lastName = profileData.lastName;
@@ -45,6 +49,8 @@ function EditProfile() {
       profileData
     );
     console.log(result.data.message);
+    setLoading(false); // Set loading to false when request completes
+    setCorrectMessage("Your updated data saved successfully!");
   };
 
   const handleFirstNameChange = (e) => {
@@ -124,7 +130,9 @@ function EditProfile() {
             value={profileData.height}
             onChange={handleHeightChange}
           />
-
+          {correctMessage && (
+            <div className="correctMessage">{correctMessage}</div>
+          )}
           <div className="btn-container" onClick={handleSubmit}>
             <button type="submit" className="btn">
               Save
