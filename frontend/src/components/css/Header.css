@@ -87,7 +87,7 @@ li a,
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 16px;
   text-decoration: none;
   font-family: RobotoCondensed-Regular;
 }
@@ -134,4 +134,24 @@ li.dropdown {
   cursor: pointer;
   margin-bottom: 70px;
   margin-left: -35px;
+}
+
+img.myAccount {
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+}
+
+img.myMenus {
+  vertical-align: middle;
+  width: 45px;
+  height: 24px;
+  margin-left: -10px;
+}
+
+img.myGyms {
+  vertical-align: middle;
+  width: 35px;
+  height: 24px;
+  margin-left: -10px;
 }

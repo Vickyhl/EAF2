@@ -1,6 +1,14 @@
 import React from "react";
 import "./css/Header.css";
 import logo from "../components/images/appleNewIcon.png";
+import myAccount from "../components/images/myAccount.jpeg";
+import myProfile from "../components/images/myProfile.png";
+import donation from "../components/images/donation.png";
+import menus from "../components/images/menus.png";
+import grocery from "../components/images/grocery.png";
+import exercise from "../components/images/exersice.png";
+import map from "../components/images/map.png";
+import articlesIcon from "../components/images/articles-icon.png";
 import "../components/css/fonts.css";
 
 const Header = ({ handleClick }) => {
@@ -21,6 +29,7 @@ const Header = ({ handleClick }) => {
       </div>
       <li className="dropdown">
         <a href="" className="dropbtn">
+          <img className="myAccount" src={myAccount} alt="logo" />
           My Account
         </a>
         <div className="dropdown-content">
@@ -41,6 +50,7 @@ const Header = ({ handleClick }) => {
       {userData && (
         <li className="dropdown">
           <a href="" className="dropbtn">
+            <img className="myAccount" src={myProfile} alt="logo" />
             My Profile
           </a>
           <div className="dropdown-content">
@@ -53,6 +63,7 @@ const Header = ({ handleClick }) => {
       {userData && (
         <li className="dropdown">
           <a href="" className="dropbtn">
+            <img className="myMenus" src={menus} alt="logo" />
             Nutrition Menu
           </a>
           <div className="dropdown-content">
@@ -65,6 +76,7 @@ const Header = ({ handleClick }) => {
       {userData && (
         <li className="dropdown">
           <a href="" className="dropbtn">
+            <img className="myAccount" src={grocery} alt="logo" />
             Grocery List
           </a>
           <div className="dropdown-content">
@@ -75,6 +87,7 @@ const Header = ({ handleClick }) => {
       )}
       <li className="dropdown">
         <a href="" className="dropbtn">
+          <img className="myMenus" src={exercise} alt="logo" />
           Exercise Plan
         </a>
         <div className="dropdown-content">
@@ -95,13 +108,23 @@ const Header = ({ handleClick }) => {
         </div>
       </li>
       <li>
-        <a href="/cityChoice">GYM Maps</a>
+        <a href="/cityChoice">
+          <img className="myGyms" src={map} alt="logo" />
+          GYM Maps
+        </a>
       </li>
       <li>
-        <a href="/articles">Articles</a>
+        <a href="/articles">
+          <img className="myAccount" src={articlesIcon} alt="logo" />
+          Articles
+        </a>
       </li>
       <li>
-        <a href="/donation">Our Donation</a>
+        <a href="/donation">
+          {" "}
+          <img className="myAccount" src={donation} alt="logo" />
+          Our Donation
+        </a>
       </li>
 
       {isDietitian ? (
