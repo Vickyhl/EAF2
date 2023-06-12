@@ -56,7 +56,6 @@ export const Login = () => {
             {isLoading && <Loader />}
             <form>
               <input
-                style={{ border: "1px solid gray", borderRadius: 4 }}
                 className="login-input"
                 type="email"
                 id="email"
@@ -67,7 +66,6 @@ export const Login = () => {
               />
 
               <input
-                style={{ border: "1px solid gray", borderRadius: 4 }}
                 className="login-password-input"
                 type="password"
                 id="password"
