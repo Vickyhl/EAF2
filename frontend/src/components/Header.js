@@ -27,7 +27,7 @@ const Header = ({ handleClick }) => {
           {userData === "undefined" || !userData ? (
             <a href="/register">Register</a>
           ) : (
-            <a href="home"></a>
+            <a href="/home">Home</a>
           )}
           {userData === "undefined" || !userData ? (
             <a href="/login">Login</a>
