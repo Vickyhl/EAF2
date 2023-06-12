@@ -58,17 +58,22 @@ const Register = () => {
       newErrors.password = "Password is required.";
     }
 
+    const res = await axios.post(
+      "https://eatandfit-api.onrender.com/api/users/signup",
+      user
+    );
+    // console.log(res.data.message);
+    if (res.data.message === "Signing up failed, please try again later") {
+      newErrors.signUp = "Signing up failed, please try again later";
+    } else {
+      navigate("/login");
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setIsLoading(false);
       return;
     }
-
-    await axios
-      .post("https://eatandfit-api.onrender.com/api/users/signup", user)
-      .then((res) => {
-        navigate("/login");
-      });
 
     setIsLoading(false);
   };
@@ -126,7 +131,9 @@ const Register = () => {
           {errors.password && (
             <div className="validationError">{errors.password}</div>
           )}
-
+          {errors.signUp && (
+            <div className="validationError">{errors.signUp}</div>
+          )}
           <div className="btn-container">
             <button className="btn" onClick={handleSubmit}>
               Register

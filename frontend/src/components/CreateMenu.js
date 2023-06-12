@@ -46,8 +46,7 @@ const CreateMenu = () => {
           user: userId,
         })
         .then((res) => {
-          console.log(res);
-          console.log(type);
+          // console.log(res);
           window.location.assign(
             `https://eaf-2.vercel.app/card/${encodeURIComponent(type)}`
           );
