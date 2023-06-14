@@ -16,14 +16,17 @@ const WatchRecipesMenu = () => {
       //   identifers = result.data.identifers;
     };
     fetchData();
-  }, [menus]);
+  }, []);
 
-  if (!menus) {
-    // If menus is undefined, display a message
-    return <h1>No menus available at the moment.</h1>;
-  }
-
-  return <RecipesMenuList menus={menus} />;
+  return (
+    <React.Fragment>
+      {menus && menus.length > 0 ? (
+        <RecipesMenuList menus={menus} />
+      ) : (
+        <h1>No menus available at the moment.</h1>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default WatchRecipesMenu;
