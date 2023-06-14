@@ -16,7 +16,7 @@ const WatchRecipesMenu = () => {
       //   identifers = result.data.identifers;
     };
     fetchData();
-  }, []);
+  }, [menus]);
 
   return (
     <React.Fragment>
