@@ -18,10 +18,10 @@ const WatchRecipesMenu = () => {
     fetchData();
   }, [userID]);
 
-  if (!menus) {
-    // If menus is undefined, display a message
-    return <h1>No menus available at the moment.</h1>;
-  }
+  // if (!menus) {
+  //   // If menus is undefined, display a message
+  //   return <h1>No menus available at the moment.</h1>;
+  // }
 
   return <RecipesMenuList menus={menus} />;
 };
