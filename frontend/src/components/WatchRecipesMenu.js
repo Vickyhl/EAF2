@@ -20,11 +20,8 @@ const WatchRecipesMenu = () => {
 
   return (
     <React.Fragment>
-      {menus && menus.length > 0 ? (
-        <RecipesMenuList menus={menus} />
-      ) : (
-        <h1>No menus available at the moment.</h1>
-      )}
+      {menus && menus.length > 0 && <RecipesMenuList menus={menus} />}
+      {!menus && <h1>No menus available at the moment.</h1>}
     </React.Fragment>
   );
 };
