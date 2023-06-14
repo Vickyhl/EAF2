@@ -12,12 +12,16 @@ const WatchRecipesMenu = () => {
       const result = await axios.get(
         `https://eatandfit-api.onrender.com/api/menus/fetchRecipesMenus/${userID}`
       );
-      setMenus(result.data.identifers);
+      console.log(result.data.result);
+      setMenus(result.data.result);
       //   identifers = result.data.identifers;
     };
     fetchData();
-  }, [menus]);
+  }, []);
 
+  if (menus) {
+    console.log(menus);
+  }
   return (
     <React.Fragment>
       {menus && menus.length > 0 && <RecipesMenuList menus={menus} />}

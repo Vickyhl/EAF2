@@ -138,7 +138,6 @@ export const fetchRecipesMenus = async (req, res, next) => {
   //   acc[key] = result[index];
   //   return acc;
   // }, {});
-
   res.status(201).json({ result });
 };
 
